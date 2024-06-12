@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var palavraChave: String = ""
+    @State private var palavrasUsadas: [String] = []
+    @State private var ultimasPalavrasGeradas: [String] = []
     @State private var geradas: String = ""
     
     var body: some View {
@@ -19,7 +21,10 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
                     Task {
-                        geradas = await gerarPalavras(palavraChave: palavraChave)
+                        geradas = await gerarPalavras(palavraChave: palavraChave, palavrasUsadas: palavrasUsadas)
+                        ultimasPalavrasGeradas = geradas.components(separatedBy: ", ")
+                        ultimasPalavrasGeradas[ultimasPalavrasGeradas.count-1] = ultimasPalavrasGeradas[ultimasPalavrasGeradas.count-1].replacingOccurrences(of: "\n", with: "")
+                        palavrasUsadas.append(contentsOf: ultimasPalavrasGeradas)
                         palavraChave = " "
                         
                     }
@@ -28,19 +33,30 @@ struct ContentView: View {
                 })
             }
             
-            Text(geradas)
+            Text("\(ultimasPalavrasGeradas)")
         }
     }
     
-    func gerarPalavras(palavraChave: String) async -> String {
+
+    func gerarPalavras(palavraChave: String, palavrasUsadas: [String]) async -> String {
         
             do {
-                let prompt = "Diga 5 palavras relacionadas à palavra \(palavraChave). Se a palavra for algo inapropriada (sexual ou violento) responda com 'false'. Se for algo como 'racismo', 'machismo' e etc, forneça palavras que incentivem o combate dessas praticas"
+                let prompt = """
+"- Gere 2 objetos físicos relacionados à palavra "\(palavraChave)".
+
+- Gere 3 conceitos abstratos relacionados à palavra "\(palavraChave)".
+
+- Gere-as uma seguida da outra, separadas apenas por vírgula, não use quebra de linha
+
+- Não inclua as seguintes palavras: \(palavrasUsadas)
+"""
                 
                 let model = GenerativeModel(name: "gemini-1.5-flash-latest", apiKey: "AIzaSyAXRUjeuLPw_w7SvkvpkcScmF5QR29l9kU")
-    
+                
+                print(prompt)
                 let response = try await model.generateContent(prompt)
                 if let text = response.text {
+                    let textSemEspaco = text.replacingOccurrences(of: "\n", with: "")
                     return text
                 }
                 else {
