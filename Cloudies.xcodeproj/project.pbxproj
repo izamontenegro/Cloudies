@@ -16,6 +16,10 @@
 		3668CF672C18A31400612184 /* CloudiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF662C18A31400612184 /* CloudiesUITestsLaunchTests.swift */; };
 		3668CF752C18A37800612184 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF742C18A37800612184 /* Key.swift */; };
 		3668CF792C18A49600612184 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3668CF782C18A49600612184 /* GoogleGenerativeAI */; };
+		369877862C1C631B00AE094E /* Criar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877852C1C631B00AE094E /* Criar.swift */; };
+		369877882C1C648800AE094E /* GerarPalavras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877872C1C648800AE094E /* GerarPalavras.swift */; };
+		3698778A2C1C674F00AE094E /* Historico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877892C1C674F00AE094E /* Historico.swift */; };
+		3698778D2C1C804600AE094E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3698778C2C1C804600AE094E /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		3668CF662C18A31400612184 /* CloudiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3668CF732C18A34600612184 /* GenerativeAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GenerativeAI-Info.plist"; sourceTree = "<group>"; };
 		3668CF742C18A37800612184 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		369877852C1C631B00AE094E /* Criar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Criar.swift; sourceTree = "<group>"; };
+		369877872C1C648800AE094E /* GerarPalavras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GerarPalavras.swift; sourceTree = "<group>"; };
+		369877892C1C674F00AE094E /* Historico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historico.swift; sourceTree = "<group>"; };
+		3698778C2C1C804600AE094E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 		3668CF3D2C18A31300612184 = {
 			isa = PBXGroup;
 			children = (
+				3698778C2C1C804600AE094E /* .swiftlint.yml */,
 				3668CF482C18A31300612184 /* Cloudies */,
 				3668CF592C18A31400612184 /* CloudiesTests */,
 				3668CF632C18A31400612184 /* CloudiesUITests */,
@@ -106,6 +115,9 @@
 				3668CF4F2C18A31400612184 /* Preview Content */,
 				3668CF732C18A34600612184 /* GenerativeAI-Info.plist */,
 				3668CF742C18A37800612184 /* Key.swift */,
+				369877852C1C631B00AE094E /* Criar.swift */,
+				369877872C1C648800AE094E /* GerarPalavras.swift */,
+				369877892C1C674F00AE094E /* Historico.swift */,
 			);
 			path = Cloudies;
 			sourceTree = "<group>";
@@ -152,6 +164,7 @@
 				3668CF422C18A31300612184 /* Sources */,
 				3668CF432C18A31300612184 /* Frameworks */,
 				3668CF442C18A31300612184 /* Resources */,
+				3698778B2C1C6D3D00AE094E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -252,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3698778D2C1C804600AE094E /* .swiftlint.yml in Resources */,
 				3668CF512C18A31400612184 /* Preview Assets.xcassets in Resources */,
 				3668CF4E2C18A31400612184 /* Assets.xcassets in Resources */,
 			);
@@ -273,14 +287,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3698778B2C1C6D3D00AE094E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3668CF422C18A31300612184 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3698778A2C1C674F00AE094E /* Historico.swift in Sources */,
 				3668CF4C2C18A31300612184 /* ContentView.swift in Sources */,
 				3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */,
 				3668CF752C18A37800612184 /* Key.swift in Sources */,
+				369877882C1C648800AE094E /* GerarPalavras.swift in Sources */,
+				369877862C1C631B00AE094E /* Criar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +391,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -417,7 +454,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
