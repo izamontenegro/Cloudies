@@ -16,3 +16,7 @@ struct CloudiesApp: App {
         }
     }
 }
+
+// Fazer o .gitignore e reversionar
+// arrumar erro swiftLint no arquivo de testes
+// como fazer a tela de nuvem
