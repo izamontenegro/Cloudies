@@ -16,10 +16,11 @@
 		3668CF672C18A31400612184 /* CloudiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF662C18A31400612184 /* CloudiesUITestsLaunchTests.swift */; };
 		3668CF752C18A37800612184 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF742C18A37800612184 /* Key.swift */; };
 		3668CF792C18A49600612184 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3668CF782C18A49600612184 /* GoogleGenerativeAI */; };
-		369877862C1C631B00AE094E /* Criar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877852C1C631B00AE094E /* Criar.swift */; };
 		369877882C1C648800AE094E /* GerarPalavras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877872C1C648800AE094E /* GerarPalavras.swift */; };
 		3698778A2C1C674F00AE094E /* Historico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877892C1C674F00AE094E /* Historico.swift */; };
 		3698778D2C1C804600AE094E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3698778C2C1C804600AE094E /* .swiftlint.yml */; };
+		36C017BC2C1F837C001E56B7 /* CardsCriacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */; };
+		36C017BE2C1F95AF001E56B7 /* CriacaoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +53,11 @@
 		3668CF662C18A31400612184 /* CloudiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3668CF732C18A34600612184 /* GenerativeAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GenerativeAI-Info.plist"; sourceTree = "<group>"; };
 		3668CF742C18A37800612184 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		369877852C1C631B00AE094E /* Criar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Criar.swift; sourceTree = "<group>"; };
 		369877872C1C648800AE094E /* GerarPalavras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GerarPalavras.swift; sourceTree = "<group>"; };
 		369877892C1C674F00AE094E /* Historico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historico.swift; sourceTree = "<group>"; };
 		3698778C2C1C804600AE094E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCriacao.swift; sourceTree = "<group>"; };
+		36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +117,10 @@
 				3668CF4F2C18A31400612184 /* Preview Content */,
 				3668CF732C18A34600612184 /* GenerativeAI-Info.plist */,
 				3668CF742C18A37800612184 /* Key.swift */,
-				369877852C1C631B00AE094E /* Criar.swift */,
 				369877872C1C648800AE094E /* GerarPalavras.swift */,
 				369877892C1C674F00AE094E /* Historico.swift */,
+				36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */,
+				36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */,
 			);
 			path = Cloudies;
 			sourceTree = "<group>";
@@ -313,12 +316,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36C017BC2C1F837C001E56B7 /* CardsCriacao.swift in Sources */,
 				3698778A2C1C674F00AE094E /* Historico.swift in Sources */,
 				3668CF4C2C18A31300612184 /* ContentView.swift in Sources */,
 				3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */,
 				3668CF752C18A37800612184 /* Key.swift in Sources */,
+				36C017BE2C1F95AF001E56B7 /* CriacaoView.swift in Sources */,
 				369877882C1C648800AE094E /* GerarPalavras.swift in Sources */,
-				369877862C1C631B00AE094E /* Criar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
