@@ -28,6 +28,7 @@ struct CardsCriacao: View {
             .background(Color(cor))
             .cornerRadius(20)
             .frame(maxWidth: 358.23)
+        
     }
   
 }

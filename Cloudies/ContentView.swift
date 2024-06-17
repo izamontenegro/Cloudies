@@ -26,6 +26,7 @@ struct ContentView: View {
             }
 
         }
+        
         .accentColor(.black)
         .onAppear {
             UITabBar.appearance().backgroundColor = .systemGray6
