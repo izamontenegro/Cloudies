@@ -37,8 +37,8 @@ struct CardsCriacao: View {
     CardsCriacao(
         cor: "AZUL",
         texto: """
-Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
-""",
+        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+        """,
     titulo: "Brainstorm",
     espaco: 30
     )

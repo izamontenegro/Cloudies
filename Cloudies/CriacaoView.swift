@@ -19,8 +19,8 @@ struct CriacaoView: View {
                     CardsCriacao(
                         cor: "AZUL",
                         texto: """
-Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
-""",
+                        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                        """,
                         titulo: "Brainstorm",
                         espaco: 55
                     )
@@ -28,8 +28,8 @@ Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien 
                     CardsCriacao(
                         cor: "AMARELO",
                         texto: """
-Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
-""",
+                        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                        """,
                         titulo: "Problemáticas",
                         espaco: 55
                     )
@@ -37,8 +37,8 @@ Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien 
                     CardsCriacao(
                         cor: "ROSA",
                         texto: """
-Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
-""",
+                        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                        """,
                         titulo: "Analogia",
                         espaco: 20
                     )
