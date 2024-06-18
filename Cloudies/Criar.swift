@@ -10,7 +10,7 @@ import SwiftUI
 struct Criar: View {
     var body: some View {
         VStack {
-            GerarPalavras()
+            TelaBrainStorm()
             //                .font(.title)
             //                .bold()
             //                .padding(.trailing, 293)

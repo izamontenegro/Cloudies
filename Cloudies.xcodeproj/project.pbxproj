@@ -20,6 +20,8 @@
 		369877882C1C648800AE094E /* GerarPalavras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877872C1C648800AE094E /* GerarPalavras.swift */; };
 		3698778A2C1C674F00AE094E /* Historico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877892C1C674F00AE094E /* Historico.swift */; };
 		3698778D2C1C804600AE094E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3698778C2C1C804600AE094E /* .swiftlint.yml */; };
+		F70EA9082C1CF9EA006D0572 /* TelaBrainStorm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */; };
+		F70EA90C2C1D001F006D0572 /* LinhaDePalavraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		369877872C1C648800AE094E /* GerarPalavras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GerarPalavras.swift; sourceTree = "<group>"; };
 		369877892C1C674F00AE094E /* Historico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historico.swift; sourceTree = "<group>"; };
 		3698778C2C1C804600AE094E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaBrainStorm.swift; sourceTree = "<group>"; };
+		F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinhaDePalavraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +115,15 @@
 			children = (
 				3668CF492C18A31300612184 /* CloudiesApp.swift */,
 				3668CF4B2C18A31300612184 /* ContentView.swift */,
+				F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */,
+				F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */,
 				3668CF4D2C18A31400612184 /* Assets.xcassets */,
-				3668CF4F2C18A31400612184 /* Preview Content */,
 				3668CF732C18A34600612184 /* GenerativeAI-Info.plist */,
 				3668CF742C18A37800612184 /* Key.swift */,
 				369877852C1C631B00AE094E /* Criar.swift */,
 				369877872C1C648800AE094E /* GerarPalavras.swift */,
 				369877892C1C674F00AE094E /* Historico.swift */,
+				3668CF4F2C18A31400612184 /* Preview Content */,
 			);
 			path = Cloudies;
 			sourceTree = "<group>";
@@ -313,6 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3698778A2C1C674F00AE094E /* Historico.swift in Sources */,
+				F70EA9082C1CF9EA006D0572 /* TelaBrainStorm.swift in Sources */,
+				F70EA90C2C1D001F006D0572 /* LinhaDePalavraView.swift in Sources */,
 				3668CF4C2C18A31300612184 /* ContentView.swift in Sources */,
 				3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */,
 				3668CF752C18A37800612184 /* Key.swift in Sources */,
