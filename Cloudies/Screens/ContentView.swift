@@ -19,7 +19,7 @@ struct ContentView: View {
             }
 
             NavigationStack {
-                Historico()
+                HistoricoView()
             }
             .tabItem {
                 Label("Histórico", systemImage: "book")

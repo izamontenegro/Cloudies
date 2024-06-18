@@ -8,19 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF492C18A31300612184 /* CloudiesApp.swift */; };
-		3668CF4C2C18A31300612184 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF4B2C18A31300612184 /* ContentView.swift */; };
 		3668CF4E2C18A31400612184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3668CF4D2C18A31400612184 /* Assets.xcassets */; };
 		3668CF512C18A31400612184 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3668CF502C18A31400612184 /* Preview Assets.xcassets */; };
 		3668CF5B2C18A31400612184 /* CloudiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF5A2C18A31400612184 /* CloudiesTests.swift */; };
 		3668CF652C18A31400612184 /* CloudiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF642C18A31400612184 /* CloudiesUITests.swift */; };
 		3668CF672C18A31400612184 /* CloudiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF662C18A31400612184 /* CloudiesUITestsLaunchTests.swift */; };
-		3668CF752C18A37800612184 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF742C18A37800612184 /* Key.swift */; };
 		3668CF792C18A49600612184 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3668CF782C18A49600612184 /* GoogleGenerativeAI */; };
-		369877882C1C648800AE094E /* GerarPalavras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877872C1C648800AE094E /* GerarPalavras.swift */; };
-		3698778A2C1C674F00AE094E /* HistoricoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369877892C1C674F00AE094E /* HistoricoView.swift */; };
 		3698778D2C1C804600AE094E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3698778C2C1C804600AE094E /* .swiftlint.yml */; };
 		36C017BC2C1F837C001E56B7 /* CardsCriacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */; };
 		36C017BE2C1F95AF001E56B7 /* CriacaoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */; };
+		F70EA9082C1CF9EA006D0572 /* TelaBrainStorm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */; };
+		F70EA90C2C1D001F006D0572 /* LinhaDePalavraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */; };
+		F7172C962C21D78900F97EF8 /* GerarPalavras.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C932C21D78900F97EF8 /* GerarPalavras.swift */; };
+		F7172C972C21D78900F97EF8 /* GenerativeAI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7172C942C21D78900F97EF8 /* GenerativeAI-Info.plist */; };
+		F7172C982C21D78900F97EF8 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C952C21D78900F97EF8 /* Key.swift */; };
+		F7172C9B2C21D7F000F97EF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C992C21D7F000F97EF8 /* ContentView.swift */; };
+		F7172C9C2C21D7F000F97EF8 /* HistoricoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,6 @@
 /* Begin PBXFileReference section */
 		3668CF462C18A31300612184 /* Cloudies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668CF492C18A31300612184 /* CloudiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudiesApp.swift; sourceTree = "<group>"; };
-		3668CF4B2C18A31300612184 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3668CF4D2C18A31400612184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3668CF502C18A31400612184 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3668CF562C18A31400612184 /* CloudiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,13 +53,16 @@
 		3668CF602C18A31400612184 /* CloudiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668CF642C18A31400612184 /* CloudiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudiesUITests.swift; sourceTree = "<group>"; };
 		3668CF662C18A31400612184 /* CloudiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3668CF732C18A34600612184 /* GenerativeAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GenerativeAI-Info.plist"; sourceTree = "<group>"; };
-		3668CF742C18A37800612184 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		369877872C1C648800AE094E /* GerarPalavras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GerarPalavras.swift; sourceTree = "<group>"; };
-		369877892C1C674F00AE094E /* HistoricoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoView.swift; sourceTree = "<group>"; };
 		3698778C2C1C804600AE094E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCriacao.swift; sourceTree = "<group>"; };
 		36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriacaoView.swift; sourceTree = "<group>"; };
+		F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaBrainStorm.swift; sourceTree = "<group>"; };
+		F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinhaDePalavraView.swift; sourceTree = "<group>"; };
+		F7172C932C21D78900F97EF8 /* GerarPalavras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerarPalavras.swift; sourceTree = "<group>"; };
+		F7172C942C21D78900F97EF8 /* GenerativeAI-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GenerativeAI-Info.plist"; sourceTree = "<group>"; };
+		F7172C952C21D78900F97EF8 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		F7172C992C21D7F000F97EF8 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +91,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		36493BA02C21B73B00AA9D5D /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		36493BA12C21B74600AA9D5D /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,9 +102,11 @@
 		36493BA22C21B75200AA9D5D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				3668CF4B2C18A31300612184 /* ContentView.swift */,
+				F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */,
+				F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */,
+				F7172C992C21D7F000F97EF8 /* ContentView.swift */,
+				F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */,
 				36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */,
-				369877892C1C674F00AE094E /* HistoricoView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -114,9 +114,9 @@
 		36493BA32C21B87600AA9D5D /* GenAI */ = {
 			isa = PBXGroup;
 			children = (
-				3668CF732C18A34600612184 /* GenerativeAI-Info.plist */,
-				3668CF742C18A37800612184 /* Key.swift */,
-				369877872C1C648800AE094E /* GerarPalavras.swift */,
+				F7172C942C21D78900F97EF8 /* GenerativeAI-Info.plist */,
+				F7172C932C21D78900F97EF8 /* GerarPalavras.swift */,
+				F7172C952C21D78900F97EF8 /* Key.swift */,
 			);
 			path = GenAI;
 			sourceTree = "<group>";
@@ -150,7 +150,6 @@
 				36493BA32C21B87600AA9D5D /* GenAI */,
 				36493BA22C21B75200AA9D5D /* Screens */,
 				36493BA12C21B74600AA9D5D /* Components */,
-				36493BA02C21B73B00AA9D5D /* Data */,
 				3668CF4D2C18A31400612184 /* Assets.xcassets */,
 				3668CF4F2C18A31400612184 /* Preview Content */,
 			);
@@ -302,6 +301,7 @@
 			files = (
 				3698778D2C1C804600AE094E /* .swiftlint.yml in Resources */,
 				3668CF512C18A31400612184 /* Preview Assets.xcassets in Resources */,
+				F7172C972C21D78900F97EF8 /* GenerativeAI-Info.plist in Resources */,
 				3668CF4E2C18A31400612184 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,13 +348,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7172C982C21D78900F97EF8 /* Key.swift in Sources */,
+				F70EA9082C1CF9EA006D0572 /* TelaBrainStorm.swift in Sources */,
+				F7172C9B2C21D7F000F97EF8 /* ContentView.swift in Sources */,
+				F70EA90C2C1D001F006D0572 /* LinhaDePalavraView.swift in Sources */,
 				36C017BC2C1F837C001E56B7 /* CardsCriacao.swift in Sources */,
-				3698778A2C1C674F00AE094E /* HistoricoView.swift in Sources */,
-				3668CF4C2C18A31300612184 /* ContentView.swift in Sources */,
+				F7172C962C21D78900F97EF8 /* GerarPalavras.swift in Sources */,
 				3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */,
-				3668CF752C18A37800612184 /* Key.swift in Sources */,
+				F7172C9C2C21D7F000F97EF8 /* HistoricoView.swift in Sources */,
 				36C017BE2C1F95AF001E56B7 /* CriacaoView.swift in Sources */,
-				369877882C1C648800AE094E /* GerarPalavras.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
