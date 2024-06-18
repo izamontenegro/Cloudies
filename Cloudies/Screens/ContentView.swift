@@ -12,22 +12,26 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                Criar()
+                CriacaoView()
             }
-            .navigationTitle("Criação")
             .tabItem {
                 Label("Criação", systemImage: "cloud")
             }
 
             NavigationStack {
-                Historico()
+                HistoricoView()
             }
-            .navigationTitle("Histórico")
             .tabItem {
                 Label("Histórico", systemImage: "book")
             }
 
-        }  .accentColor(.black)
+        }
+        
+        .accentColor(.black)
+        .onAppear {
+            UITabBar.appearance().backgroundColor = .systemGray6
+        }
+        
     }
 }
 

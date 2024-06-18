@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Historico: View {
+struct HistoricoView: View {
     var body: some View {
         Text("lorem ipsumld ijdewj posie ne palavraslae atoishdfjsj sjjfhds fbgjedsgvwslkjfhvgdfhbdjj djhjdkk hdjsdksfjde hfjhdwsjd")
             .foregroundStyle(.white)
@@ -19,5 +19,5 @@ struct Historico: View {
 }
 
 #Preview {
-    Historico()
+    HistoricoView()
 }
