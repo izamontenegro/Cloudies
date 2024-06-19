@@ -14,17 +14,17 @@ struct CardGeracaoTexto: View {
         VStack {
             Text(titulo)
                 .font(.headline)
-                .frame(width: 361, alignment: .leading)
+                .frame(width: 350, alignment: .leading)
             Text(explicacao)
                 .font(.footnote)
-            .frame(width: 361, alignment: .leading)
+            .frame(width: 350, alignment: .leading)
             
         }
-        .frame(height:74)
+        .frame(width: 350, height: 74)
         .padding(.leading, 10)
         .overlay {
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.black,  lineWidth: 2)
+                .stroke(.black, lineWidth: 2)
         }
     }
         
