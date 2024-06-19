@@ -12,7 +12,7 @@ struct TelaBrainStorm: View {
     @State private var palavraEntrada: String = ""
     @State private var palavrasGeradas: String = ""
     @State private var palavrasParaIgnorar: [Palavra] = []
-    @State private var ultimasPalavrasGeradas: [Palavra] = []
+    @State private var auxPalavrasGeradas: [Palavra] = []
     @State private var respostaAI: String = ""
     @State
     var colecaoDePalavras: [Palavra] = []
@@ -27,22 +27,17 @@ struct TelaBrainStorm: View {
                 Task {
                     palavraEntrada = "prompt"
                     palavraChave.texto = palavraEntrada
-                    respostaAI = await gerarPalavras(palavraChave: palavraChave, palavrasUsadas: palavrasParaIgnorar)
+                    respostaAI = await gerarRespostaAI(tipoGeracao: "BrainStorm", palavraChave: palavraChave, palavrasUsadas: palavrasParaIgnorar)
                     
-                    let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
-                    
-                    for resposta in respostasAI {
-                        ultimasPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
-                    }
-                    
-                    palavrasParaIgnorar.append(contentsOf: ultimasPalavrasGeradas)
+                    auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
+                    palavrasParaIgnorar.append(contentsOf: auxPalavrasGeradas)
                     
                     palavraChave.texto = ""
                     
-                    print(colecaoDeLinhas)
-                    colecaoDeLinhas.append(LinhaDePalavras(palavras: ultimasPalavrasGeradas))
+                    colecaoDeLinhas.append(LinhaDePalavras(palavras: auxPalavrasGeradas))
+                    //salvar colelção de linhas com swiftdata
                     
-                    ultimasPalavrasGeradas.removeAll()
+                    auxPalavrasGeradas.removeAll()
                 }
             }, label: {
                 Image(systemName: "plus.circle.fill")
@@ -57,23 +52,47 @@ struct TelaBrainStorm: View {
         }
         
     }
-    func gerarPalavras(palavraChave: Palavra, palavrasUsadas: [Palavra]) async -> String {
+    
+    func separarRespostaBrainStorm(respostasAI: String) -> [Palavra] {
+        let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
+        
+        for resposta in respostasAI {
+            auxPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
+        }
+        
+        return auxPalavrasGeradas
+    }
+    func gerarRespostaAI(tipoGeracao: String, palavraChave: Palavra, palavrasUsadas: [Palavra]) async -> String {
         
         var palavrasUsadasPrompt = ""
+        var prompt = ""
         for palavra in palavrasUsadas {
             palavrasUsadasPrompt += ", \(palavra.texto)"
         } //Transforma as palavras usadas em uma string para passar para a ia
         
         do {
             
-            let prompt =
-            """
-            - Gere 2 objetos físicos relacionados à palavra "\(palavraChave.texto)".
-            - Gere 3 conceitos abstratos relacionados à palavra "\(palavraChave.texto)".
-            - Gere-as uma seguida da outra, separadas apenas por vírgula, não use quebra de linha
-            - Gere apenas palavras, nada de frases
-            - Não inclua as seguintes palavras: \(palavrasUsadasPrompt)
-            """
+            switch tipoGeracao {
+            case "BrainStorm":
+                prompt =
+                """
+                - Gere 2 objetos físicos relacionados à palavra "\(palavraChave.texto)".
+                - Gere 3 conceitos abstratos relacionados à palavra "\(palavraChave.texto)".
+                - Gere-as uma seguida da outra, separadas apenas por vírgula, não use quebra de linha
+                - Gere apenas palavras, nada de frases
+                - Não inclua as seguintes palavras: \(palavrasUsadasPrompt)
+                """
+            case "Problematicas":
+                prompt = 
+                ""//Prompt de problematica aqui
+                
+            case "Analogias":
+                prompt = 
+                ""//Prompt de analogia aqui
+            default:
+                prompt =
+                "Retorne 'Erro: tipo de geração inválido'"
+            }
             
             let model = GenerativeModel(name: "gemini-1.5-flash-latest", apiKey: "AIzaSyAXRUjeuLPw_w7SvkvpkcScmF5QR29l9kU")
             
