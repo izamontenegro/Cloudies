@@ -96,6 +96,7 @@
 		36493BA12C21B74600AA9D5D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */,
 				36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */,
 			);
 			path = Components;
@@ -105,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				F70EA9072C1CF9EA006D0572 /* TelaBrainStorm.swift */,
-				F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */,
 				F7172C992C21D7F000F97EF8 /* ContentView.swift */,
 				F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */,
 				36C017BD2C1F95AF001E56B7 /* CriacaoView.swift */,

@@ -10,6 +10,7 @@ import SwiftUI
 struct Palavra: Identifiable {
     var id: UUID? = UUID()
     var texto: String
+    var isFavorite: Bool = false
     
 }
 
@@ -38,7 +39,6 @@ struct LinhaDePalavrasView: View {
                 } label: {
                     Text(palavra.texto)
                 }
-                .buttonStyle(.bordered)
                 .foregroundStyle(.black)
             }
         }
