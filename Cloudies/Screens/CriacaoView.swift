@@ -15,6 +15,7 @@ struct CriacaoView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.thinMaterial)
                     .frame(width: 357.45, height: 143.71)
+                    .padding(.top, 14)
                 VStack(spacing: -45) {
                     CardsCriacao(
                         cor: "AZUL",
@@ -43,7 +44,8 @@ struct CriacaoView: View {
                         espaco: 20
                     )
                 }
-                .padding(.top, 21)
+                .shadow(radius: 7)
+                .padding(.top, 11)
             }
             
             .navigationTitle("Criação")
