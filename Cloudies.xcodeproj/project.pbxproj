@@ -25,6 +25,7 @@
 		F7172C982C21D78900F97EF8 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C952C21D78900F97EF8 /* Key.swift */; };
 		F7172C9B2C21D7F000F97EF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C992C21D7F000F97EF8 /* ContentView.swift */; };
 		F7172C9C2C21D7F000F97EF8 /* HistoricoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */; };
+		F76D6EDB2C231A970084025E /* ContextMenuFavoritos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D6EDA2C231A970084025E /* ContextMenuFavoritos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		F7172C952C21D78900F97EF8 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		F7172C992C21D7F000F97EF8 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoView.swift; sourceTree = "<group>"; };
+		F76D6EDA2C231A970084025E /* ContextMenuFavoritos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuFavoritos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				F70EA90B2C1D001F006D0572 /* LinhaDePalavraView.swift */,
+				F76D6EDA2C231A970084025E /* ContextMenuFavoritos.swift */,
 				36C017BB2C1F837C001E56B7 /* CardsCriacao.swift */,
 			);
 			path = Components;
@@ -368,6 +371,7 @@
 				F7172C962C21D78900F97EF8 /* GerarPalavras.swift in Sources */,
 				3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */,
 				F7172C9C2C21D7F000F97EF8 /* HistoricoView.swift in Sources */,
+				F76D6EDB2C231A970084025E /* ContextMenuFavoritos.swift in Sources */,
 				36C017BE2C1F95AF001E56B7 /* CriacaoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

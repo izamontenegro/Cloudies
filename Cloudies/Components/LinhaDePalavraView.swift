@@ -32,16 +32,31 @@ struct LinhaDePalavrasView: View {
         linhas.append(novaLinha)
     }
     var body: some View {
-        HStack {
-            ForEach(palavras, id: \.id) { palavra in
-                Button {
-                    linhas.append(linhas.last!)
-                } label: {
-                    Text(palavra.texto)
+        let meio: Int = (palavras.count/2)
+        
+        let primeiraMetade = palavras[..<meio]
+        let segundaMetade = palavras[meio...]
+        VStack {
+            HStack {
+                ForEach(primeiraMetade, id: \.id) { palavra in
+                    
+                    ContextMenuFavoritos(essaPalavra: palavra)
+                        .frame(width: .infinity)
+                        .foregroundStyle(.black)
+                    Text("")
+                    
                 }
-                .foregroundStyle(.black)
+            }
+            HStack {
+                ForEach(segundaMetade, id: \.id) { palavra in
+                    
+                    ContextMenuFavoritos(essaPalavra: palavra)
+                        .frame(width: .infinity)
+                        .foregroundStyle(.black)
+                    Text("")
+                }
             }
         }
-        
     }
 }
+

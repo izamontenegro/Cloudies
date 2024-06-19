@@ -12,7 +12,7 @@ struct TelaBrainStorm: View {
     @State private var palavraEntrada: String = ""
     @State private var palavrasGeradas: String = ""
     @State private var palavrasParaIgnorar: [Palavra] = []
-    @State private var ultimasPalavrasGeradas: [Palavra] = []
+    @State private var auxPalavrasGeradas: [Palavra] = []
     @State private var respostaAI: String = ""
     @State
     var colecaoDePalavras: [Palavra] = []
@@ -29,20 +29,15 @@ struct TelaBrainStorm: View {
                     palavraChave.texto = palavraEntrada
                     respostaAI = await gerarRespostaAI(tipoGeracao: "BrainStorm", palavraChave: palavraChave, palavrasUsadas: palavrasParaIgnorar)
                     
-                    let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
-                    
-                    for resposta in respostasAI {
-                        ultimasPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
-                    }
-                    
-                    palavrasParaIgnorar.append(contentsOf: ultimasPalavrasGeradas)
+                    auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
+                    palavrasParaIgnorar.append(contentsOf: auxPalavrasGeradas)
                     
                     palavraChave.texto = ""
                     
-                    print(colecaoDeLinhas)
-                    colecaoDeLinhas.append(LinhaDePalavras(palavras: ultimasPalavrasGeradas))
+                    colecaoDeLinhas.append(LinhaDePalavras(palavras: auxPalavrasGeradas))
+                    //salvar colelção de linhas com swiftdata
                     
-                    ultimasPalavrasGeradas.removeAll()
+                    auxPalavrasGeradas.removeAll()
                 }
             }, label: {
                 Image(systemName: "plus.circle.fill")
@@ -56,6 +51,16 @@ struct TelaBrainStorm: View {
             
         }
         
+    }
+    
+    func separarRespostaBrainStorm(respostasAI: String) -> [Palavra] {
+        let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
+        
+        for resposta in respostasAI {
+            auxPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
+        }
+        
+        return auxPalavrasGeradas
     }
     func gerarRespostaAI(tipoGeracao: String, palavraChave: Palavra, palavrasUsadas: [Palavra]) async -> String {
         
@@ -78,10 +83,12 @@ struct TelaBrainStorm: View {
                 - Não inclua as seguintes palavras: \(palavrasUsadasPrompt)
                 """
             case "Problematicas":
-                prompt = ""//Prompt de problematica aqui
+                prompt = 
+                ""//Prompt de problematica aqui
                 
             case "Analogias":
-                prompt = ""//Prompt de analogia aqui
+                prompt = 
+                ""//Prompt de analogia aqui
             default:
                 prompt =
                 "Retorne 'Erro: tipo de geração inválido'"
