@@ -14,7 +14,7 @@ struct HistoricoView: View {
     var body: some View {
         ScrollView {
             // Fazer a substituiçao por projeto.titulo e projeto.ferramenta em cor e titulo
-            ForEach(searchResults, id: \.self) { projeto in
+            ForEach(searchResults, id: \.self) { _ in
                 NavigationLink {
                     Text("coisa")
                 } label: {
