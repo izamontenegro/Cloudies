@@ -4,41 +4,38 @@
 //
 //  Created by Izadora de Oliveira Albuquerque Montenegro on 14/06/24.
 //
-import SwiftData
+
 import SwiftUI
 
 struct HistoricoView: View {
-    @Environment(\.modelContext) var modelContext
-    @Query var projetos: [Projeto]
+    let projetos = ["My first APP", "AppStore Challenge", "CLI", "CBL", "MVP challenge"]
+    @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            Button("add", action: addPalavras)
-            List {
-                ForEach(projetos) { projeto in
-                    VStack {
-                        Text(projeto.palavraChave)
-                    }
-                    
+        ScrollView {
+            // Fazer a substituiçao por projeto.titulo e projeto.ferramenta em cor e titulo
+            ForEach(searchResults, id: \.self) { _ in
+                NavigationLink {
+                    Text("coisa")
+                } label: {
+                    CardsHistorico(cor: "AZUL", texto: "qualquer bosta", titulo: "Coisa")
+                        .padding(.bottom, -35)
                 }
-                .onDelete(perform: deleteProject)
-
+                .buttonStyle(PlainButtonStyle())
+                
             }
+            .navigationTitle("Histórico")
+            .shadow(radius: 5.6)
+            .padding(.top, 20)
+            .searchable(text: $searchText, prompt: "Procurando projetos hihihi")
         }
     }
     
-    func addPalavras() {
-        let palavraUm = Projeto(palavraChave: "cat", gerados: ["uma", "dois"], favoritos: ["uma", "dois"])
-        let palavradois = Projeto(palavraChave: "cat", gerados: ["uma", "dois"], favoritos: ["uma", "dois"])
-        
-        modelContext.insert(palavraUm)
-        modelContext.insert(palavradois)
-    }
-    
-    func deleteProject( _ indexSet: IndexSet) {
-        for index in indexSet {
-            let projeto = projetos[index]
-            modelContext.delete(projeto)
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return projetos
+        } else {
+            return projetos.filter { $0.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }
