@@ -28,8 +28,9 @@ struct ContentView: View {
                 Label("Histórico", systemImage: "book")
             }
 
-        }  .accentColor(.black)
-           .background(.ultraThinMaterial)
+        }  
+        .accentColor(.black)
+        .background(.ultraThinMaterial)
                    
     }
 }
