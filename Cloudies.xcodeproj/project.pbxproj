@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36493BB32C21FDD600AA9D5D /* Projeto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36493BB22C21FDD600AA9D5D /* Projeto.swift */; };
 		3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668CF492C18A31300612184 /* CloudiesApp.swift */; };
 		3668CF4E2C18A31400612184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3668CF4D2C18A31400612184 /* Assets.xcassets */; };
 		3668CF512C18A31400612184 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3668CF502C18A31400612184 /* Preview Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36493BB22C21FDD600AA9D5D /* Projeto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projeto.swift; sourceTree = "<group>"; };
 		3668CF462C18A31300612184 /* Cloudies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668CF492C18A31300612184 /* CloudiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudiesApp.swift; sourceTree = "<group>"; };
 		3668CF4D2C18A31400612184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +123,14 @@
 			path = GenAI;
 			sourceTree = "<group>";
 		};
+		36493BA62C21FC3F00AA9D5D /* DataFiles */ = {
+			isa = PBXGroup;
+			children = (
+				36493BB22C21FDD600AA9D5D /* Projeto.swift */,
+			);
+			path = DataFiles;
+			sourceTree = "<group>";
+		};
 		3668CF3D2C18A31300612184 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		3668CF482C18A31300612184 /* Cloudies */ = {
 			isa = PBXGroup;
 			children = (
+				36493BA62C21FC3F00AA9D5D /* DataFiles */,
 				3668CF492C18A31300612184 /* CloudiesApp.swift */,
 				36493BA32C21B87600AA9D5D /* GenAI */,
 				36493BA22C21B75200AA9D5D /* Screens */,
@@ -353,6 +364,7 @@
 				F7172C9B2C21D7F000F97EF8 /* ContentView.swift in Sources */,
 				F70EA90C2C1D001F006D0572 /* LinhaDePalavraView.swift in Sources */,
 				36C017BC2C1F837C001E56B7 /* CardsCriacao.swift in Sources */,
+				36493BB32C21FDD600AA9D5D /* Projeto.swift in Sources */,
 				F7172C962C21D78900F97EF8 /* GerarPalavras.swift in Sources */,
 				3668CF4A2C18A31300612184 /* CloudiesApp.swift in Sources */,
 				F7172C9C2C21D7F000F97EF8 /* HistoricoView.swift in Sources */,
