@@ -5,6 +5,7 @@
 //  Created by Izadora de Oliveira Albuquerque Montenegro on 11/06/24.
 //
 
+import SwiftData
 import SwiftUI
 import GoogleGenerativeAI
 
@@ -14,6 +15,7 @@ struct CloudiesApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Projeto.self)
     }
 }
 
