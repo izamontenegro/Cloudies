@@ -9,12 +9,13 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    
+
     var body: some View {
         TabView {
             NavigationStack {
                 CriacaoView()
             }
+            .navigationTitle("Criação")
             .tabItem {
                 Label("Criação", systemImage: "cloud")
             }
@@ -22,17 +23,14 @@ struct ContentView: View {
             NavigationStack {
                 HistoricoView()
             }
+            .navigationTitle("Histórico")
             .tabItem {
                 Label("Histórico", systemImage: "book")
             }
 
-        }
-        
-        .accentColor(.black)
-        .onAppear {
-            UITabBar.appearance().backgroundColor = .systemGray6
-        }
-        
+        }  .accentColor(.black)
+           .background(.ultraThinMaterial)
+                   
     }
 }
 
