@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContextMenuFavoritos: View {
-    @State
+    @Binding
     var essaPalavra: Palavra
     
     var body: some View {
@@ -20,15 +20,16 @@ struct ContextMenuFavoritos: View {
             }
             
             Button {
-                // Gerar novos
+                essaPalavra.isGeneration.toggle()
             } label: {
-                Label("Gerar Novos", systemImage: "bolt.fill")
+                Label("Gerar Novos", systemImage: essaPalavra.isGeneration ? "bolt.fill" : "bolt")
             }
             
         } label: {
             Text("\(essaPalavra.texto)")
                 .background(essaPalavra.isFavorite ? .AZUL : .white)
                 .frame(width: .infinity)
+                .presentationCornerRadius(20)
         }
 
     }
