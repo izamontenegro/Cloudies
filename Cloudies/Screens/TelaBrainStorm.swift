@@ -22,7 +22,6 @@ struct TelaBrainStorm: View {
     var colecaoDeLinhas: [LinhaDePalavras] = []
     
     var body: some View {
-        
         VStack {
             Button(action: {
                 Task {
@@ -41,13 +40,17 @@ struct TelaBrainStorm: View {
                     auxPalavrasGeradas.removeAll()
                 }
             }, label: {
-                Image(systemName: "plus.circle.fill")
+                ZStack {
+                    Image("NuvemTituloAzul")
+                    Text("\(palavraEntrada)")
+                        .foregroundStyle(.black)
+                }
             })
             .padding(50)
-            Spacer()
             ForEach($colecaoDeLinhas) { colecao in
                 LinhaDePalavrasView(palavras: colecao.palavras, linhas: $colecaoDeLinhas)
             }
+            Spacer()
             Spacer()
             
         }

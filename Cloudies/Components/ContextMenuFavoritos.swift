@@ -27,7 +27,7 @@ struct ContextMenuFavoritos: View {
             
         } label: {
             Text("\(essaPalavra.texto)")
-                .background(essaPalavra.isFavorite ? .blue : .white)
+                .background(essaPalavra.isFavorite ? .AZUL : .white)
                 .frame(width: .infinity)
         }
 
