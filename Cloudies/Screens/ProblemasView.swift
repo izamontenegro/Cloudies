@@ -11,11 +11,12 @@ struct ProblemasView: View {
     @State var numeroDePalavrasGeradas: Int = 4
     @State var gerados: [String] = ["Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste"]
     var body: some View {
-        VStack (){
+        VStack {
             ZStack {
                 Image("NuvemTituloRosa")
                 Text("Palavra")
                     .font(.largeTitle)
+                    .bold()
                     .padding(.top)
             }
             .padding(.bottom, 28)
@@ -27,11 +28,30 @@ struct ProblemasView: View {
             HStack(spacing: 13.51) {
                 Botoes()
                 Botoes()
-                Botoes()
             }
             .padding(.top, 50)
         }
-        
+        .navigationBarTitle("Problemáticas", displayMode: .inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button(action: {
+                    print("")
+                }, label: {
+                    Image(systemName: "square.and.arrow.up")
+                        .imageScale(.large)
+                        .scaleEffect(1.1)
+                })
+                
+                Button(action: {
+                    print("")
+                }, label: {
+                    Image(systemName: "pencil.circle")
+                        .imageScale(.large)
+                        .scaleEffect(1.1)
+                })
+            }
+            
+        }
     }
 }
 

@@ -17,23 +17,26 @@ struct CriacaoView: View {
                     .frame(width: 357.45, height: 143.71)
                     .padding(.top, 14)
                 VStack(spacing: -45) {
-                    CardsCriacao(
+                    CardsCriacao (
                         cor: "AZUL",
                         texto: """
-                        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
-                        """,
+                            Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                            """,
                         titulo: "Brainstorm",
                         espaco: 55
                     )
                     
-                    CardsCriacao(
-                        cor: "AMARELO",
-                        texto: """
+                    NavigationLink(destination: ProblemasView()) {
+                        CardsCriacao(
+                            cor: "AMARELO",
+                            texto: """
                         Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
                         """,
-                        titulo: "Problemáticas",
-                        espaco: 55
-                    )
+                            titulo: "Problemáticas",
+                            espaco: 55
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
                     
                     CardsCriacao(
                         cor: "ROSA",

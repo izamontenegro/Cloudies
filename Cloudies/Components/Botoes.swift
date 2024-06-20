@@ -11,7 +11,7 @@ struct Botoes: View {
     @State var cor: String = "ROSA"
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
-            .frame(width: 110.19, height: 97.62)
+            .frame(width: 170.33, height: 76.45)
             .foregroundStyle(Color(cor))
             .overlay {
                 RoundedRectangle(cornerRadius: 20)

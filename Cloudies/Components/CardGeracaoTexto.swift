@@ -9,14 +9,15 @@ import SwiftUI
 
 struct CardGeracaoTexto: View {
     @State var titulo: String = "Tema do problema"
-    @State var explicacao: String = "Descricao do problema descrevendo um problema que existe mais palavras pra testar coisas e tals lala joao"
+    @State var explicacao: String = "Descricao do problema descrevendo um problema que existe mais palavras pra testar coisas tals"
     var body: some View {
         VStack {
             Text(titulo)
-                .font(.headline)
+                .font(.system(size: 18))
+                .fontWeight(.medium)
                 .frame(width: 350, alignment: .leading)
             Text(explicacao)
-                .font(.footnote)
+            .font(.system(size: 15))
             .frame(width: 350, alignment: .leading)
             
         }
@@ -24,7 +25,7 @@ struct CardGeracaoTexto: View {
         .padding(.leading, 10)
         .overlay {
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.black, lineWidth: 2)
+                .stroke(.black, lineWidth: 1.5)
         }
     }
         
