@@ -46,6 +46,7 @@ struct CriacaoView: View {
                         titulo: "Analogia",
                         espaco: 20
                     )
+                    NavigationLink("oi", destination: TelaBrainStorm())
                 }
                 .shadow(radius: 7)
                 .padding(.top, 11)

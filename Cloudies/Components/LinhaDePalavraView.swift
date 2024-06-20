@@ -11,7 +11,8 @@ struct Palavra: Identifiable {
     var id: UUID? = UUID()
     var texto: String
     var isFavorite: Bool = false
-    
+    var isGeneration: Bool = false
+
 }
 
 struct LinhaDePalavras: Identifiable {
@@ -37,8 +38,8 @@ struct LinhaDePalavrasView: View {
         let primeiraMetade = palavras[..<meio]
         let segundaMetade = palavras[meio...]
         VStack {
-            HStack {
-                ForEach(primeiraMetade, id: \.id) { palavra in
+            Grid {
+                ForEach($palavras, id: \.id) { palavra in
                     
                     ContextMenuFavoritos(essaPalavra: palavra)
                         .frame(width: .infinity)
@@ -47,6 +48,9 @@ struct LinhaDePalavrasView: View {
                     
                 }
             }
+            .frame(width: .infinity)
+            
+            /*
             HStack {
                 ForEach(segundaMetade, id: \.id) { palavra in
                     
@@ -55,7 +59,8 @@ struct LinhaDePalavrasView: View {
                         .foregroundStyle(.black)
                     Text("")
                 }
+              */
             }
         }
     }
-}
+//}

@@ -10,7 +10,8 @@ import GoogleGenerativeAI
 
 struct TelaBrainStorm: View {
     @State private var palavraChave: Palavra = Palavra(texto: "")
-    @State private var palavraEntrada: String = ""
+    @State private var palavraEntrada: String = "prompt"
+    @State private var palavraGerando: Palavra = Palavra(texto: "")
     @State private var palavrasGeradas: String = ""
     @State private var palavrasParaIgnorar: [Palavra] = []
     @State private var auxPalavrasGeradas: [Palavra] = []
@@ -25,8 +26,43 @@ struct TelaBrainStorm: View {
         VStack {
             Button(action: {
                 Task {
-                    palavraEntrada = "prompt"
-                    palavraChave.texto = palavraEntrada
+                    
+                    var indexChaveI: Int = -1
+                    var indexChaveJ: Int = -1
+                    var parar = false
+                    for i in 0..<colecaoDeLinhas.count {
+                        print("i: " + String(i))
+                        for j in 0..<colecaoDeLinhas[i].palavras.count {
+                            print("j: " + String(j))
+                            if colecaoDeLinhas[i].palavras[j].isGeneration == true {
+                                indexChaveI = i
+                                indexChaveJ = j
+                                print(i)
+                                print(j)
+                                palavraGerando = colecaoDeLinhas[i].palavras[j]
+                                colecaoDeLinhas[i].palavras[j].isGeneration.toggle()
+                                parar = true
+                                break
+
+                            }
+                            
+                            if (parar == true) {
+                                break
+                            }
+                        }
+                        if (parar == true) {
+                            break
+                        }
+                    }
+                    if (indexChaveI == -1 || indexChaveJ == -1) && palavraGerando.texto == "" {
+                        palavraChave.texto = palavraEntrada
+                        
+                    } else {
+                        palavraChave.texto = palavraGerando.texto
+                        print(palavraGerando.texto)
+                    }
+                    print(palavraChave.texto)
+                    
                     respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, ignorando: palavrasParaIgnorar)
                     
                     auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
@@ -42,7 +78,7 @@ struct TelaBrainStorm: View {
             }, label: {
                 ZStack {
                     Image("NuvemTituloAzul")
-                    Text("\(palavraEntrada)")
+                    Text("\(palavraGerando.texto != "" ? palavraGerando.texto : "")")
                         .foregroundStyle(.black)
                 }
             })
@@ -51,9 +87,10 @@ struct TelaBrainStorm: View {
                 LinhaDePalavrasView(palavras: colecao.palavras, linhas: $colecaoDeLinhas)
             }
             Spacer()
-            Spacer()
             
         }
+        .navigationBarTitle("\(palavraEntrada)")
+        .navigationBarTitleDisplayMode(.inline)
         
     }
     
@@ -69,5 +106,6 @@ struct TelaBrainStorm: View {
 
 }
 #Preview {
-    TelaBrainStorm()
-}
+    NavigationStack {
+        TelaBrainStorm()
+    }}
