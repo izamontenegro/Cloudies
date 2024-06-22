@@ -17,14 +17,17 @@ struct CriacaoView: View {
                     .frame(width: 357.45, height: 143.71)
                     .padding(.top, 14)
                 VStack(spacing: -45) {
-                    CardsCriacao (
-                        cor: "AZUL",
-                        texto: """
+                    NavigationLink(destination: TelaBrainStorm()) {
+                        CardsCriacao(
+                            cor: "AZUL",
+                            texto: """
                             Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
                             """,
-                        titulo: "Brainstorm",
-                        espaco: 55
-                    )
+                            titulo: "Brainstorm",
+                            espaco: 55
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
                     
                     NavigationLink(destination: ProblemasView()) {
                         CardsCriacao(
@@ -46,7 +49,6 @@ struct CriacaoView: View {
                         titulo: "Analogia",
                         espaco: 20
                     )
-                    NavigationLink("oi", destination: TelaBrainStorm())
                 }
                 .shadow(radius: 7)
                 .padding(.top, 11)

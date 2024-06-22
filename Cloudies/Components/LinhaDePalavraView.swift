@@ -60,7 +60,7 @@ struct LinhaDePalavrasView: View {
                     Text("")
                 }
               */
-            }
         }
     }
+}
 //}
