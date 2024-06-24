@@ -10,7 +10,7 @@ import SwiftUI
 import GoogleGenerativeAI
 
 @main
-struct CloudiesApp: App {
+ struct CloudiesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

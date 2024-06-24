@@ -17,7 +17,7 @@ struct CriarProjetoView: View {
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: 357, height: 170.13)
+                .frame(width: 357, height: 222.76)
                 .foregroundStyle(.gray)
                 .padding(.bottom, 32)
             
@@ -27,7 +27,7 @@ struct CriarProjetoView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .padding(.leading, -178)
-                    TextField("Nome do projeto.", text: $nomeDoProjeto)
+                    TextField("", text: $nomeDoProjeto)
                         .padding()
                         .frame(width: 357, height: 39)
                         .overlay(
@@ -35,6 +35,12 @@ struct CriarProjetoView: View {
                                 .stroke(Color.black, lineWidth: 1)
                                 .frame(width: 357, height: 39)
                         )
+                        .onChange(of: nomeDoProjeto) { newValue, _ in
+                            if newValue.count > 25 {
+                                nomeDoProjeto = String(newValue.prefix(25))
+                            }
+                        }
+                    
                     Text("Nome do projeto. Ex.: Projeto de Arquitetura.")
                     
                         .padding(.leading, -81)
@@ -47,7 +53,7 @@ struct CriarProjetoView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .padding(.leading, -178)
-                    TextField("Nome do projeto.", text: $temaPrincipal)
+                    TextField("", text: $temaPrincipal)
                         .padding()
                         .frame(width: 357, height: 39)
                         .overlay(
@@ -55,6 +61,12 @@ struct CriarProjetoView: View {
                                 .stroke(Color.black, lineWidth: 1)
                                 .frame(width: 357, height: 39)
                         )
+                        .onChange(of: temaPrincipal) { newValue, _ in
+                            if newValue.count > 15 {
+                                temaPrincipal = String(newValue.prefix(15))
+                            }
+                        }
+                    
                     Text("Tema em que haverá exploração de conteúdo. Ex: Jardim.")
                     
                         .padding(.leading, -8)
@@ -67,7 +79,7 @@ struct CriarProjetoView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .padding(.leading, -177)
-                    TextField("Nome do projeto.", text: $recorteTematico)
+                    TextField("", text: $recorteTematico)
                         .padding()
                         .frame(width: 357, height: 39)
                         .overlay(
@@ -75,6 +87,12 @@ struct CriarProjetoView: View {
                                 .stroke(Color.black, lineWidth: 1)
                                 .frame(width: 357, height: 39)
                         )
+                        .onChange(of: recorteTematico) { newValue, _ in
+                            if newValue.count > 15 {
+                                recorteTematico = String(newValue.prefix(15))
+                            }
+                        }
+                    
                     Text("Contexto do tema. Ex: Paisagismo, irrigação, praticidade.")
                     
                         .padding(.leading, -8)
@@ -83,7 +101,7 @@ struct CriarProjetoView: View {
                 }
                 .padding(.bottom, 22)
                 
-                NavigationLink(destination: TelaBrainStorm(palavraEntrada: nomeDoProjeto, titulo: nomeDoProjeto)) {
+                NavigationLink(destination: TelaBrainStorm(palavraEntrada: temaPrincipal, titulo: temaPrincipal)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 357, height: 63)
@@ -99,6 +117,7 @@ struct CriarProjetoView: View {
                             .font(.title2)
                     }
                 }
+                .disabled(nomeDoProjeto.isEmpty || temaPrincipal.isEmpty)
                 .buttonStyle(PlainButtonStyle())
             }
             

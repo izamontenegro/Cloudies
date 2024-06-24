@@ -21,7 +21,7 @@ struct CriacaoView: View {
                         CardsCriacao(
                             cor: "AZUL",
                             texto: """
-                            Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                            Essa técnica criativa é usada para gerar ideias. Com auxílio da nuvem, você terá acesso a novas sugestões a partir de um tema escolhido no contexto do projeto.
                             """,
                             titulo: "Brainstorm",
                             espaco: 55
@@ -33,7 +33,7 @@ struct CriacaoView: View {
                         CardsCriacao(
                             cor: "AMARELO",
                             texto: """
-                        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                        Aqui você poderá entender melhor as problemáticas acerca do tema abordado. Utilize para compreender tópicos que podem ser resolvidos ou melhorados.
                         """,
                             titulo: "Problemáticas",
                             espaco: 55
@@ -45,10 +45,10 @@ struct CriacaoView: View {
                         CardsCriacao(
                             cor: "ROSA",
                             texto: """
-                        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+                        Permite que você estabeleça conexões a partir de possiveis soluções. Ferramenta importante no pensamento divergente e expansão de possibilidades.
                         """,
                             titulo: "Conexões",
-                            espaco: 20
+                            espaco: 10
                         )
                     }
                 }
