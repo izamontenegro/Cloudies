@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ContextMenuFavoritos: View {
-    @Binding
-    var essaPalavra: Palavra
-    
+    @Binding var essaPalavra: Palavra
+    @Binding var observador: Bool
     var body: some View {
         Menu {
             Button {
@@ -21,6 +20,7 @@ struct ContextMenuFavoritos: View {
             
             Button {
                 essaPalavra.isGeneration.toggle()
+                observador.toggle()
             } label: {
                 Label("Gerar Novos", systemImage: essaPalavra.isGeneration ? "bolt.fill" : "bolt")
             }
