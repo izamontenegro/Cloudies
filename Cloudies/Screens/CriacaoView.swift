@@ -17,8 +17,7 @@ struct CriacaoView: View {
                     .frame(width: 357.45, height: 143.71)
                     .padding(.top, 14)
                 VStack(spacing: -45) {
-                    NavigationLink(destination: CriacaoView()//
-                    ) {
+                    NavigationLink(destination: CriarProjetoView()) {
                         CardsCriacao(
                             cor: "AZUL",
                             texto: """
@@ -30,7 +29,7 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: ProblemasView()) {
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Problemáticas", cor: "AMARELO")) {
                         CardsCriacao(
                             cor: "AMARELO",
                             texto: """
@@ -42,15 +41,18 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    CardsCriacao(
-                        cor: "ROSA",
-                        texto: """
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexões", cor: "ROSA")) {
+                        CardsCriacao(
+                            cor: "ROSA",
+                            texto: """
                         Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
                         """,
-                        titulo: "Analogia",
-                        espaco: 20
-                    )
+                            titulo: "Conexões",
+                            espaco: 20
+                        )
+                    }
                 }
+                .buttonStyle(PlainButtonStyle())
                 .shadow(radius: 7)
                 .padding(.top, 11)
             }
