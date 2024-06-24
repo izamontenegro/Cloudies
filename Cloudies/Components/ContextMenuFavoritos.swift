@@ -26,11 +26,24 @@ struct ContextMenuFavoritos: View {
             }
             
         } label: {
-            Text("\(essaPalavra.texto)")
-                .background(essaPalavra.isFavorite ? .AZUL : .white)
-                .frame(width: .infinity)
-                .presentationCornerRadius(20)
+            ZStack {
+                Text("\(essaPalavra.texto)")
+                    .presentationCornerRadius(20)
+                    .padding(5)
+                    .background {
+                        if essaPalavra.isFavorite {
+                            RoundedRectangle(cornerRadius: 180.0)
+                                .foregroundStyle(.AZUL)
+                        }
+                    }
+            }
         }
 
+    }
+}
+
+#Preview {
+    NavigationStack {
+        TelaBrainStorm(titulo: "codigo", palavraEntrada: "pneumoultramicroscopicosilicovulcanoconiotico", recorteTematico: "Outras palavras Longas")
     }
 }

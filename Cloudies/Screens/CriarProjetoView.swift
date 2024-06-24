@@ -53,7 +53,9 @@ struct CriarProjetoView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .padding(.leading, -178)
+
                     TextField("", text: $temaPrincipal)
+
                         .padding()
                         .frame(width: 357, height: 39)
                         .overlay(
@@ -79,7 +81,9 @@ struct CriarProjetoView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .padding(.leading, -177)
+
                     TextField("", text: $recorteTematico)
+
                         .padding()
                         .frame(width: 357, height: 39)
                         .overlay(
@@ -101,7 +105,9 @@ struct CriarProjetoView: View {
                 }
                 .padding(.bottom, 22)
                 
-                NavigationLink(destination: TelaBrainStorm(palavraEntrada: temaPrincipal, titulo: temaPrincipal)) {
+
+                NavigationLink(destination: TelaBrainStorm(titulo: nomeDoProjeto, palavraEntrada: temaPrincipal, recorteTematico: recorteTematico)) {
+
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 357, height: 63)
