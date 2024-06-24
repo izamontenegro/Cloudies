@@ -2,7 +2,7 @@ import GoogleGenerativeAI
 import Foundation
 import SwiftUI
 
-func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave: Palavra, ignorando palavrasUsadas: [Palavra]) async -> String {
+func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave: Palavra, recorteTematico: String, ignorando palavrasUsadas: [Palavra]) async -> String {
     
     var palavrasUsadasPrompt = ""
     var prompt = ""
@@ -18,6 +18,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                 """
                 - Gere 2 objetos físicos relacionados à palavra "\(palavraChave.texto)".
                 - Gere 3 conceitos abstratos relacionados à palavra "\(palavraChave.texto)".
+                - Seguindo esse recorte temático: \(recorteTematico)
                 - Gere-as uma seguida da outra, todas diferentes, separadas apenas por vírgula, não use quebra de linha
                 - Gere apenas palavras, nada de frases
                 - Gere, no total, APENAS 5 palavras, nada mais, e só use vírgula se for para separar uma palavra de outra
