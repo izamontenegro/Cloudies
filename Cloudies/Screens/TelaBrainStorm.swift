@@ -9,21 +9,22 @@ import SwiftUI
 import GoogleGenerativeAI
 
 struct TelaBrainStorm: View {
-    @State private var palavraChave: Palavra = Palavra(texto: "")
-    @State var palavraEntrada: String
     @State var titulo: String
+    @State var palavraEntrada: String
+    @State var recorteTematico: String
+    @State var colecaoDeLinhas: [LinhaDePalavras] = []
+    @State var palavrasParaIgnorar: [Palavra] = []
+    
+    @State private var palavraChave: Palavra = Palavra(texto: "")
     @State private var palavraGerando: Palavra = Palavra(texto: "")
     @State private var palavrasGeradas: String = ""
-    @State private var palavrasParaIgnorar: [Palavra] = []
     @State private var auxPalavrasGeradas: [Palavra] = []
     @State private var respostaAI: String = ""
     @State var colecaoDePalavras: [Palavra] = []
     
-    @State var colecaoDeLinhas: [LinhaDePalavras] = []
     @State private var observador: Bool = false
         var body: some View {
             VStack {
-                
                 Button(action: {
                     botaoNuvem()
                     
@@ -41,6 +42,7 @@ struct TelaBrainStorm: View {
                         LinhaDePalavrasView(palavras: colecao.palavras, linhas: $colecaoDeLinhas, observador: $observador)
                     }
                 }
+                .defaultScrollAnchor(.bottom)
                 Spacer()
                 HStack {
                     ZStack {
@@ -68,6 +70,22 @@ struct TelaBrainStorm: View {
                     
                 }
                 
+            }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        addBrainStorm(
+                            titulo: titulo,
+                            palavraEntrada: palavraEntrada,
+                            recorteTematico: recorteTematico,
+                            colecaoDeLinhas: colecaoDeLinhas,
+                            palavrasParaIgnorar: palavrasParaIgnorar
+                        )
+                    } label: {
+                        Image(systemName: "checkmark.circle.fill")
+                    }
+                    
+                }
             }
             .navigationBarTitle("\(titulo)")
             .navigationBarTitleDisplayMode(.inline)
@@ -113,7 +131,7 @@ struct TelaBrainStorm: View {
             }
             print(palavraChave.texto)
             
-            respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, ignorando: palavrasParaIgnorar)
+            respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: palavrasParaIgnorar)
             
             auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
             
@@ -140,10 +158,20 @@ struct TelaBrainStorm: View {
         }
         
     }
+    
+    func addBrainStorm(
+        titulo: String,
+        palavraEntrada: String,
+        recorteTematico: String,
+        colecaoDeLinhas: [LinhaDePalavras],
+        palavrasParaIgnorar: [Palavra]
+    ) {
+        
+    }
 }
 
 #Preview {
     NavigationStack {
-        TelaBrainStorm(palavraEntrada: "pneumoultramicroscopicosilicovulcanoconiotico", titulo: "codigo")
+        TelaBrainStorm(titulo: "codigo", palavraEntrada: "pneumoultramicroscopicosilicovulcanoconiotico", recorteTematico: "Outras palavras Longas")
     }
 }

@@ -45,28 +45,26 @@ struct LinhaDePalavrasView: View {
             VStack {
                 
                 HStack {
+                    Spacer()
                     ForEach(primeiraMetade, id: \.id) { palavra in
                         
                         ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
-                            .frame(width: .infinity)
                             .foregroundStyle(.black)
-                        Text("")
+                        Spacer()
                     }
                 }
                 HStack {
                     ContextMenuFavoritos(essaPalavra: segundaMetade, observador: $observador)
-                        .frame(width: .infinity)
                         .foregroundStyle(.black)
-                    Text("")
                 }
             }
         HStack {
+            Spacer()
             ForEach(terceiraMetade, id: \.id) { palavra in
                 
                 ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
-                    .frame(width: .infinity)
                     .foregroundStyle(.black)
-                Text("")
+                    Spacer()
             }
         }
             }
@@ -101,6 +99,6 @@ struct LinhaDePalavrasView: View {
 //}
 #Preview {
     NavigationStack {
-        TelaBrainStorm(palavraEntrada: "bar", titulo: "" )
+        TelaBrainStorm(titulo: "", palavraEntrada: "bar" , recorteTematico: "musicas")
     }
 }
