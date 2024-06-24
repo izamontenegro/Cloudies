@@ -22,12 +22,14 @@ struct CardsCriacao: View {
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
         }
+        
             .padding(.leading, 16)
             .padding(.trailing, 10)
+            .frame(width: 358.23)
             .padding(.bottom, espaco)
             .background(Color(cor))
             .cornerRadius(20)
-            .frame(maxWidth: 358.23)
+            
         
     }
   
@@ -37,7 +39,7 @@ struct CardsCriacao: View {
     CardsCriacao(
         cor: "AZUL",
         texto: """
-        Explicação: Lorem ipsum dolor sit amet consectetur. Natoque vestibulum sapien in sollicitudin mattis. Tellus malesuada scelerisque dui donec commodo .
+        Permite que você estabeleça conexões com outros assuntos. Ferramenta importante no pensamento divergente e expansão de possibilidades.
         """,
     titulo: "Brainstorm",
     espaco: 30
