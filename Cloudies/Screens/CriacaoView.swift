@@ -17,7 +17,8 @@ struct CriacaoView: View {
                     .frame(width: 357.45, height: 143.71)
                     .padding(.top, 14)
                 VStack(spacing: -45) {
-                    NavigationLink(destination: TelaBrainStorm()) {
+                    NavigationLink(destination: CriacaoView()//
+                    ) {
                         CardsCriacao(
                             cor: "AZUL",
                             texto: """

@@ -18,9 +18,12 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                 """
                 - Gere 2 objetos físicos relacionados à palavra "\(palavraChave.texto)".
                 - Gere 3 conceitos abstratos relacionados à palavra "\(palavraChave.texto)".
-                - Gere-as uma seguida da outra, separadas apenas por vírgula, não use quebra de linha
+                - Gere-as uma seguida da outra, todas diferentes, separadas apenas por vírgula, não use quebra de linha
                 - Gere apenas palavras, nada de frases
-                - Não inclua as seguintes palavras: \(palavrasUsadasPrompt)
+                - Gere, no total, APENAS 5 palavras, nada mais, e só use vírgula se for para separar uma palavra de outra
+                - Não inclua, sob quaisquer circunstancias as seguintes palavras, em especiais as últimas: [ \(palavrasUsadasPrompt) ]
+                - Se for impossível gerar ignorandos as acima, fuja do tema
+                - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: impossivel de gerar"
                 """
         case "Problematicas":
             prompt =

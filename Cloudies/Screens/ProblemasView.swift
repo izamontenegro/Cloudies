@@ -26,8 +26,17 @@ struct ProblemasView: View {
             }
             
             HStack(spacing: 13.51) {
-                Botoes()
-                Botoes()
+                Button {
+                    //
+                } label: {
+                    Botoes(cor: "AMARELO")
+                }
+                
+                Button {
+                    //
+                } label: {
+                    Botoes()
+                }
             }
             .padding(.top, 50)
         }

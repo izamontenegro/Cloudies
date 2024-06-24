@@ -29,38 +29,78 @@ struct LinhaDePalavrasView: View {
     @Binding
     var linhas: [LinhaDePalavras]
     
+    @Binding
+    var observador: Bool
+    
     func addLinha(novaLinha: LinhaDePalavras) {
         linhas.append(novaLinha)
     }
+    
+    var meio: Int { (palavras.count/2) }
+    
     var body: some View {
-        let meio: Int = (palavras.count/2)
-        
-        let primeiraMetade = palavras[..<meio]
-        let segundaMetade = palavras[meio...]
-        VStack {
-            Grid {
-                ForEach($palavras, id: \.id) { palavra in
-                    
-                    ContextMenuFavoritos(essaPalavra: palavra)
+        let primeiraMetade = $palavras[..<meio]
+        let segundaMetade = $palavras[meio]
+        let terceiraMetade = $palavras[(meio+1)...]
+            VStack {
+                
+                HStack {
+                    ForEach(primeiraMetade, id: \.id) { palavra in
+                        
+                        ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+                            .frame(width: .infinity)
+                            .foregroundStyle(.black)
+                        Text("")
+                    }
+                }
+                HStack {
+                    ContextMenuFavoritos(essaPalavra: segundaMetade, observador: $observador)
                         .frame(width: .infinity)
                         .foregroundStyle(.black)
                     Text("")
-                    
                 }
             }
-            .frame(width: .infinity)
-            
-            /*
-            HStack {
-                ForEach(segundaMetade, id: \.id) { palavra in
-                    
-                    ContextMenuFavoritos(essaPalavra: palavra)
-                        .frame(width: .infinity)
-                        .foregroundStyle(.black)
-                    Text("")
-                }
-              */
+        HStack {
+            ForEach(terceiraMetade, id: \.id) { palavra in
+                
+                ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+                    .frame(width: .infinity)
+                    .foregroundStyle(.black)
+                Text("")
+            }
         }
+            }
+    }
+    
+    /*
+     var body: some View {
+     let primeiraMetade = $palavras[..<meio]
+     let segundaMetade = $palavras[meio...]
+     VStack {
+     HStack {
+     ForEach(segundaMetade, id: \.id) { palavra in
+     
+     ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+     .frame(width: .infinity)
+     .foregroundStyle(.black)
+     Text("")
+     }
+     }
+     HStack {
+     ForEach(primeiraMetade, id: \.id) { palavra in
+     
+     ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+     .frame(width: .infinity)
+     .foregroundStyle(.black)
+     Text("")
+     }
+     }
+     }
+     }
+     */
+//}
+#Preview {
+    NavigationStack {
+        TelaBrainStorm(palavraEntrada: "bar", titulo: "" )
     }
 }
-//}
