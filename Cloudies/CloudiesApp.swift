@@ -10,7 +10,7 @@ import SwiftUI
 import GoogleGenerativeAI
 
 @main
- struct CloudiesApp: App {
+struct CloudiesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -18,7 +18,3 @@ import GoogleGenerativeAI
         .modelContainer(for: Projeto.self)
     }
 }
-
-// Fazer o .gitignore e reversionar
-// arrumar erro swiftLint no arquivo de testes
-// como fazer a tela de nuvem
