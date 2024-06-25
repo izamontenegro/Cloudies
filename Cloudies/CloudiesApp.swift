@@ -15,6 +15,6 @@ struct CloudiesApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Projeto.self)
+        .modelContainer(for: GeracaoData.self)
     }
 }

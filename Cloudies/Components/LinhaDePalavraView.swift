@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Palavra: Identifiable {
+struct Palavra: Identifiable, Codable, Hashable {
     var id: UUID? = UUID()
     var texto: String
     var isFavorite: Bool = false
@@ -15,7 +15,7 @@ struct Palavra: Identifiable {
 
 }
 
-struct LinhaDePalavras: Identifiable {
+struct LinhaDePalavras: Identifiable, Codable, Hashable  {
     var id: UUID? = UUID()
     var palavras: [Palavra]
     
@@ -68,37 +68,37 @@ struct LinhaDePalavrasView: View {
             }
         }
             }
-    }
-    
+    } 
+
     /*
-     var body: some View {
-     let primeiraMetade = $palavras[..<meio]
-     let segundaMetade = $palavras[meio...]
-     VStack {
-     HStack {
-     ForEach(segundaMetade, id: \.id) { palavra in
-     
-     ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
-     .frame(width: .infinity)
-     .foregroundStyle(.black)
-     Text("")
-     }
-     }
-     HStack {
-     ForEach(primeiraMetade, id: \.id) { palavra in
-     
-     ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
-     .frame(width: .infinity)
-     .foregroundStyle(.black)
-     Text("")
-     }
-     }
-     }
-     }
-     */
+    var body: some View {
+    let primeiraMetade = $palavras[..<meio]
+    let segundaMetade = $palavras[meio...]
+    VStack {
+    HStack {
+    ForEach(segundaMetade, id: \.id) { palavra in
+
+    ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+    .frame(width: .infinity)
+    .foregroundStyle(.black)
+    Text("")
+    }
+    }
+    HStack {
+    ForEach(primeiraMetade, id: \.id) { palavra in
+
+    ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+    .frame(width: .infinity)
+    .foregroundStyle(.black)
+    Text("")
+    }
+    }
+    }
+    }
+    */
 //}
 #Preview {
     NavigationStack {
-        TelaBrainStorm(titulo: "", palavraEntrada: "bar" , recorteTematico: "musicas")
+        TelaBrainStorm(titulo: "", palavraEntrada: "bar", recorteTematico: "musicas")
     }
 }
