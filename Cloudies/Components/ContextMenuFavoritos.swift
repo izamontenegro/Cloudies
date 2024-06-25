@@ -26,17 +26,36 @@ struct ContextMenuFavoritos: View {
             }
             
         } label: {
-            ZStack {
-                Text("\(essaPalavra.texto)")
-                    .presentationCornerRadius(20)
-                    .padding(5)
-                    .background {
-                        if essaPalavra.isFavorite {
-                            RoundedRectangle(cornerRadius: 180.0)
-                                .foregroundStyle(.AZUL)
+            ZStack (alignment: .topTrailing) {
+                ZStack {
+                    Text("\(essaPalavra.texto)")
+                        .frame(width: 114)
+                        .padding(4)
+                        .font(.title3)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(.white)
+                                .shadow(radius: 4)
+                            //editar aqui
                         }
-                    }
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(lineWidth: 1)
+                        }
+                }
+                if essaPalavra.isFavorite {
+                    Image("favRosa")
+                        .frame(maxWidth: 26, maxHeight: 29)
+                        .offset(x: 10, y: -10)
+                }
+                else if essaPalavra.isGeneration {
+                    Image("raioGerado")
+                        .frame(maxWidth: 26, maxHeight: 29)
+                        .offset(x: 10, y: -10)
+                }
+                
             }
+            
         }
 
     }
@@ -44,6 +63,6 @@ struct ContextMenuFavoritos: View {
 
 #Preview {
     NavigationStack {
-        TelaBrainStorm(titulo: "codigo", palavraEntrada: "pneumoultramicroscopicosilicovulcanoconiotico", recorteTematico: "Outras palavras Longas")
+        TelaBrainStorm(titulo: "Projeto animal", palavraEntrada: "Cachorro", recorteTematico: "domestico")
     }
 }

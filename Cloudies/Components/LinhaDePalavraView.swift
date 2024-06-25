@@ -45,28 +45,32 @@ struct LinhaDePalavrasView: View {
             VStack {
                 
                 HStack {
-                    Spacer()
                     ForEach(primeiraMetade, id: \.id) { palavra in
                         
                         ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
                             .foregroundStyle(.black)
-                        Spacer()
+                            .padding(.horizontal, 16)
                     }
                 }
+                .padding(.bottom, 10)
                 HStack {
                     ContextMenuFavoritos(essaPalavra: segundaMetade, observador: $observador)
                         .foregroundStyle(.black)
                 }
-            }
-        HStack {
-            Spacer()
-            ForEach(terceiraMetade, id: \.id) { palavra in
                 
-                ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
-                    .foregroundStyle(.black)
-                    Spacer()
+                .padding(.bottom, 10)
+                
+                HStack {
+                    ForEach(terceiraMetade, id: \.id) { palavra in
+                        
+                        ContextMenuFavoritos(essaPalavra: palavra, observador: $observador)
+                            .foregroundStyle(.black)
+                            .padding(.horizontal, 16)
+                    }
+                }
+                .padding(.bottom, 10)
             }
-        }
+        
             }
     } 
 
