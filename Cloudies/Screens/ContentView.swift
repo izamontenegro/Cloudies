@@ -127,9 +127,9 @@ struct OnBoardingg2: View {
                 }
                 .padding(.top, 5)
             
-                Button(action: {
+                Button {
                     isOnboardingComplete = true
-                }) {
+                } label: {
                     Text("Vamos lá!")
                         .font(.footnote)
                         .foregroundStyle(Color.black)

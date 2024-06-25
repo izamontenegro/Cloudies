@@ -32,6 +32,7 @@
 		F7172C9B2C21D7F000F97EF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C992C21D7F000F97EF8 /* ContentView.swift */; };
 		F7172C9C2C21D7F000F97EF8 /* HistoricoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */; };
 		F76D6EDB2C231A970084025E /* ContextMenuFavoritos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76D6EDA2C231A970084025E /* ContextMenuFavoritos.swift */; };
+		F7ABB04A2C2AE75E0081FCAE /* GeracaoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABB0492C2AE75E0081FCAE /* GeracaoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		F7172C992C21D7F000F97EF8 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F7172C9A2C21D7F000F97EF8 /* HistoricoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoView.swift; sourceTree = "<group>"; };
 		F76D6EDA2C231A970084025E /* ContextMenuFavoritos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuFavoritos.swift; sourceTree = "<group>"; };
+		F7ABB0492C2AE75E0081FCAE /* GeracaoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeracaoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				36493BB22C21FDD600AA9D5D /* Projeto.swift */,
+				F7ABB0492C2AE75E0081FCAE /* GeracaoData.swift */,
 			);
 			path = DataFiles;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				F70EA9082C1CF9EA006D0572 /* TelaBrainStorm.swift in Sources */,
 				F7172C9B2C21D7F000F97EF8 /* ContentView.swift in Sources */,
 				360D2E3D2C2357EA00CABDB8 /* ProblemasView.swift in Sources */,
+				F7ABB04A2C2AE75E0081FCAE /* GeracaoData.swift in Sources */,
 				3624D8D82C299BDF0066D234 /* CriarProjetoView.swift in Sources */,
 				F70EA90C2C1D001F006D0572 /* LinhaDePalavraView.swift in Sources */,
 				36C017BC2C1F837C001E56B7 /* CardsCriacao.swift in Sources */,

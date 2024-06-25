@@ -30,7 +30,6 @@ struct CardsCriacao: View {
             .background(Color(cor))
             .cornerRadius(20)
             
-        
     }
   
 }

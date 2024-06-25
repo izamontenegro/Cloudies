@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HistoricoView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var geracoesData: [GeracaoData]
+    
     let projetos = ["My first APP", "AppStore Challenge", "CLI", "CBL", "MVP challenge"]
     @State private var searchText = ""
     
     var body: some View {
         ScrollView {
             // Fazer a substituiçao por projeto.titulo e projeto.ferramenta em cor e titulo
-            ForEach(searchResults, id: \.self) { _ in
+            ForEach(geracoesData, id: \.self) { geracao in
                 NavigationLink {
-                    Text("coisa")
+                    TelaBrainStorm(titulo: geracao.tituloData, palavraEntrada: geracao.palavraEntradaData, recorteTematico: geracao.palavraEntradaData, colecaoDeLinhas: geracao.colecaoDeLinhasData, palavrasParaIgnorar: geracao.palavrasParaIgnorarData, palavraGerando: geracao.palavraGerandoData)
                 } label: {
-                    CardsHistorico(cor: "AZUL", texto: "qualquer bosta", titulo: "Coisa")
+                    CardsHistorico(cor: "AZUL", texto: "\(geracao.tituloData)", titulo: "\(geracao.palavraGerandoData.texto)")
                         .padding(.bottom, -35)
                 }
                 .buttonStyle(PlainButtonStyle())

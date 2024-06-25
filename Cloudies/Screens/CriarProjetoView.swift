@@ -105,8 +105,16 @@ struct CriarProjetoView: View {
                 }
                 .padding(.bottom, 22)
                 
-
-                NavigationLink(destination: TelaBrainStorm(titulo: nomeDoProjeto, palavraEntrada: temaPrincipal, recorteTematico: recorteTematico)) {
+                NavigationLink {
+                    switch ferramenta {
+                    case "BrainStorm":
+                        TelaBrainStorm(titulo: nomeDoProjeto, palavraEntrada: temaPrincipal, recorteTematico: recorteTematico)
+                    case "Problemáticas":
+                        ProblemasView()
+                    default:
+                        CriarProjetoView(ferramenta: "ERRO", cor: "VERMELHO")
+                    }
+                } label: {
 
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)

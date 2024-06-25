@@ -11,17 +11,21 @@ struct MainView: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
     var body: some View {
         NavigationStack {
-//                    Button(action: {
-//                        isOnboardingComplete = false
-//                    }) {
-//                        Text("Redefinir Onboarding")
-//                            .font(.footnote)
-//                            .foregroundStyle(Color.black)
-//                            .frame(width: 171, height: 28)
-//                            .background(Color.white)
-//                            .cornerRadius(7)
-//                            .shadow(radius: 10)
-//                    }
+            
+        /*
+            Button(action: {
+                isOnboardingComplete = false
+            }) {
+                Text("Redefinir Onboarding")
+                    .font(.footnote)
+                    .foregroundStyle(Color.black)
+                    .frame(width: 171, height: 28)
+                    .background(Color.white)
+                    .cornerRadius(7)
+                    .shadow(radius: 10)
+            }
+        */
+            
             TabView {
                 NavigationView {
                     CriacaoView()
@@ -38,10 +42,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Histórico", systemImage: "book")
                 }
-                
+                    
             }
-            .accentColor(.black)
-            .background(.ultraThinMaterial)
+                .accentColor(.black)
+                .background(.ultraThinMaterial)
             
         }
     }

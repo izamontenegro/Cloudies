@@ -7,16 +7,20 @@
 
 import SwiftUI
 import GoogleGenerativeAI
+import SwiftData
 
 struct TelaBrainStorm: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var geracoesData: [GeracaoData]
+    
     @State var titulo: String
     @State var palavraEntrada: String
     @State var recorteTematico: String
     @State var colecaoDeLinhas: [LinhaDePalavras] = []
     @State var palavrasParaIgnorar: [Palavra] = []
+    @State var palavraGerando: Palavra = Palavra(texto: "")
     
     @State private var palavraChave: Palavra = Palavra(texto: "")
-    @State private var palavraGerando: Palavra = Palavra(texto: "")
     @State private var palavrasGeradas: String = ""
     @State private var auxPalavrasGeradas: [Palavra] = []
     @State private var respostaAI: String = ""
@@ -77,6 +81,7 @@ struct TelaBrainStorm: View {
                         addBrainStorm(
                             titulo: titulo,
                             palavraEntrada: palavraEntrada,
+                            palavraGerando: palavraGerando,
                             recorteTematico: recorteTematico,
                             colecaoDeLinhas: colecaoDeLinhas,
                             palavrasParaIgnorar: palavrasParaIgnorar
@@ -162,16 +167,20 @@ struct TelaBrainStorm: View {
     func addBrainStorm(
         titulo: String,
         palavraEntrada: String,
+        palavraGerando: Palavra,
         recorteTematico: String,
         colecaoDeLinhas: [LinhaDePalavras],
         palavrasParaIgnorar: [Palavra]
     ) {
+        
+        let brainstorm = GeracaoData(tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
+        modelContext.insert(brainstorm)
         
     }
 }
 
 #Preview {
     NavigationStack {
-        TelaBrainStorm(titulo: "codigo", palavraEntrada: "pneumoultramicroscopicosilicovulcanoconiotico", recorteTematico: "Outras palavras Longas")
+        TelaBrainStorm(titulo: "codigo", palavraEntrada: "Oi Migaa", recorteTematico: "termos jovens")
     }
 }
