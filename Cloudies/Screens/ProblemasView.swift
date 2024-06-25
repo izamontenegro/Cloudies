@@ -11,8 +11,7 @@ struct ProblemasView: View {
     @State var gerados: [String] = ["Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste"]
     @State var nomeProjeto: String = "Projeto arquitetura"
     var body: some View {
-        NavigationView {
-            ZStack {
+        ZStack {
                 Color.ROSA
                     .edgesIgnoringSafeArea(.all)
                 
@@ -25,9 +24,10 @@ struct ProblemasView: View {
                         Image("nuvemTopo")
                             .padding(.leading, 110)
                             .padding(.top, -60)
-                        Text("palavra palavrinha")
+                        Text("cachorro")
+                            .padding(.leading, -180)
                             .font(.title3)
-                            .padding(.trailing, 200)
+                            .padding(.leading)
                             .padding(.bottom, 90)
                     }
                     .padding(.bottom)
@@ -54,22 +54,21 @@ struct ProblemasView: View {
                     .padding(.top, 44)
                     
                 }
-                
-            }
+                .toolbar {
+                    
+                    Button(action: {
+                        print("")
+                    }, label: {
+                        Image(systemName: "pencil.circle")
+                            .imageScale(.medium)
+                            .scaleEffect(1.1)
+                    })
+                }
+                .navigationTitle(nomeProjeto)
+                .navigationBarTitleDisplayMode(.large)
+                .buttonStyle(PlainButtonStyle())
         }
-        .toolbar {
-            
-            Button(action: {
-                print("")
-            }, label: {
-                Image(systemName: "pencil.circle")
-                    .imageScale(.medium)
-                    .scaleEffect(1.1)
-            })
-        }
-        .navigationTitle(nomeProjeto)
-        .navigationBarTitleDisplayMode(.large)
-        .buttonStyle(PlainButtonStyle())
+        
     }
 }
 
