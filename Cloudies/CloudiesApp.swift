@@ -18,7 +18,3 @@ struct CloudiesApp: App {
         .modelContainer(for: GeracaoData.self)
     }
 }
-
-// Fazer o .gitignore e reversionar
-// arrumar erro swiftLint no arquivo de testes
-// como fazer a tela de nuvem
