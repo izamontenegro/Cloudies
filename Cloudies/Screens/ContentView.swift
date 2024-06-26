@@ -39,14 +39,14 @@ struct OnBoardingg: View {
                     Image("tijolo")
                     VStack { Text("Boas vindas ao Cloudies!")
                             .font(.largeTitle)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                             .padding(.trailing, 54)
                         Text("Aqui você vai encontrar ideias incríveis para os seus projetos a partir das suas próprias ideias! Basta digitar palavras-chave e receber sugestões que vão turbinar sua criatividade.")
                             .font(.callout)
                             .frame(width: 257, alignment: .leading)
                     }
                 }
-            
+                
                 NavigationLink(destination: OnBoardingg2()) {
                     Text("Próximo")
                         .font(.footnote)

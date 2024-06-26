@@ -103,7 +103,8 @@ struct TelaBrainStorm: View {
             }
             .navigationBarTitle("\(titulo)")
             .navigationBarTitleDisplayMode(.inline)
-            
+            .toolbar(.hidden, for: .tabBar)
+        
         }
         func botaoNuvem() {
             

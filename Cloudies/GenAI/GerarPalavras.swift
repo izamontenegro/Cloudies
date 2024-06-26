@@ -12,7 +12,6 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
         palavrasUsadasPrompt += ", \(palavra.texto)"
     }
     
-    
     //Transforma as palavras usadas em uma string para passar para a ia
     
     do {
