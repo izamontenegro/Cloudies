@@ -182,7 +182,7 @@ struct TelaBrainStorm: View {
             palavrasParaIgnorar: [Palavra]
         ) {
             
-            let brainstorm = GeracaoData(tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
+            let brainstorm = GeracaoData(tipo: "BrainStorm", tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
             modelContext.insert(brainstorm)
             
         }
