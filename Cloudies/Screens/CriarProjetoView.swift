@@ -16,10 +16,10 @@ struct CriarProjetoView: View {
     
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 357, height: 222.76)
-                .foregroundStyle(.gray)
-                .padding(.bottom, 32)
+                Image("ilustracaoBrainstorm")
+                .padding(.top, 20)
+                .padding(.bottom, 10)
+            
             
             VStack(spacing: 12) {
                 VStack {
@@ -137,6 +137,7 @@ struct CriarProjetoView: View {
             
         }
         .navigationTitle(ferramenta)
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 

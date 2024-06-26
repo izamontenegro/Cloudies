@@ -186,6 +186,7 @@ struct TelaBrainStorm: View {
             modelContext.insert(brainstorm)
             
         }
+    
 }
 
 #Preview {
