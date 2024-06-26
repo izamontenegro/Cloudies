@@ -10,44 +10,24 @@ import SwiftUI
 struct MainView: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
     var body: some View {
-        NavigationStack {
-            
-        /*
-            Button(action: {
-                isOnboardingComplete = false
-            }) {
-                Text("Redefinir Onboarding")
-                    .font(.footnote)
-                    .foregroundStyle(Color.black)
-                    .frame(width: 171, height: 28)
-                    .background(Color.white)
-                    .cornerRadius(7)
-                    .shadow(radius: 10)
+        TabView {
+            NavigationStack {
+                CriacaoView()
             }
-        */
-            
-            TabView {
-                NavigationView {
-                    CriacaoView()
-                        .navigationTitle("Criação")
-                }
-                .tabItem {
-                    Label("Criação", systemImage: "cloud")
-                }
-                
-                NavigationView {
-                    HistoricoView()
-                        .navigationTitle("Histórico")
-                }
-                .tabItem {
-                    Label("Histórico", systemImage: "book")
-                }
-                    
+            .tabItem {
+                Label("Criação", systemImage: "cloud")
             }
-                .accentColor(.black)
-                .background(.ultraThinMaterial)
+            NavigationStack {
+                HistoricoView()
+            }
+            .tabItem {
+                Label("Histórico", systemImage: "book")
+            }
             
         }
+        .accentColor(.black)
+        .background(.ultraThinMaterial)
+        
     }
 }
 

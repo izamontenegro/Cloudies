@@ -4,21 +4,17 @@
 //
 //  Created by Izadora de Oliveira Albuquerque Montenegro on 14/06/24.
 //
-
 import SwiftUI
 import SwiftData
 
 struct HistoricoView: View {
     @Environment(\.modelContext) var modelContext
     @Query var geracoesData: [GeracaoData]
-    
-    let projetos = ["My first APP", "AppStore Challenge", "CLI", "CBL", "MVP challenge"]
     @State private var searchText = ""
     
     var body: some View {
         ScrollView {
-            // Fazer a substituiçao por projeto.titulo e projeto.ferramenta em cor e titulo
-            ForEach(geracoesData, id: \.self) { geracao in
+            ForEach(searchResults, id: \.self) { geracao in
                 NavigationLink {
                     switch geracao.tipo {
                     case "BrainStorm":
@@ -37,31 +33,28 @@ struct HistoricoView: View {
                             "AZUL"
                         case "Problemas":
                             "AMARELO"
-                        case "Conexoes":
+                        case "Conex05-8-218oes":
                             "ROSA"
                         default:
                             "VERMELHO"
                         }
-                        
-                        
-                    }(), texto: "\(geracao.tituloData)", titulo: "\(geracao.palavraGerandoData.texto)")
-                        .padding(.bottom, -35)
+                    }(), texto: "\(geracao.palavrasGeradas)", titulo: "\(geracao.tituloData)")
+                    .padding(.bottom, -35)
                 }
                 .buttonStyle(PlainButtonStyle())
-                
             }
+            .searchable(text: $searchText, prompt: "Procurar projetos")
             .navigationTitle("Histórico")
             .shadow(radius: 5.6)
             .padding(.top, 20)
-            .searchable(text: $searchText, prompt: "Procurando projetos hihihi")
         }
     }
     
-    var searchResults: [String] {
+    var searchResults: [GeracaoData] {
         if searchText.isEmpty {
-            return projetos
+            return geracoesData
         } else {
-            return projetos.filter { $0.localizedCaseInsensitiveContains(searchText) }
+            return geracoesData.filter { $0.tituloData.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }

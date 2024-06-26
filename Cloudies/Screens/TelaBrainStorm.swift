@@ -14,6 +14,7 @@ struct TelaBrainStorm: View {
     @Query var geracoesData: [GeracaoData]
     
     @State var titulo: String
+    @State var palavrasDeGeracao: String = ""
     @State var palavraEntrada: String
     @State var recorteTematico: String
     @State var colecaoDeLinhas: [LinhaDePalavras] = []
@@ -25,7 +26,6 @@ struct TelaBrainStorm: View {
     @State private var auxPalavrasGeradas: [Palavra] = []
     @State private var respostaAI: String = ""
     @State var colecaoDePalavras: [Palavra] = []
-    @State var palavrasDeGeracao: String = ""
     @State private var observador: Bool = false
     
     var body: some View {
@@ -49,7 +49,7 @@ struct TelaBrainStorm: View {
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .padding(.leading, -180)
                             .padding(.top, 20)
-                        Text(palavrasDeGeracao)
+                        Text(palavraEntrada + palavrasDeGeracao)
                             .font(.title3)
                             .padding(.leading, -180)
                             .padding(.bottom, 90)
@@ -89,6 +89,7 @@ struct TelaBrainStorm: View {
                         addBrainStorm(
                             titulo: titulo,
                             palavraEntrada: palavraEntrada,
+                            palavrasGeradas: palavrasDeGeracao,
                             palavraGerando: palavraGerando,
                             recorteTematico: recorteTematico,
                             colecaoDeLinhas: colecaoDeLinhas,
@@ -176,16 +177,18 @@ struct TelaBrainStorm: View {
         func addBrainStorm(
             titulo: String,
             palavraEntrada: String,
+            palavrasGeradas: String,
             palavraGerando: Palavra,
             recorteTematico: String,
             colecaoDeLinhas: [LinhaDePalavras],
             palavrasParaIgnorar: [Palavra]
         ) {
             
-            let brainstorm = GeracaoData(tipo: "BrainStorm", tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
+            let brainstorm = GeracaoData(tipo: "BrainStorm", palavrasGeradas: palavrasGeradas, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
             modelContext.insert(brainstorm)
             
         }
+    
 }
 
 #Preview {
