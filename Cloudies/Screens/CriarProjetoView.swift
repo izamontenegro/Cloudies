@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CriarProjetoView: View {
-    @State var ferramenta: String = "Brainstorm"
+    @State var ferramenta: String = "BrainStorm"
     @State var cor: String = "AZUL"
     @State var nomeDoProjeto: String = ""
     @State var temaPrincipal: String = ""
@@ -109,7 +109,7 @@ struct CriarProjetoView: View {
                     switch ferramenta {
                     case "BrainStorm":
                         TelaBrainStorm(titulo: nomeDoProjeto, palavraEntrada: temaPrincipal, recorteTematico: recorteTematico)
-                    case "Problemáticas":
+                    case "Problemas":
                         ProblemasView(tipo: "Problemas", titulo: "animais", textoEntrada: "como passear", recorteTematico: "cachorro")
                     default:
                         ProblemasView(tipo: "Conexoes", titulo: "animais", textoEntrada: "como passear", recorteTematico: "cachorro")

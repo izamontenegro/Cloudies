@@ -29,7 +29,7 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "Problemáticas", cor: "AMARELO")) {
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Problemas", cor: "AMARELO")) {
                         CardsCriacao(
                             cor: "AMARELO",
                             texto: """

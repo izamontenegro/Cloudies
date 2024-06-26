@@ -31,7 +31,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                 - Se for impossível gerar ignorandos as acima, fuja do tema
                 - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: impossivel de gerar"
                 """
-        case "Problematicas":
+        case "Problemas":
             for i in 0..<palavrasUsadas.count {
                 if i%2 == 0 {
                     titulosPrompt += "\(palavrasUsadas[i].texto), \n"
@@ -54,7 +54,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
             
             """//Prompt de problematica aqui
             
-        case "Analogias":
+        case "Conexoes":
             for i in 0..<palavrasUsadas.count {
                 if i%2 == 0 {
                     titulosPrompt += "\(palavrasUsadas[i].texto), \n"

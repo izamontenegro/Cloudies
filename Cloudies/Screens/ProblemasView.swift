@@ -101,22 +101,55 @@ struct ProblemasView: View {
                 
             }
         .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button {
+                    addBrainStorm(
+                        tipo: tipo,
+                        titulo: titulo,
+                        palavraEntrada: textoEntrada,
+                        palavraGerando: textoGerando,
+                        recorteTematico: recorteTematico,
+                        colecaoDeLinhas: colecaoDeTextos,
+                        palavrasParaIgnorar: textosParaIgnorar
+                    )
+                } label: {
+                    Image(systemName: "checkmark.circle.fill")
+                }
+                
+            }
             
-            Button(action: {
-                print("")
-            }, label: {
-                Image(systemName: "pencil.circle")
-                    .imageScale(.medium)
-                    .scaleEffect(1.1)
-            })
+            ToolbarItem(placement: .confirmationAction) {
+                Button(action: {
+                    print("")
+                }, label: {
+                    Image(systemName: "pencil.circle")
+                        .imageScale(.medium)
+                        .scaleEffect(1.1)
+                })
+            }
         }
         .navigationTitle(nomeProjeto)
         .navigationBarTitleDisplayMode(.large)
         .buttonStyle(PlainButtonStyle())
         }
+    
+    func addBrainStorm(
+        tipo: String,
+        titulo: String,
+        palavraEntrada: String,
+        palavraGerando: Palavra,
+        recorteTematico: String,
+        colecaoDeLinhas: [LinhaDePalavras],
+        palavrasParaIgnorar: [Palavra]
+    ) {
+        
+        let problema = GeracaoData(tipo: tipo, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
+        modelContext.insert(problema)
+        
+    }
     }
 
 
 #Preview {
-    ProblemasView(tipo: "Problemas", titulo: "oi", textoEntrada: "como resolver cachorro", recorteTematico: "passeio")
+    ProblemasView(tipo: "Conexoes", titulo: "oi", textoEntrada: "como resolver cachorro", recorteTematico: "passeio")
 }
