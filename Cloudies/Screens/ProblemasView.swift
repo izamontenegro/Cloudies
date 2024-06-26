@@ -143,7 +143,7 @@ struct ProblemasView: View {
         palavrasParaIgnorar: [Palavra]
     ) {
         
-        let problema = GeracaoData(tipo: tipo, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
+        let problema = GeracaoData(tipo: tipo, palavrasGeradas: recorteTematico, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
         modelContext.insert(problema)
         
     }

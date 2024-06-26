@@ -30,24 +30,24 @@ struct CardsHistorico: View {
         .background(Color(cor))
         .cornerRadius(20)
         .shadow(radius: 4)
-
+        
         .onAppear {
-                    decidircor()
-                }
+            decidircor()
+        }
     }
     
     private func decidircor() {
-            switch ferramenta {
-            case "Brainstorm":
-                cor = "AZUL"
-            case "Problematicas":
-                cor = "AMARELO"
-            case "Conexoes":
-                cor = "ROSA"
-            default:
-                cor = "AZUL"
-            }
+        switch ferramenta {
+        case "Brainstorm":
+            cor = "AZUL"
+        case "Problematicas":
+            cor = "AMARELO"
+        case "Conexoes":
+            cor = "ROSA"
+        default:
+            cor = "AZUL"
         }
+    }
 }
 
 #Preview {
