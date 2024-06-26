@@ -25,7 +25,7 @@ struct TelaBrainStorm: View {
     @State private var auxPalavrasGeradas: [Palavra] = []
     @State private var respostaAI: String = ""
     @State var colecaoDePalavras: [Palavra] = []
-    
+    @State var palavrasDeGeracao: String = ""
     @State private var observador: Bool = false
     
     var body: some View {
@@ -42,19 +42,25 @@ struct TelaBrainStorm: View {
                     Image("nuvemTopo")
                         .padding(.leading, 110)
                         .padding(.top, -60)
-                    Text(palavraEntrada)
-                        .font(.title3)
-                        .padding(.leading, -180)
-                        .padding(.bottom, 90)
+                    
+                    VStack {
+                        Text(palavraEntrada)
+                            .font(.title)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .padding(.leading, -180)
+                            .padding(.top, 20)
+                        Text(palavrasDeGeracao)
+                            .font(.title3)
+                            .padding(.leading, -180)
+                            .padding(.bottom, 90)
+                    }
+                    
                 }
-                .padding(.bottom)
                 
                 ScrollView(.vertical) {
                     ForEach($colecaoDeLinhas) { colecao in
                         LinhaDePalavrasView(palavras: colecao.palavras, linhas: $colecaoDeLinhas, observador: $observador)
                     }
-                    
-                    .padding()
                 }
                 .defaultScrollAnchor(.bottom)
                 
@@ -73,6 +79,7 @@ struct TelaBrainStorm: View {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
                 }
+                .padding(.top, 20)
             }
             
         }
@@ -94,7 +101,7 @@ struct TelaBrainStorm: View {
                 }
             }
             .navigationBarTitle("\(titulo)")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             
         }
         func botaoNuvem() {
@@ -114,6 +121,7 @@ struct TelaBrainStorm: View {
                             print(i)
                             print(j)
                             palavraGerando = colecaoDeLinhas[i].palavras[j]
+                            palavrasDeGeracao += ", \(palavraGerando.texto)"
                             colecaoDeLinhas[i].palavras[j].isGeneration.toggle()
                             parar = true
                             break
