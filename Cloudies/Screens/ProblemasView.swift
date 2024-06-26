@@ -28,8 +28,7 @@ struct ProblemasView: View {
     @State private var respostaAI: String = ""
     @State var colecaoDePalavras: [Palavra] = []
     var body: some View {
-        NavigationView {
-            ZStack {
+        ZStack {
                 Color.ROSA
                     .edgesIgnoringSafeArea(.all)
                 
