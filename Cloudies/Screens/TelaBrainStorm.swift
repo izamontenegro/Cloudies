@@ -28,10 +28,11 @@ struct TelaBrainStorm: View {
     
     @State private var observador: Bool = false
         var body: some View {
+            
             VStack {
                 Button(action: {
                     botaoNuvem()
-                    
+            
                 }, label: {
                     ZStack {
                         Image("NuvemTituloAzul")
@@ -140,6 +141,7 @@ struct TelaBrainStorm: View {
             
             auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
             
+            
             for i in auxPalavrasGeradas.indices {
                 auxPalavrasGeradas[i].texto = auxPalavrasGeradas[i].texto.replacingOccurrences(of: "\n", with: "")
             }
@@ -155,6 +157,7 @@ struct TelaBrainStorm: View {
         @Sendable func separarRespostaBrainStorm(respostasAI: String) -> [Palavra] {
             let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
             
+            print(respostasAI)
             for resposta in respostasAI {
                 auxPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
             }

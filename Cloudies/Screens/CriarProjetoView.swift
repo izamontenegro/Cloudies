@@ -110,7 +110,7 @@ struct CriarProjetoView: View {
                     case "BrainStorm":
                         TelaBrainStorm(titulo: nomeDoProjeto, palavraEntrada: temaPrincipal, recorteTematico: recorteTematico)
                     case "Problemáticas":
-                        ProblemasView()
+                        ProblemasView(titulo: "animais", textoEntrada: "como passear", recorteTematico: "cachorro")
                     default:
                         CriarProjetoView(ferramenta: "ERRO", cor: "VERMELHO")
                     }

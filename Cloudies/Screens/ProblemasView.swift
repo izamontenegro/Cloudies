@@ -6,10 +6,27 @@
 //
 
 import SwiftUI
+import GoogleGenerativeAI
+import SwiftData
 
 struct ProblemasView: View {
     @State var gerados: [String] = ["Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste"]
     @State var nomeProjeto: String = "Projeto arquitetura"
+    @Environment(\.modelContext) var modelContext
+    @Query var geracoesData: [GeracaoData]
+    
+    @State var titulo: String
+    @State var textoEntrada: String
+    @State var recorteTematico: String
+    @State var colecaoDeTextos: [LinhaDePalavras] = []
+    @State var textosParaIgnorar: [Palavra] = []
+    @State var textoGerando: Palavra = Palavra(texto: "")
+    
+    @State private var palavraChave: Palavra = Palavra(texto: "")
+    @State private var textoGerado: String = ""
+    @State private var auxTextosGerados: [Palavra] = []
+    @State private var respostaAI: String = ""
+    @State var colecaoDePalavras: [Palavra] = []
     var body: some View {
         NavigationView {
             ZStack {
@@ -25,7 +42,7 @@ struct ProblemasView: View {
                         Image("nuvemTopo")
                             .padding(.leading, 110)
                             .padding(.top, -60)
-                        Text("palavra palavrinha")
+                        Text("texto palavrinha")
                             .font(.title3)
                             .padding(.trailing, 200)
                             .padding(.bottom, 90)
@@ -33,14 +50,32 @@ struct ProblemasView: View {
                     .padding(.bottom)
                     
                     ScrollView {
-                        ForEach(gerados, id: \.self) { problema in
-                            CardGeracaoTexto(titulo: problema, explicacao: "descricao do problema descrevendo um problema que existe")
+                        ForEach(colecaoDeTextos, id: \.self) { problema in
+                            CardGeracaoTexto(titulo: problema.palavras.first!.texto, explicacao: problema.palavras.last!.texto)
                         }
                     }
                     
                     HStack(spacing: 13.51) {
                         Button {
-                            //
+                            Task {
+                                palavraChave.texto = textoEntrada
+                                respostaAI = await
+                                gerarRespostaIgnorandoCasos(gerarParaTela: "Problematicas", palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: textosParaIgnorar)
+                                
+                                var respostasAI: [String]
+                                respostasAI = respostaAI.components(separatedBy: "|")
+                                
+                                print(respostasAI)
+                                for resposta in respostasAI {
+                                    auxTextosGerados.append(contentsOf: [Palavra(texto: resposta)])
+                                }
+                                
+                                textosParaIgnorar.append(auxTextosGerados.last!)
+                                colecaoDeTextos.append(LinhaDePalavras(palavras: auxTextosGerados))
+                                auxTextosGerados.removeAll()
+                                print(colecaoDeTextos)
+                                
+                            }
                         } label: {
                             Botoes(cor: "BRANCO")
                         }
@@ -74,5 +109,5 @@ struct ProblemasView: View {
 }
 
 #Preview {
-    ProblemasView()
+    ProblemasView(titulo: "oi", textoEntrada: "como resolver cachorro", recorteTematico: "passeio")
 }
