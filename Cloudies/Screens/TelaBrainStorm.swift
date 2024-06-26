@@ -20,7 +20,6 @@ struct TelaBrainStorm: View {
     @State var colecaoDeLinhas: [LinhaDePalavras] = []
     @State var palavrasParaIgnorar: [Palavra] = []
     @State var palavraGerando: Palavra = Palavra(texto: "")
-    
     @State private var palavraChave: Palavra = Palavra(texto: "")
     @State private var palavrasGeradas: String = ""
     @State private var auxPalavrasGeradas: [Palavra] = []
@@ -34,26 +33,25 @@ struct TelaBrainStorm: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                ZStack {
+                ZStack(alignment: .top) {
                     Rectangle()
-                        .frame(height: 200)
+                        .containerRelativeFrame(.vertical, count: 4, spacing: 0)
                         .foregroundStyle(.white)
-                        .padding(.top, -250)
+                        .ignoresSafeArea(edges: [.top])
                     Image("nuvemTopo")
-                        .padding(.leading, 110)
-                        .padding(.top, -60)
+                        .containerRelativeFrame(.horizontal)
+                        .clipped()
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text(palavraEntrada)
                             .font(.title)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.leading, -180)
-                            .padding(.top, 20)
+                            .fontWeight(.bold)
+                            .padding(.horizontal)
                         Text(palavraEntrada + palavrasDeGeracao)
                             .font(.title3)
-                            .padding(.leading, -180)
-                            .padding(.bottom, 90)
+                            .padding(.horizontal)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                 }
                 
@@ -83,115 +81,126 @@ struct TelaBrainStorm: View {
             }
             
         }
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        addBrainStorm(
-                            titulo: titulo,
-                            palavraEntrada: palavraEntrada,
-                            palavrasGeradas: palavrasDeGeracao,
-                            palavraGerando: palavraGerando,
-                            recorteTematico: recorteTematico,
-                            colecaoDeLinhas: colecaoDeLinhas,
-                            palavrasParaIgnorar: palavrasParaIgnorar
-                        )
-                    } label: {
-                        Image(systemName: "checkmark.circle.fill")
-                    }
-                    
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button {
+                    addBrainStorm(
+                        titulo: titulo,
+                        palavraEntrada: palavraEntrada,
+                        palavrasGeradas: palavrasDeGeracao,
+                        palavraGerando: palavraGerando,
+                        recorteTematico: recorteTematico,
+                        colecaoDeLinhas: colecaoDeLinhas,
+                        palavrasParaIgnorar: palavrasParaIgnorar
+                    )
+                } label: {
+                    Image(systemName: "checkmark.circle.fill")
                 }
-            }
-            .navigationBarTitle("\(titulo)")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(.hidden, for: .tabBar)
-        
-        }
-        func botaoNuvem() {
-            
-            Task {
                 
-                var indexChaveI: Int = -1
-                var indexChaveJ: Int = -1
-                var parar = false
-                for i in 0..<colecaoDeLinhas.count {
+            }
+        }
+        .navigationBarTitle("\(titulo)")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
+        
+    }
+    func botaoNuvem() {
+        
+        Task {
+            
+            var indexChaveI: Int = -1
+            var indexChaveJ: Int = -1
+            var parar = false
+            var pontinhos: Bool = true
+            for i in 0..<colecaoDeLinhas.count {
+                
+                for j in 0..<colecaoDeLinhas[i].palavras.count {
                     
-                    for j in 0..<colecaoDeLinhas[i].palavras.count {
-                        
-                        if colecaoDeLinhas[i].palavras[j].isGeneration == true {
-                            indexChaveI = i
-                            indexChaveJ = j
-                            print(i)
-                            print(j)
-                            palavraGerando = colecaoDeLinhas[i].palavras[j]
+                    if colecaoDeLinhas[i].palavras[j].isGeneration == true {
+                        indexChaveI = i
+                        indexChaveJ = j
+                        print(i)
+                        print(j)
+                        palavraGerando = colecaoDeLinhas[i].palavras[j]
+                        if palavrasDeGeracao.count < 60 {
                             palavrasDeGeracao += ", \(palavraGerando.texto)"
-                            colecaoDeLinhas[i].palavras[j].isGeneration.toggle()
-                            parar = true
-                            break
-                            
                         }
+                        else {
+                            if pontinhos {
+                                palavrasDeGeracao += "..."
+                                pontinhos = false
+                            }
+                        }
+                        colecaoDeLinhas[i].palavras[j].isGeneration.toggle()
+                        parar = true
+                        break
                         
-                        if parar == true {
-                            break
-                        }
                     }
+                    
                     if parar == true {
                         break
                     }
                 }
-                if (indexChaveI == -1 || indexChaveJ == -1) && palavraGerando.texto == "" {
-                    palavraChave.texto = palavraEntrada
-                    
-                } else {
-                    palavraChave.texto = palavraGerando.texto
-                    print(palavraGerando.texto)
+                if parar == true {
+                    break
                 }
-                print(palavraChave.texto)
-                
-                respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: palavrasParaIgnorar)
-                
-                auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
-                
-                for i in auxPalavrasGeradas.indices {
-                    auxPalavrasGeradas[i].texto = auxPalavrasGeradas[i].texto.replacingOccurrences(of: "\n", with: "")
-                }
-                palavrasParaIgnorar.append(contentsOf: auxPalavrasGeradas)
-                
-                palavraChave.texto = ""
-                
-                colecaoDeLinhas.append(LinhaDePalavras(palavras: auxPalavrasGeradas))
-                //salvar colelção de linhas com swiftdata
-                auxPalavrasGeradas.removeAll()
             }
-            
-            @Sendable func separarRespostaBrainStorm(respostasAI: String) -> [Palavra] {
-                let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
+            if (indexChaveI == -1 || indexChaveJ == -1) && palavraGerando.texto == "" {
+                palavraChave.texto = palavraEntrada
                 
-                for resposta in respostasAI {
-                    auxPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
-                }
-                
-                return auxPalavrasGeradas
+            } else {
+                palavraChave.texto = palavraGerando.texto
+                print(palavraGerando.texto)
             }
+            print(palavraChave.texto)
             
+            respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: palavrasParaIgnorar)
+            
+            auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
+            
+            for i in auxPalavrasGeradas.indices {
+                auxPalavrasGeradas[i].texto = auxPalavrasGeradas[i].texto.replacingOccurrences(of: "\n", with: "")
+            }
+            palavrasParaIgnorar.append(contentsOf: auxPalavrasGeradas)
+            
+            palavraChave.texto = ""
+            
+            colecaoDeLinhas.append(LinhaDePalavras(palavras: auxPalavrasGeradas))
+            //salvar colelção de linhas com swiftdata
+            auxPalavrasGeradas.removeAll()
         }
         
-        func addBrainStorm(
-            titulo: String,
-            palavraEntrada: String,
-            palavrasGeradas: String,
-            palavraGerando: Palavra,
-            recorteTematico: String,
-            colecaoDeLinhas: [LinhaDePalavras],
-            palavrasParaIgnorar: [Palavra]
-        ) {
+        @Sendable func separarRespostaBrainStorm(respostasAI: String) -> [Palavra] {
+            let respostasAI: [String] = respostaAI.components(separatedBy: ", ")
             
-            let brainstorm = GeracaoData(tipo: "BrainStorm", palavrasGeradas: palavrasGeradas, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
-            modelContext.insert(brainstorm)
+            for resposta in respostasAI {
+                auxPalavrasGeradas.append(contentsOf: [Palavra(texto: resposta)])
+            }
             
+            return auxPalavrasGeradas
         }
+        
+    }
+    
+    func addBrainStorm(
+        titulo: String,
+        palavraEntrada: String,
+        palavrasGeradas: String,
+        palavraGerando: Palavra,
+        recorteTematico: String,
+        colecaoDeLinhas: [LinhaDePalavras],
+        palavrasParaIgnorar: [Palavra]
+    ) {
+        
+        let brainstorm = GeracaoData(tipo: "BrainStorm", palavrasGeradas: palavrasGeradas, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
+        modelContext.insert(brainstorm)
+        
+    }
     
 }
 
 #Preview {
+    NavigationStack {
         TelaBrainStorm(titulo: "Projeto animal", palavraEntrada: "Cachorro", recorteTematico: "doméstico")
+    }
 }
