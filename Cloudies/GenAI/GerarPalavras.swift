@@ -55,8 +55,27 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
             """//Prompt de problematica aqui
             
         case "Analogias":
+            for i in 0..<palavrasUsadas.count {
+                if i%2 == 0 {
+                    titulosPrompt += "\(palavrasUsadas[i].texto), \n"
+                } else {
+                    textosPrompt += "\(palavrasUsadas[i].texto), \n"
+                }
+            }
             prompt =
-            ""//Prompt de analogia aqui
+            """
+            
+            - Gere uma, apenas uma solução para o problema \(palavraChave.texto)
+            - Seguindo esse recorte temático: \(recorteTematico)
+            - Gere o titulo, seguido de uma barra |, e então o texto ex: 'Titulo|Texto', e não formate o texto, apenas deixe-o limpo
+            - Gere o títulos com, no máximo, 20 caracteres
+            - Gere o texto com no máximo 50 caracteres
+            - Não inclua, sob quaisquer circunstancias os seguintes titulos, em especiais os últimos: [ \(titulosPrompt) ]
+            - Não inclua, sob quaisquer circunstancias as seguintes soluções, em especiais as últimas: [ \(textosPrompt) ]
+            - Se for impossível gerar ignorandos as acima, fuja do tema
+            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: impossivel de gerar"
+            
+            """//Prompt de problematica aqui
         default:
             prompt =
             "Retorne 'Erro: tipo de geração inválido'"

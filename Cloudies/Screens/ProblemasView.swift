@@ -15,22 +15,32 @@ struct ProblemasView: View {
     @Environment(\.modelContext) var modelContext
     @Query var geracoesData: [GeracaoData]
     
+    @State var tipo: String
     @State var titulo: String
     @State var textoEntrada: String
     @State var recorteTematico: String
     @State var colecaoDeTextos: [LinhaDePalavras] = []
     @State var textosParaIgnorar: [Palavra] = []
     @State var textoGerando: Palavra = Palavra(texto: "")
+    @State var colecaoDePalavras: [Palavra] = []
     
     @State private var palavraChave: Palavra = Palavra(texto: "")
     @State private var textoGerado: String = ""
     @State private var auxTextosGerados: [Palavra] = []
     @State private var respostaAI: String = ""
-    @State var colecaoDePalavras: [Palavra] = []
     var body: some View {
         ZStack {
+            switch tipo {
+            case "Problemas":
+                Color.AMARELO
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            case "Conexoes":
                 Color.ROSA
-                    .edgesIgnoringSafeArea(.all)
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            default:
+                Color.VERMELHO
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            }
                 
                 VStack {
                     ZStack {
@@ -59,7 +69,7 @@ struct ProblemasView: View {
                             Task {
                                 palavraChave.texto = textoEntrada
                                 respostaAI = await
-                                gerarRespostaIgnorandoCasos(gerarParaTela: "Problematicas", palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: textosParaIgnorar)
+                                gerarRespostaIgnorandoCasos(gerarParaTela: tipo, palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: textosParaIgnorar)
                                 
                                 var respostasAI: [String]
                                 respostasAI = respostaAI.components(separatedBy: "|")
@@ -90,7 +100,6 @@ struct ProblemasView: View {
                 }
                 
             }
-        }
         .toolbar {
             
             Button(action: {
@@ -104,9 +113,10 @@ struct ProblemasView: View {
         .navigationTitle(nomeProjeto)
         .navigationBarTitleDisplayMode(.large)
         .buttonStyle(PlainButtonStyle())
+        }
     }
-}
+
 
 #Preview {
-    ProblemasView(titulo: "oi", textoEntrada: "como resolver cachorro", recorteTematico: "passeio")
+    ProblemasView(tipo: "Problemas", titulo: "oi", textoEntrada: "como resolver cachorro", recorteTematico: "passeio")
 }
