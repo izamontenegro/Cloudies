@@ -14,8 +14,73 @@ struct ContentView: View {
     var body: some View {
         if isOnboardingComplete {
             MainView()
+            
         } else {
-            OnBoardingg()
+            OnBoardingg0()
+        }
+    }
+}
+
+struct OnBoardingg0: View {
+    @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
+    
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .center, spacing: 40) {
+                Text("Boas Vindas ao Cloudies! ")
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                
+                Image("primeiroOn")
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .ignoresSafeArea()
+                    .scaledToFill()
+                
+                Text("Aqui você vai encontrar inspirações  para seus projetos a partir das suas próprias ideias! Basta digitar palavras-chave e receber sugestões que vão turbinar sua criatividade.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundStyle(.cinzaControl)
+                        .frame(width: 68, height: 24)
+                    HStack {
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                    }
+                }
+                
+                .padding(.top, 35)
+                NavigationLink(destination: OnBoardingg()) {
+                    Text("Próximo")
+                        .font(.footnote)
+                    
+                        .fontWeight(.medium)
+                        .foregroundStyle(.black)
+                        .frame(maxWidth: .infinity, maxHeight: 50, alignment: .center)
+                        .background(.white)
+                        .cornerRadius(7)
+                        .shadow(radius: 5)
+                    
+                }
+                
+            }
+            .padding(30)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -43,8 +108,12 @@ struct OnBoardingg: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 50)
                         .foregroundStyle(.cinzaControl)
-                        .frame(width: 48, height: 24)
+                        .frame(width: 68, height: 24)
                     HStack {
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
                         Circle()
                             .frame(width: 8)
                             .foregroundStyle(.black)
@@ -102,8 +171,12 @@ struct OnBoardingg2: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .foregroundStyle(.cinzaControl)
-                    .frame(width: 48, height: 24)
+                    .frame(width: 68, height: 24)
                 HStack {
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
                     Circle()
                         .frame(width: 8)
                         .foregroundStyle(.black)
@@ -163,8 +236,12 @@ struct OnBoardingg3: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .foregroundStyle(.cinzaControl)
-                    .frame(width: 48, height: 24)
+                    .frame(width: 68, height: 24)
                 HStack {
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
                     Circle()
                         .frame(width: 8)
                         .foregroundStyle(.black)

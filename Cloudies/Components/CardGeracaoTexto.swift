@@ -13,7 +13,7 @@ struct CardGeracaoTexto: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: 363, height: 74)
+                .frame(width: 366, height: 74)
                 .foregroundStyle(.white)
             VStack {
                 Text(titulo)
@@ -26,7 +26,7 @@ struct CardGeracaoTexto: View {
                 
             }
             .frame(width: 353, height: 74)
-            .padding(.leading, 10)
+            .padding(.horizontal, 10)
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.black, lineWidth: 1.5)

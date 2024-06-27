@@ -11,7 +11,7 @@ import SwiftData
 
 struct ProblemasView: View {
     @State var gerados: [String] = ["Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste", "Texto de teste"]
-    @State var nomeProjeto: String = "Projeto arquitetura"
+    @State var nomeProjeto: String = " "
     @Environment(\.modelContext) var modelContext
     @Query var geracoesData: [GeracaoData]
     
@@ -101,7 +101,7 @@ struct ProblemasView: View {
             }
             
         }
-        .navigationTitle(nomeProjeto)
+        .navigationTitle(modelo.tituloData)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .buttonStyle(PlainButtonStyle())
