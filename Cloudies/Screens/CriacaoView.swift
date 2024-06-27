@@ -41,7 +41,7 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexões", cor: "ROSA")) {
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexoes", cor: "ROSA")) {
                         CardsCriacao(
                             cor: "ROSA",
                             texto: """

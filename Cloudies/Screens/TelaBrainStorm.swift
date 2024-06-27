@@ -11,15 +11,10 @@ import SwiftData
 
 struct TelaBrainStorm: View {
     @Environment(\.modelContext) var modelContext
-    @Query var geracoesData: [GeracaoData]
+    //@Query var geracoesData: [GeracaoData]
     
-    @State var titulo: String
-    @State var palavraEntrada: String
-    @State var recorteTematico: String
-    @State var colecaoDeLinhas: [LinhaDePalavras] = []
-    @State var palavrasParaIgnorar: [Palavra] = []
-    @State var palavraGerando: Palavra = Palavra(texto: "")
-    
+    @Binding var brainstorm: GeracaoData
+        
     @State private var palavraChave: Palavra = Palavra(texto: "")
     @State private var palavrasGeradas: String = ""
     @State private var auxPalavrasGeradas: [Palavra] = []
@@ -44,7 +39,7 @@ struct TelaBrainStorm: View {
                         .padding(.top, -60)
                     
                     VStack {
-                        Text(palavraEntrada)
+                        Text(brainstorm.palavraEntradaData)
                             .font(.title)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .padding(.leading, -180)
@@ -58,8 +53,8 @@ struct TelaBrainStorm: View {
                 }
                 
                 ScrollView(.vertical) {
-                    ForEach($colecaoDeLinhas) { colecao in
-                        LinhaDePalavrasView(palavras: colecao.palavras, linhas: $colecaoDeLinhas, observador: $observador)
+                    ForEach($brainstorm.colecaoDeLinhasData) { colecao in
+                        LinhaDePalavrasView(palavras: colecao.palavras, linhas: $brainstorm.colecaoDeLinhasData, observador: $observador)
                     }
                 }
                 .defaultScrollAnchor(.bottom)
@@ -86,21 +81,13 @@ struct TelaBrainStorm: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
-                        addBrainStorm(
-                            titulo: titulo,
-                            palavraEntrada: palavraEntrada,
-                            palavraGerando: palavraGerando,
-                            recorteTematico: recorteTematico,
-                            colecaoDeLinhas: colecaoDeLinhas,
-                            palavrasParaIgnorar: palavrasParaIgnorar
-                        )
                     } label: {
                         Image(systemName: "checkmark.circle.fill")
                     }
                     
                 }
             }
-            .navigationBarTitle("\(titulo)")
+            .navigationBarTitle("\(brainstorm.tituloData)")
             .navigationBarTitleDisplayMode(.inline)
             
         }
@@ -111,18 +98,18 @@ struct TelaBrainStorm: View {
                 var indexChaveI: Int = -1
                 var indexChaveJ: Int = -1
                 var parar = false
-                for i in 0..<colecaoDeLinhas.count {
+                for i in 0..<$brainstorm.colecaoDeLinhasData.count {
                     
-                    for j in 0..<colecaoDeLinhas[i].palavras.count {
+                    for j in 0..<$brainstorm.colecaoDeLinhasData[i].palavras.count {
                         
-                        if colecaoDeLinhas[i].palavras[j].isGeneration == true {
+                        if brainstorm.colecaoDeLinhasData[i].palavras[j].isGeneration == true {
                             indexChaveI = i
                             indexChaveJ = j
                             print(i)
                             print(j)
-                            palavraGerando = colecaoDeLinhas[i].palavras[j]
-                            palavrasDeGeracao += ", \(palavraGerando.texto)"
-                            colecaoDeLinhas[i].palavras[j].isGeneration.toggle()
+                            brainstorm.palavraGerandoData = brainstorm.colecaoDeLinhasData[i].palavras[j]
+                            palavrasDeGeracao += ", \(brainstorm.palavraGerandoData.texto)"
+                            brainstorm.colecaoDeLinhasData[i].palavras[j].isGeneration.toggle()
                             parar = true
                             break
                             
@@ -136,27 +123,27 @@ struct TelaBrainStorm: View {
                         break
                     }
                 }
-                if (indexChaveI == -1 || indexChaveJ == -1) && palavraGerando.texto == "" {
-                    palavraChave.texto = palavraEntrada
+                if (indexChaveI == -1 || indexChaveJ == -1) && brainstorm.palavraGerandoData.texto == "" {
+                    palavraChave.texto = brainstorm.palavraEntradaData
                     
                 } else {
-                    palavraChave.texto = palavraGerando.texto
-                    print(palavraGerando.texto)
+                    palavraChave.texto = brainstorm.palavraGerandoData.texto
+                    print(brainstorm.palavraGerandoData.texto)
                 }
                 print(palavraChave.texto)
                 
-                respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: palavrasParaIgnorar)
+                respostaAI = await gerarRespostaIgnorandoCasos(gerarParaTela: "BrainStorm", palavraChave: palavraChave, recorteTematico: brainstorm.recorteTematicoData, ignorando: brainstorm.palavrasParaIgnorarData)
                 
                 auxPalavrasGeradas = separarRespostaBrainStorm(respostasAI: respostaAI)
                 
                 for i in auxPalavrasGeradas.indices {
                     auxPalavrasGeradas[i].texto = auxPalavrasGeradas[i].texto.replacingOccurrences(of: "\n", with: "")
                 }
-                palavrasParaIgnorar.append(contentsOf: auxPalavrasGeradas)
+                brainstorm.palavrasParaIgnorarData.append(contentsOf: auxPalavrasGeradas)
                 
                 palavraChave.texto = ""
                 
-                colecaoDeLinhas.append(LinhaDePalavras(palavras: auxPalavrasGeradas))
+                brainstorm.colecaoDeLinhasData.append(LinhaDePalavras(palavras: auxPalavrasGeradas))
                 //salvar colelção de linhas com swiftdata
                 auxPalavrasGeradas.removeAll()
             }
@@ -173,21 +160,8 @@ struct TelaBrainStorm: View {
             
         }
         
-        func addBrainStorm(
-            titulo: String,
-            palavraEntrada: String,
-            palavraGerando: Palavra,
-            recorteTematico: String,
-            colecaoDeLinhas: [LinhaDePalavras],
-            palavrasParaIgnorar: [Palavra]
-        ) {
-            
-            let brainstorm = GeracaoData(tipo: "BrainStorm", tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
-            modelContext.insert(brainstorm)
-            
-        }
 }
 
-#Preview {
-        TelaBrainStorm(titulo: "Projeto animal", palavraEntrada: "Cachorro", recorteTematico: "doméstico")
-}
+//#Preview {
+//        TelaBrainStorm($brainstom.tituloData: "Projeto animal", $brainstorm.palavraEntradaData: "Cachorro", brainstorm.recorteTematicoData: "doméstico")
+//}

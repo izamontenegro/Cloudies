@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CriarProjetoView: View {
+    @Environment(\.modelContext) var modelContext
+    
     @State var ferramenta: String = "BrainStorm"
     @State var cor: String = "AZUL"
     @State var nomeDoProjeto: String = ""
     @State var temaPrincipal: String = ""
     @State var recorteTematico: String = ""
+    @State var brainstorm: GeracaoData = GeracaoData()
+    @State var navegar = false
     
     var body: some View {
         VStack {
@@ -104,42 +109,56 @@ struct CriarProjetoView: View {
                         .foregroundStyle(.cinzaCriacao)
                 }
                 .padding(.bottom, 22)
+            
+                    Button(action: {
+                        brainstorm.palavraEntradaData = temaPrincipal
+                        brainstorm.tituloData = nomeDoProjeto
+                        brainstorm.tipo = ferramenta
+                        brainstorm.recorteTematicoData = recorteTematico
+                        modelContext.insert(brainstorm)
+                        navegar = true
+                        
+                    }, label: {
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 357, height: 63)
+                                .foregroundStyle(Color(cor))
+                                .shadow(radius: 4)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: 357, height: 63)
+                                )
+                            
+                            Text("Vamos lá!")
+                                .font(.title2)
+                        }
+                    })
+                }
                 
-                NavigationLink {
+                
+                .onAppear {
+                    brainstorm = GeracaoData()
+                }
+                .buttonStyle(PlainButtonStyle())
+                .navigationDestination(isPresented: $navegar, destination: {
+                    
                     switch ferramenta {
                     case "BrainStorm":
-                        TelaBrainStorm(titulo: nomeDoProjeto, palavraEntrada: temaPrincipal, recorteTematico: recorteTematico)
+                        TelaBrainStorm(brainstorm: $brainstorm)
                     case "Problemas":
-                        ProblemasView(tipo: "Problemas", titulo: "animais", textoEntrada: "como passear", recorteTematico: "cachorro")
+                        ProblemasView(modelo: $brainstorm)
                     default:
-                        ProblemasView(tipo: "Conexoes", titulo: "animais", textoEntrada: "como passear", recorteTematico: "cachorro")
+                        ProblemasView(modelo: $brainstorm)
                     }
-                } label: {
-
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 357, height: 63)
-                            .foregroundStyle(Color(cor))
-                            .shadow(radius: 4)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.black, lineWidth: 1)
-                                    .frame(width: 357, height: 63)
-                            )
-                        
-                        Text("Vamos lá!")
-                            .font(.title2)
-                    }
-                }
-                .disabled(nomeDoProjeto.isEmpty || temaPrincipal.isEmpty)
-                .buttonStyle(PlainButtonStyle())
+                })
             }
-            
-        }
         .navigationTitle(ferramenta)
-    }
+        }
+    
 }
 
-#Preview {
-    CriarProjetoView()
-}
+//#Preview {
+//    CriarProjetoView(brainstorm: GeracaoData)
+//}

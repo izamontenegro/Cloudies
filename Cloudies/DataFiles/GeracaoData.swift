@@ -27,4 +27,15 @@ class GeracaoData {
         self.colecaoDeLinhasData = colecaoDeLinhasData
         self.palavrasParaIgnorarData = palavrasParaIgnorarData
     }
+    
+    init() {
+        self.tipo = ""
+        self.tituloData = ""
+        self.palavraEntradaData = ""
+        self.palavraGerandoData = Palavra(texto: "")
+        self.recorteTematicoData = ""
+        self.colecaoDeLinhasData = []
+        self.palavrasParaIgnorarData = []
+    }
+    
 }

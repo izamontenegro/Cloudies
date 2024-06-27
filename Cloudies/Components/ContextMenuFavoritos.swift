@@ -61,8 +61,8 @@ struct ContextMenuFavoritos: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        TelaBrainStorm(titulo: "Projeto animal", palavraEntrada: "Cachorro", recorteTematico: "domestico")
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        TelaBrainStorm(titulo: "Projeto animal", palavraEntrada: "Cachorro", recorteTematico: "domestico")
+//    }
+//}
