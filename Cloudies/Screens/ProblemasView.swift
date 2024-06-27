@@ -34,82 +34,75 @@ struct ProblemasView: View {
                 Color.VERMELHO
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             }
-                
-                VStack {
-                    ZStack {
-                        Rectangle()
-                            .frame(height: 200)
-                            .foregroundStyle(.white)
-                            .padding(.top, -250)
-                        Image("nuvemTopo")
-                            .padding(.leading, 110)
-                            .padding(.top, -60)
-                        Text("texto palavrinha")
+            
+            VStack {
+                ZStack(alignment: .top) {
+                    Rectangle()
+                        .containerRelativeFrame(.vertical, count: 4, spacing: 0)
+                        .foregroundStyle(.white)
+                        .ignoresSafeArea(edges: [.top])
+                    Image("nuvemTopo")
+                        .containerRelativeFrame(.horizontal)
+                        .clipped()
+                    
+                    VStack(alignment: .leading) {
+                        Text(modelo.palavraEntradaData)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.horizontal)
+                        Text(modelo.recorteTematicoData)
                             .font(.title3)
-                            .padding(.trailing, 215)
-                            .padding(.bottom, 90)
+                            .padding(.horizontal)
                     }
-                    .padding(.bottom)
-                    
-                    ScrollView {
-                        ForEach(modelo.colecaoDeLinhasData, id: \.self) { problema in
-                            CardGeracaoTexto(titulo: problema.palavras.first!.texto, explicacao: problema.palavras.last!.texto)
-                        }
-                    }
-                    
-                    HStack(spacing: 13.51) {
-                        Button {
-                            Task {
-                                palavraChave.texto = modelo.palavraEntradaData
-                                respostaAI = await
-                                gerarRespostaIgnorandoCasos(gerarParaTela: modelo.tipo, palavraChave: palavraChave, recorteTematico: modelo.recorteTematicoData, ignorando: modelo.palavrasParaIgnorarData)
-                                
-                                var respostasAI: [String]
-                                respostasAI = respostaAI.components(separatedBy: "|")
-                                
-                                print(respostasAI)
-                                for resposta in respostasAI {
-                                    auxTextosGerados.append(contentsOf: [Palavra(texto: resposta)])
-                                }
-                                
-                                modelo.palavrasParaIgnorarData.append(auxTextosGerados.last!)
-                                modelo.colecaoDeLinhasData.append(LinhaDePalavras(palavras: auxTextosGerados))
-                                auxTextosGerados.removeAll()
-                                print(modelo.colecaoDeLinhasData)
-                                
-                            }
-                        } label: {
-                            Botoes(cor: "BRANCO")
-                        }
-                        
-                        Button {
-                            //
-                        } label: {
-                            Botoes(cor: "BRANCO", simbolo: "plus.bubble")
-                        }
-                    }
-                    .padding(.top, 44)
+                    .padding(.top)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                 }
                 
-            }
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+                ScrollView {
+                    ForEach(modelo.colecaoDeLinhasData, id: \.self) { problema in
+                        CardGeracaoTexto(titulo: problema.palavras.first!.texto, explicacao: problema.palavras.last!.texto)
+                    }
+                }
+                
+                HStack(spacing: 13.51) {
+                    Button {
+                        Task {
+                            palavraChave.texto = modelo.palavraEntradaData
+                            respostaAI = await
+                            gerarRespostaIgnorandoCasos(gerarParaTela: modelo.tipo, palavraChave: palavraChave, recorteTematico: modelo.recorteTematicoData, ignorando: modelo.palavrasParaIgnorarData)
+                            
+                            var respostasAI: [String]
+                            respostasAI = respostaAI.components(separatedBy: "|")
+                            
+                            print(respostasAI)
+                            for resposta in respostasAI {
+                                auxTextosGerados.append(contentsOf: [Palavra(texto: resposta)])
+                            }
+                            
+                            modelo.palavrasParaIgnorarData.append(auxTextosGerados.last!)
+                            modelo.colecaoDeLinhasData.append(LinhaDePalavras(palavras: auxTextosGerados))
+                            auxTextosGerados.removeAll()
+                            print(modelo.colecaoDeLinhasData)
+                            
+                        }
+                    } label: {
+                        Botoes(cor: "BRANCO")
+                    }
+                    
+                    Button {
+                        //
+                    } label: {
+                        Botoes(cor: "BRANCO", simbolo: "plus.bubble")
+                    }
+                }
+                .padding(.top, 44)
                 
             }
             
-            ToolbarItem(placement: .confirmationAction) {
-                Button(action: {
-                    print("")
-                }, label: {
-                    Image(systemName: "pencil.circle")
-                        .imageScale(.medium)
-                        .scaleEffect(1.1)
-                })
-            }
         }
         .navigationTitle(nomeProjeto)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .buttonStyle(PlainButtonStyle())
         }

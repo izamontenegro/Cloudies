@@ -95,18 +95,3 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
         return "kkk" //Inserir mensagem de erro
     }
     }
-
-/*
- 
- 
- ANIMAIS DOIDOS, MATAR ELES, TITULO, TEXTO
- [ANIMAIS DOIDOS, MATAR ELES, TITULO, TEXTO]
- ANIMAIS DOIDOS:
- MATAR ELES
- 
- TITULO:
- TEXTO
- 
- 
- 
- */

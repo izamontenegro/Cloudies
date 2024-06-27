@@ -15,7 +15,7 @@ struct Palavra: Identifiable, Codable, Hashable {
 
 }
 
-struct LinhaDePalavras: Identifiable, Codable, Hashable  {
+struct LinhaDePalavras: Identifiable, Codable, Hashable {
     var id: UUID? = UUID()
     var palavras: [Palavra]
     
