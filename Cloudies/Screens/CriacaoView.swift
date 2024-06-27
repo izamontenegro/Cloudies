@@ -11,7 +11,7 @@ struct CriacaoView: View {
     var body: some View {
         ScrollView {
         VStack {
-            Image("ilustracaoBrainstorm")
+            Image("criacaoiluss")
                 .padding(.bottom, -20)
                 VStack(spacing: -45) {
                     NavigationLink(destination: CriarProjetoView(ferramenta: "BrainStorm", imagem: "BrainStorm", cor: "AZUL")) {

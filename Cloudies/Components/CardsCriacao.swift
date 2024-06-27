@@ -15,9 +15,15 @@ struct CardsCriacao: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(titulo)
-                .font(.title2)
-                .padding(.top, 15)
+            HStack {
+                Text(titulo)
+                    .font(.title2)
+                    .padding(.top, 15)
+                Spacer()
+                Image("seta")
+                    .padding(.top)
+                    .padding(.trailing)
+            }
             Text(texto)
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)

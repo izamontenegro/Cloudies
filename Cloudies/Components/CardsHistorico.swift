@@ -15,21 +15,27 @@ struct CardsHistorico: View {
     
     var body: some View {
         VStack {
-            Text(titulo)
-                .font(.title2)
-                .frame(maxWidth: 370, alignment: .leading)
-                .padding(.top, 15)
-                .padding(.leading)
+            HStack {
+                Text(titulo)
+                    .font(.title2)
+                    .frame(maxWidth: 370, alignment: .leading)
+                    .padding(.top, 15)
+                    .padding(.leading)
+                Spacer()
+                Image("seta")
+                    .padding(.top)
+                    .padding(.trailing)
+            }
             Text(texto)
                 .font(.subheadline)
                 .frame(maxWidth: 370, alignment: .leading)
                 .padding(.leading)
         }
         .padding(.bottom, 34.72)
-        .frame(width: 358.23, height: 104)
+        .frame(width: 358.23, height: 84)
         .background(Color(cor))
         .cornerRadius(20)
-        .shadow(radius: 4)
+        .shadow(radius: 2)
         
         .onAppear {
             decidircor()

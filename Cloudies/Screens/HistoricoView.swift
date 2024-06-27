@@ -39,7 +39,6 @@ struct HistoricoView: View {
                     .padding(.top, 20)
                     .searchable(text: $searchText, prompt: "Procurar projetos")
                 }
-                .navigationTitle("Histórico")
                 .navigationDestination(isPresented: $navegar) {
                     
                     switch essaGeracao.tipo {
@@ -63,6 +62,7 @@ struct HistoricoView: View {
                 .padding(.top, 190)
             }
         }
+        .navigationTitle("Histórico")
         
         var searchResults: [GeracaoData] {
             if searchText.isEmpty {

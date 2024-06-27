@@ -78,17 +78,9 @@ struct TelaBrainStorm: View {
             }
             
         }
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button {
-                } label: {
-                    Image(systemName: "checkmark.circle.fill")
-                }
-                
-            }
-        }
         .navigationBarTitle("\(brainstorm.tituloData)")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
         
     }
     func botaoNuvem() {
