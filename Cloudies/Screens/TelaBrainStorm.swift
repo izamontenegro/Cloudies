@@ -75,13 +75,7 @@ struct TelaBrainStorm: View {
                     } label: {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
-                    
-                    Button {
-                        navigationPath = NavigationPath()
-                    } label: {
-                        Botoes(cor: "BRANCO", simbolo: "plus.bubble")
-                    }
-                }
+                                    }
                 .padding(.top, 20)
             }
             
