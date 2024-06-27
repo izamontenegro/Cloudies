@@ -22,7 +22,7 @@ struct ContentView: View {
 
 struct OnBoardingg: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
-
+    
     var body: some View {
         NavigationStack {
             VStack {

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CriacaoView: View {
     var body: some View {
+        ScrollView {
         VStack {
-            Image("ilustracaoCriacao")
-                .padding(.bottom, -10)
-        
-            VStack(spacing: -45) {
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "BrainStorm", cor: "AZUL")) {
+            Image("ilustracaoBrainstorm")
+                .padding(.bottom, -20)
+                VStack(spacing: -45) {
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "BrainStorm", imagem: "BrainStorm", cor: "AZUL")) {
                         CardsCriacao(
                             cor: "AZUL",
                             texto: """
@@ -24,13 +24,13 @@ struct CriacaoView: View {
                             espaco: 55
                         )
                         
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                NavigationLink(destination: CriarProjetoView(ferramenta: "Problemas", cor: "AMARELO")) {
-                    CardsCriacao(
-                        cor: "AMARELO",
-                        texto: """
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Problemas", imagem: "Problemas", cor: "AMARELO")) {
+                        CardsCriacao(
+                            cor: "AMARELO",
+                            texto: """
                         Aqui você poderá entender melhor as problemáticas acerca do tema abordado. Utilize para compreender tópicos que podem ser resolvidos ou melhorados.
                         """,
                             titulo: "Problemáticas",
@@ -39,25 +39,26 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexoes", cor: "ROSA")) {
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexoes", imagem: "Conexao", cor: "ROSA")) {
                         CardsCriacao(
                             cor: "ROSA",
                             texto: """
                         Permite que você estabeleça conexões a partir de possiveis soluções. Ferramenta importante no pensamento divergente e expansão de possibilidades.
                         """,
-                        titulo: "Conexões",
-                        espaco: 10
-                    )
+                            titulo: "Conexões",
+                            espaco: 10
+                        )
+                    }
                 }
+                .buttonStyle(PlainButtonStyle())
+                .shadow(radius: 7)
             }
-            .buttonStyle(PlainButtonStyle())
-            .shadow(radius: 7)
         }
         .navigationTitle("Criação")
         .navigationBarTitleDisplayMode(.large)
     }
 }
 
-#Preview {
-    CriacaoView()
-}
+//#Preview {
+//    CriacaoView()
+//}
