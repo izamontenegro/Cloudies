@@ -40,7 +40,7 @@ struct CardsHistorico: View {
         switch ferramenta {
         case "Brainstorm":
             cor = "AZUL"
-        case "Problematicas":
+        case "Problemas":
             cor = "AMARELO"
         case "Conexoes":
             cor = "ROSA"

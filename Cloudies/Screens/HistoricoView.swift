@@ -25,22 +25,22 @@ struct HistoricoView: View {
                     navegar = true
                 } label: {
                     CardsHistorico(
-                        cor: {
-                            switch geracao.tipo {
-                            case "BrainStorm":
-                                "AZUL"
-                            case "Problemas":
-                                "AMARELO"
-                            case "Conexoes":
-                                "ROSA"
-                            default:
-                                "VERMELHO"
-                            }
-                        }(), texto: "\(geracao.palavrasGeradas)", titulo: "\(geracao.tituloData)")
-                        .padding(.bottom, -35)
-                    }
-                                       
-    
+                        ferramenta: geracao.tipo,
+                        texto: "\(geracao.palavrasGeradas)",
+                        titulo: "\(geracao.tituloData)"
+                    )
+                    .padding(.bottom, -35)
+                }
+                
+                
+                
+                .buttonStyle(PlainButtonStyle())
+                .navigationTitle("Histórico")
+                .shadow(radius: 5.6)
+                .padding(.top, 20)
+                .searchable(text: $searchText, prompt: "Procurando projetos hihihi")
+            }
+            .navigationTitle("Histórico")
             .navigationDestination(isPresented: $navegar) {
                 
                 switch essaGeracao.tipo {
@@ -54,25 +54,17 @@ struct HistoricoView: View {
                     ProblemasView(modelo: $essaGeracao)
                 }
             }
+        }
         
-            .buttonStyle(PlainButtonStyle())
-            .navigationTitle("Histórico")
-            .shadow(radius: 5.6)
-            .padding(.top, 20)
-            .searchable(text: $searchText, prompt: "Procurando projetos hihihi")
-        }
-        .navigationTitle("Histórico")
-    }
-    
-    var searchResults: [GeracaoData] {
-        if searchText.isEmpty {
-            return geracoesData
-        } else {
-            return geracoesData.filter { $0.tituloData.localizedCaseInsensitiveContains(searchText) }
+        var searchResults: [GeracaoData] {
+            if searchText.isEmpty {
+                return geracoesData
+            } else {
+                return geracoesData.filter { $0.tituloData.localizedCaseInsensitiveContains(searchText) }
+            }
         }
     }
 }
-
-#Preview {
-    HistoricoView()
-}
+//#Preview {
+//    HistoricoView()
+//}

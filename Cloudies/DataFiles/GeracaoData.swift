@@ -32,6 +32,7 @@ class GeracaoData {
     
     init() {
         self.tipo = ""
+        self.palavrasGeradas = ""
         self.tituloData = ""
         self.palavraEntradaData = ""
         self.palavraGerandoData = Palavra(texto: "")
