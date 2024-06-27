@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "imagemProblematicas.png",
+      "filename" : "AAAAAAAA.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,6 +10,7 @@
       "scale" : "2x"
     },
     {
+      "filename" : "AAAAAAAA 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
