@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
-
+import SwiftData
 struct CriacaoView: View {
+    @State var navigationPath: NavigationPath = NavigationPath()
+    @State var brainstorm: GeracaoData = GeracaoData()
+    
     var body: some View {
+        NavigationStack(path: $navigationPath) {
         ScrollView {
-        VStack {
-            Image("criacaoiluss")
-                .padding(.bottom, -20)
+            VStack {
+                Image("criacaoiluss")
+                    .padding(.bottom, -20)
                 VStack(spacing: -45) {
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "BrainStorm", imagem: "BrainStorm", cor: "AZUL")) {
+                    Button {
+                        navigationPath.append("TelaCriacao")
+                        print(navigationPath)
+                    } label: {
                         CardsCriacao(
                             cor: "AZUL",
                             texto: """
@@ -23,11 +30,10 @@ struct CriacaoView: View {
                             titulo: "Brainstorm",
                             espaco: 55
                         )
-                        
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "Problemas", imagem: "Problemas", cor: "AMARELO")) {
+                    NavigationLink(destination: CriarProjetoView(navigationPath: $navigationPath, ferramenta: "Problemas", imagem: "Problemas", cor: "AMARELO", brainstorm: $brainstorm)) {
                         CardsCriacao(
                             cor: "AMARELO",
                             texto: """
@@ -39,7 +45,7 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexoes", imagem: "Conexao", cor: "ROSA")) {
+                    NavigationLink(destination: CriarProjetoView(navigationPath: $navigationPath, ferramenta: "Conexoes", imagem: "Conexao", cor: "ROSA", brainstorm: $brainstorm)) {
                         CardsCriacao(
                             cor: "ROSA",
                             texto: """
@@ -49,15 +55,32 @@ struct CriacaoView: View {
                             espaco: 10
                         )
                     }
+                    .buttonStyle(PlainButtonStyle())
+                    .shadow(radius: 7)
                 }
-                .buttonStyle(PlainButtonStyle())
-                .shadow(radius: 7)
             }
+            .navigationDestination(for: String.self) { name in
+                switch name {
+                case "BrainStorm":
+                    TelaBrainStorm(brainstorm: $brainstorm, navigationPath: $navigationPath)
+                case "TelaCriacao":
+                    CriarProjetoView(navigationPath: $navigationPath, ferramenta: "BrainStorm", imagem: "BrainStorm", cor: "AZUL", brainstorm: $brainstorm)
+                case "Problemas":
+                    ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
+                case "Conexoes":
+                    ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
+                default:
+                    Color.red
+                }
+            }
+                }
+                
         }
         .navigationTitle("Criação")
         .navigationBarTitleDisplayMode(.large)
+            }
     }
-}
+
 
 //#Preview {
 //    CriacaoView()

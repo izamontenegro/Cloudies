@@ -23,6 +23,8 @@ struct TelaBrainStorm: View {
     @State var palavrasDeGeracao: String = ""
     @State private var observador: Bool = false
     
+    @Binding var navigationPath: NavigationPath
+    
     var body: some View {
         ZStack {
             Color.AZUL
@@ -73,6 +75,12 @@ struct TelaBrainStorm: View {
                     } label: {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
+                    
+                    Button {
+                        navigationPath = NavigationPath()
+                    } label: {
+                        Botoes(cor: "BRANCO", simbolo: "plus.bubble")
+                    }
                 }
                 .padding(.top, 20)
             }
@@ -80,7 +88,24 @@ struct TelaBrainStorm: View {
         }
         .navigationBarTitle("\(brainstorm.tituloData)")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)
+        .toolbar() {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    navigationPath = NavigationPath()
+                    
+                } label: {
+                    // 4
+                    HStack {
+                        
+                        Image(systemName: "chevron.backward")
+                        Text("Voltar")
+                    }
+                }
+                
+            }
+        }
         
     }
     func botaoNuvem() {
