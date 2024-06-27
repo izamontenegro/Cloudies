@@ -21,6 +21,8 @@ struct ProblemasView: View {
     @State private var textoGerado: String = ""
     @State private var auxTextosGerados: [Palavra] = []
     @State private var respostaAI: String = ""
+    
+    @Binding var navigationPath: NavigationPath
     var body: some View {
         ZStack {
             switch modelo.tipo {
@@ -97,7 +99,25 @@ struct ProblemasView: View {
                     }
                 }
                 .padding(.top, 44)
-                
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden()
+                .toolbar(.hidden, for: .tabBar)
+                .toolbar() {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            navigationPath = NavigationPath()
+                            
+                        } label: {
+                            // 4
+                            HStack {
+                                
+                                Image(systemName: "chevron.backward")
+                                Text("Voltar")
+                            }
+                        }
+                        
+                    }
+                }
             }
             
         }

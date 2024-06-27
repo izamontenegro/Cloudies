@@ -13,10 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         if isOnboardingComplete {
-            OnBoardingg0()
+            MainView()
             
         } else {
-            MainView()
+            OnBoardingg0()
             
         }
     }

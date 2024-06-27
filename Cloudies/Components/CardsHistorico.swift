@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardsHistorico: View {
-    @State var cor: String = ""
+    @State var cor: String = "AZUL"
     @State var ferramenta: String = ""
     @State var texto: String = ""
     @State var titulo: String = ""

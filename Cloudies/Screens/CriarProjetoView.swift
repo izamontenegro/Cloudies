@@ -11,13 +11,15 @@ import SwiftData
 struct CriarProjetoView: View {
     @Environment(\.modelContext) var modelContext
     
+    @Binding var navigationPath: NavigationPath
+    
     @State var ferramenta: String = "BrainStorm"
     @State var imagem: String
     @State var cor: String = "AZUL"
     @State var nomeDoProjeto: String = ""
     @State var temaPrincipal: String = ""
     @State var recorteTematico: String = ""
-    @State var brainstorm: GeracaoData = GeracaoData()
+    @Binding var brainstorm: GeracaoData
     @State var navegar = false
     
     var body: some View {
@@ -35,7 +37,7 @@ struct CriarProjetoView: View {
                 Image("imagemConexao")
                     .padding(.bottom, 10)
             default:
-                ProblemasView(modelo: $brainstorm)
+                ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
             }
             
             VStack(spacing: 12) {
@@ -128,6 +130,7 @@ struct CriarProjetoView: View {
                     brainstorm.tipo = ferramenta
                     brainstorm.recorteTematicoData = recorteTematico
                     modelContext.insert(brainstorm)
+                    navigationPath.append(ferramenta)
                     navegar = true
                     
                 }, label: {
@@ -153,17 +156,8 @@ struct CriarProjetoView: View {
                 brainstorm = GeracaoData()
             }
             .buttonStyle(PlainButtonStyle())
-            .navigationDestination(isPresented: $navegar) {
-                switch ferramenta {
-                case "BrainStorm":
-                    TelaBrainStorm(brainstorm: $brainstorm)
-                case "Problemas":
-                    ProblemasView(modelo: $brainstorm)
-                default:
-                    ProblemasView(modelo: $brainstorm)
-                }
-            }
         }
+        
         .navigationTitle(ferramenta)
         .toolbar(.hidden, for: .tabBar)
     }

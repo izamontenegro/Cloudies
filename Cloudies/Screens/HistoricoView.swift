@@ -15,54 +15,58 @@ struct HistoricoView: View {
     let projetos = ["My first APP", "AppStore Challenge", "CLI", "CBL", "MVP challenge"]
     @State private var searchText = ""
     @State private var navegar = false
+    @State private var navigationPath: NavigationPath = NavigationPath()
     var body: some View {
-        
-        ScrollView {
-            if !searchResults.isEmpty {
-                ForEach(searchResults, id: \.self) { geracao in
-                    Button {
-                        essaGeracao = geracao
-                        print(essaGeracao.palavraEntradaData)
-                        navegar = true
-                    } label: {
-                        CardsHistorico(
-                            ferramenta: geracao.tipo,
-                            texto: "\(geracao.recorteTematicoData)",
-                            titulo: "\(geracao.tituloData)"
-                        )
-                        .padding(.bottom, -35)
+        NavigationStack(path: $navigationPath) {
+            ScrollView {
+                if !searchResults.isEmpty {
+                    ForEach(searchResults, id: \.self) { geracao in
+                        Button {
+                            navigationPath.append(geracao.tipo)
+                            essaGeracao = geracao
+                            print(essaGeracao.palavraEntradaData)
+                            navegar = true
+                        } label: {
+                            CardsHistorico(
+                                ferramenta: geracao.tipo,
+                                texto: "\(geracao.recorteTematicoData)",
+                                titulo: "\(geracao.tituloData)"
+                            )
+                            .padding(.bottom, -35)
+                        }
+                        
+                        .buttonStyle(PlainButtonStyle())
+                        .navigationTitle("Histórico")
+                        .shadow(radius: 5.6)
+                        .padding(.top, 20)
+                        .searchable(text: $searchText, prompt: "Procurar projetos")
                     }
-                    
-                    .buttonStyle(PlainButtonStyle())
-                    .navigationTitle("Histórico")
-                    .shadow(radius: 5.6)
-                    .padding(.top, 20)
-                    .searchable(text: $searchText, prompt: "Procurar projetos")
-                }
-                .navigationDestination(isPresented: $navegar) {
-                    
-                    switch essaGeracao.tipo {
-                    case "BrainStorm":
-                        TelaBrainStorm(brainstorm: $essaGeracao)
-                    case "Problemas":
-                        ProblemasView(modelo: $essaGeracao)
-                    case "Conexoes":
-                        ProblemasView(modelo: $essaGeracao)
-                    default:
-                        ProblemasView(modelo: $essaGeracao)
+                    .navigationDestination(for: String.self) { name in
+                        
+                        switch name {
+                        case "BrainStorm":
+                            TelaBrainStorm(brainstorm: $essaGeracao, navigationPath: $navigationPath)
+                        case "Problemas":
+                            ProblemasView(modelo: $essaGeracao, navigationPath: $navigationPath)
+                        case "Conexoes":
+                            ProblemasView(modelo: $essaGeracao, navigationPath: $navigationPath)
+                        default:
+                            ProblemasView(modelo: $essaGeracao, navigationPath: $navigationPath)
+                        }
                     }
+                } else {
+                    VStack {
+                        Image("nuvemProblema")
+                        Text("Ainda sem projetos :/")
+                            .foregroundStyle(.cinzaCriacao)
+                            .font(.title3)
+                    }
+                    .padding(.top, 190)
                 }
-            } else {
-                VStack {
-                    Image("nuvemProblema")
-                    Text("Ainda sem projetos :/")
-                        .foregroundStyle(.cinzaCriacao)
-                        .font(.title3)
-                }
-                .padding(.top, 190)
             }
+            }
+            .navigationTitle("Histórico")
         }
-        .navigationTitle("Histórico")
         
         var searchResults: [GeracaoData] {
             if searchText.isEmpty {
@@ -72,7 +76,7 @@ struct HistoricoView: View {
             }
         }
     }
-}
+
 //#Preview {
 //    HistoricoView()
 //}
