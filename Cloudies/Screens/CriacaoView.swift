@@ -27,22 +27,22 @@ struct CriacaoView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 
-                NavigationLink(destination: CriarProjetoView(ferramenta: "Problemáticas", cor: "AMARELO")) {
+                NavigationLink(destination: CriarProjetoView(ferramenta: "Problemas", cor: "AMARELO")) {
                     CardsCriacao(
                         cor: "AMARELO",
                         texto: """
                         Aqui você poderá entender melhor as problemáticas acerca do tema abordado. Utilize para compreender tópicos que podem ser resolvidos ou melhorados.
                         """,
-                        titulo: "Problemáticas",
-                        espaco: 55
-                    )
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                NavigationLink(destination: CriarProjetoView(ferramenta: "Conexões", cor: "ROSA")) {
-                    CardsCriacao(
-                        cor: "ROSA",
-                        texto: """
+                            titulo: "Problemáticas",
+                            espaco: 55
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    NavigationLink(destination: CriarProjetoView(ferramenta: "Conexoes", cor: "ROSA")) {
+                        CardsCriacao(
+                            cor: "ROSA",
+                            texto: """
                         Permite que você estabeleça conexões a partir de possiveis soluções. Ferramenta importante no pensamento divergente e expansão de possibilidades.
                         """,
                         titulo: "Conexões",

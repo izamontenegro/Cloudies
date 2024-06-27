@@ -101,8 +101,8 @@ struct LinhaDePalavrasView: View {
     }
     */
 //}
-#Preview {
-    NavigationStack {
-        TelaBrainStorm(titulo: "", palavraEntrada: "bar", recorteTematico: "musicas")
-    }
-}
+//#Preview {
+//    NavigationStack {
+//        TelaBrainStorm(titulo: "", palavraEntrada: "bar", recorteTematico: "musicas")
+//    }
+//}

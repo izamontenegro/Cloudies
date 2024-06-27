@@ -10,68 +10,61 @@ import SwiftData
 struct HistoricoView: View {
     @Environment(\.modelContext) var modelContext
     @Query var geracoesData: [GeracaoData]
-    @State private var searchText = ""
+    @State var essaGeracao: GeracaoData = GeracaoData()
     
+    let projetos = ["My first APP", "AppStore Challenge", "CLI", "CBL", "MVP challenge"]
+    @State private var searchText = ""
+    @State private var navegar = false
     var body: some View {
         ScrollView {
-            if !searchResults.isEmpty {
-                ForEach(searchResults, id: \.self) { geracao in
-                    NavigationLink {
-                        switch geracao.tipo {
-                        case "BrainStorm":
-                            TelaBrainStorm(titulo: geracao.tituloData, palavraEntrada: geracao.palavraEntradaData, recorteTematico: geracao.palavraEntradaData, colecaoDeLinhas: geracao.colecaoDeLinhasData, palavrasParaIgnorar: geracao.palavrasParaIgnorarData, palavraGerando: geracao.palavraGerandoData)
-                        case "Problemas":
-                            ProblemasView(tipo: geracao.tipo, titulo: geracao.tituloData, textoEntrada: geracao.palavraEntradaData, recorteTematico: geracao.palavraEntradaData, colecaoDeTextos: geracao.colecaoDeLinhasData)
-                        case "Conexoes":
-                            ProblemasView(tipo: geracao.tipo, titulo: geracao.tituloData, textoEntrada: geracao.palavraEntradaData, recorteTematico: geracao.palavraEntradaData, colecaoDeTextos: geracao.colecaoDeLinhasData)
-                        default:
-                            ProblemasView(tipo: geracao.tipo, titulo: geracao.tituloData, textoEntrada: geracao.palavraEntradaData, recorteTematico: geracao.palavraEntradaData, colecaoDeTextos: geracao.colecaoDeLinhasData)
-                        }
-                    } label: {
-                        CardsHistorico(cor: {
-                            switch geracao.tipo {
-                            case "BrainStorm":
-                                "AZUL"
-                            case "Problemas":
-                                "AMARELO"
-                            case "Conex05-8-218oes":
-                                "ROSA"
-                            default:
-                                "VERMELHO"
-                            }
-                        }(), texto: "\(geracao.palavrasGeradas)", titulo: "\(geracao.tituloData)")
-                        .padding(.bottom, -35)
-                    }
-                    .buttonStyle(PlainButtonStyle())
+            // Fazer a substituiçao por projeto.titulo e projeto.ferramenta em cor e titulo
+            ForEach(geracoesData, id: \.self) { geracao in
+                Button {
+                    essaGeracao = geracao
+                    print(essaGeracao.palavraEntradaData)
+                    navegar = true
+                } label: {
+                    CardsHistorico(
+                        ferramenta: geracao.tipo,
+                        texto: "\(geracao.palavrasGeradas)",
+                        titulo: "\(geracao.tituloData)"
+                    )
+                    .padding(.bottom, -35)
                 }
-                .searchable(text: $searchText, prompt: "Procurar projetos")
+                
+                
+                
+                .buttonStyle(PlainButtonStyle())
+                .navigationTitle("Histórico")
                 .shadow(radius: 5.6)
                 .padding(.top, 20)
+                .searchable(text: $searchText, prompt: "Procurando projetos hihihi")
             }
-            
-            else {
-                VStack {
-                    Image("nuvemProblema")
-                    Text("Ainda sem projetos :/")
-                        .foregroundStyle(.cinzaCriacao)
-                        .font(.title3)
+            .navigationTitle("Histórico")
+            .navigationDestination(isPresented: $navegar) {
+                
+                switch essaGeracao.tipo {
+                case "BrainStorm":
+                    TelaBrainStorm(brainstorm: $essaGeracao)
+                case "Problemas":
+                    ProblemasView(modelo: $essaGeracao)
+                case "Conexoes":
+                    ProblemasView(modelo: $essaGeracao)
+                default:
+                    ProblemasView(modelo: $essaGeracao)
                 }
-                .padding(.top, 190)
             }
-          
         }
-        .navigationTitle("Histórico")
-    }
-    
-    var searchResults: [GeracaoData] {
-        if searchText.isEmpty {
-            return geracoesData
-        } else {
-            return geracoesData.filter { $0.tituloData.localizedCaseInsensitiveContains(searchText) }
+        
+        var searchResults: [GeracaoData] {
+            if searchText.isEmpty {
+                return geracoesData
+            } else {
+                return geracoesData.filter { $0.tituloData.localizedCaseInsensitiveContains(searchText) }
+            }
         }
     }
 }
-
-#Preview {
-    HistoricoView()
-}
+//#Preview {
+//    HistoricoView()
+//}

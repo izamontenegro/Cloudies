@@ -15,14 +15,7 @@ struct ProblemasView: View {
     @Environment(\.modelContext) var modelContext
     @Query var geracoesData: [GeracaoData]
     
-    @State var tipo: String
-    @State var titulo: String
-    @State var textoEntrada: String
-    @State var recorteTematico: String
-    @State var colecaoDeTextos: [LinhaDePalavras] = []
-    @State var textosParaIgnorar: [Palavra] = []
-    @State var textoGerando: Palavra = Palavra(texto: "")
-    @State var colecaoDePalavras: [Palavra] = []
+    @Binding var modelo: GeracaoData
     
     @State private var palavraChave: Palavra = Palavra(texto: "")
     @State private var textoGerado: String = ""
@@ -30,7 +23,7 @@ struct ProblemasView: View {
     @State private var respostaAI: String = ""
     var body: some View {
         ZStack {
-            switch tipo {
+            switch modelo.tipo {
             case "Problemas":
                 Color.AMARELO
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -59,7 +52,7 @@ struct ProblemasView: View {
                     .padding(.bottom)
                     
                     ScrollView {
-                        ForEach(colecaoDeTextos, id: \.self) { problema in
+                        ForEach(modelo.colecaoDeLinhasData, id: \.self) { problema in
                             CardGeracaoTexto(titulo: problema.palavras.first!.texto, explicacao: problema.palavras.last!.texto)
                         }
                     }
@@ -67,9 +60,9 @@ struct ProblemasView: View {
                     HStack(spacing: 13.51) {
                         Button {
                             Task {
-                                palavraChave.texto = textoEntrada
+                                palavraChave.texto = modelo.palavraEntradaData
                                 respostaAI = await
-                                gerarRespostaIgnorandoCasos(gerarParaTela: tipo, palavraChave: palavraChave, recorteTematico: recorteTematico, ignorando: textosParaIgnorar)
+                                gerarRespostaIgnorandoCasos(gerarParaTela: modelo.tipo, palavraChave: palavraChave, recorteTematico: modelo.recorteTematicoData, ignorando: modelo.palavrasParaIgnorarData)
                                 
                                 var respostasAI: [String]
                                 respostasAI = respostaAI.components(separatedBy: "|")
@@ -79,10 +72,10 @@ struct ProblemasView: View {
                                     auxTextosGerados.append(contentsOf: [Palavra(texto: resposta)])
                                 }
                                 
-                                textosParaIgnorar.append(auxTextosGerados.last!)
-                                colecaoDeTextos.append(LinhaDePalavras(palavras: auxTextosGerados))
+                                modelo.palavrasParaIgnorarData.append(auxTextosGerados.last!)
+                                modelo.colecaoDeLinhasData.append(LinhaDePalavras(palavras: auxTextosGerados))
                                 auxTextosGerados.removeAll()
-                                print(colecaoDeTextos)
+                                print(modelo.colecaoDeLinhasData)
                                 
                             }
                         } label: {
@@ -102,19 +95,6 @@ struct ProblemasView: View {
             }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button {
-                    addBrainStorm(
-                        tipo: tipo,
-                        titulo: titulo,
-                        palavraEntrada: textoEntrada,
-                        palavraGerando: textoGerando,
-                        recorteTematico: recorteTematico,
-                        colecaoDeLinhas: colecaoDeTextos,
-                        palavrasParaIgnorar: textosParaIgnorar
-                    )
-                } label: {
-                    Image(systemName: "checkmark.circle.fill")
-                }
                 
             }
             
@@ -134,23 +114,9 @@ struct ProblemasView: View {
         .buttonStyle(PlainButtonStyle())
         }
     
-    func addBrainStorm(
-        tipo: String,
-        titulo: String,
-        palavraEntrada: String,
-        palavraGerando: Palavra,
-        recorteTematico: String,
-        colecaoDeLinhas: [LinhaDePalavras],
-        palavrasParaIgnorar: [Palavra]
-    ) {
-        
-        let problema = GeracaoData(tipo: tipo, palavrasGeradas: recorteTematico, tituloData: titulo, palavraEntradaData: palavraEntrada, palavraGerandoData: palavraGerando, recorteTematicoData: recorteTematico, colecaoDeLinhasData: colecaoDeLinhas, palavrasParaIgnorarData: palavrasParaIgnorar)
-        modelContext.insert(problema)
-        
-    }
     }
 
-
-#Preview {
-    ProblemasView(tipo: "Conexoes", titulo: "oi", textoEntrada: "como resolver cachorro", recorteTematico: "passeio")
-}
+//
+//#Preview {
+//    ProblemasView(modelo.tipoData: "Conexoes", modelo.tituloData: "oi", modelo.palavraEntrada: "como resolver cachorro", modelo.recorteTematicoData: "passeio")
+//}
