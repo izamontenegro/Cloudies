@@ -83,8 +83,8 @@ struct CriarProjetoView: View {
                                 .frame(width: 357, height: 39)
                         )
                         .onChange(of: temaPrincipal) { newValue, _ in
-                            if newValue.count > 15 {
-                                temaPrincipal = String(newValue.prefix(15))
+                            if newValue.count > 35 {
+                                temaPrincipal = String(newValue.prefix(35))
                             }
                         }
                     
@@ -111,8 +111,8 @@ struct CriarProjetoView: View {
                                 .frame(width: 357, height: 39)
                         )
                         .onChange(of: recorteTematico) { newValue, _ in
-                            if newValue.count > 15 {
-                                recorteTematico = String(newValue.prefix(15))
+                            if newValue.count > 25 {
+                                recorteTematico = String(newValue.prefix(25))
                             }
                         }
                     
@@ -149,7 +149,7 @@ struct CriarProjetoView: View {
                         Text("Vamos lá!")
                             .font(.title2)
                     }
-                })
+                }) .disabled(nomeDoProjeto.isEmpty || temaPrincipal.isEmpty)
             }
             
             .onAppear {
