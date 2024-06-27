@@ -26,7 +26,7 @@ struct ContextMenuFavoritos: View {
             }
             
         } label: {
-            ZStack (alignment: .topTrailing) {
+            ZStack(alignment: .topTrailing) {
                 ZStack {
                     Text("\(essaPalavra.texto)")
                         .frame(width: 114)
@@ -45,11 +45,6 @@ struct ContextMenuFavoritos: View {
                 }
                 if essaPalavra.isFavorite {
                     Image("favRosa")
-                        .frame(maxWidth: 26, maxHeight: 29)
-                        .offset(x: 10, y: -10)
-                }
-                else if essaPalavra.isGeneration {
-                    Image("raioGerado")
                         .frame(maxWidth: 26, maxHeight: 29)
                         .offset(x: 10, y: -10)
                 }
