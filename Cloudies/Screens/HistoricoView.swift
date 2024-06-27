@@ -4,7 +4,6 @@
 //
 //  Created by Izadora de Oliveira Albuquerque Montenegro on 14/06/24.
 //
-
 import SwiftUI
 import SwiftData
 
@@ -37,19 +36,8 @@ struct HistoricoView: View {
                             default:
                                 "VERMELHO"
                             }
-                            
-                        }(),
-                        texto: "\(geracao.palavraEntradaData)",
-                        titulo: "\(geracao.tituloData)"
-                    )
-
-                    .padding(.bottom, -35)
-                }
-                
-                
-                        
-                    
-                
+                        }(), texto: "\(geracao.palavrasGeradas)", titulo: "\(geracao.tituloData)")
+                        .padding(.bottom, -35)
                     }
                                        
     
@@ -73,12 +61,17 @@ struct HistoricoView: View {
             .padding(.top, 20)
             .searchable(text: $searchText, prompt: "Procurando projetos hihihi")
         }
-                
+        .navigationTitle("Histórico")
+    }
+    
+    var searchResults: [GeracaoData] {
+        if searchText.isEmpty {
+            return geracoesData
+        } else {
+            return geracoesData.filter { $0.tituloData.localizedCaseInsensitiveContains(searchText) }
+        }
     }
 }
-    
-    
-
 
 #Preview {
     HistoricoView()

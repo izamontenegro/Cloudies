@@ -46,7 +46,7 @@ struct ProblemasView: View {
                             .padding(.top, -60)
                         Text("texto palavrinha")
                             .font(.title3)
-                            .padding(.trailing, 200)
+                            .padding(.trailing, 215)
                             .padding(.bottom, 90)
                     }
                     .padding(.bottom)
@@ -110,6 +110,7 @@ struct ProblemasView: View {
         }
         .navigationTitle(nomeProjeto)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar(.hidden, for: .tabBar)
         .buttonStyle(PlainButtonStyle())
         }
     

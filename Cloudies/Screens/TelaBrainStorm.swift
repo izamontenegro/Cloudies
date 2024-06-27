@@ -29,26 +29,25 @@ struct TelaBrainStorm: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                ZStack {
+                ZStack(alignment: .top) {
                     Rectangle()
-                        .frame(height: 200)
+                        .containerRelativeFrame(.vertical, count: 4, spacing: 0)
                         .foregroundStyle(.white)
-                        .padding(.top, -250)
+                        .ignoresSafeArea(edges: [.top])
                     Image("nuvemTopo")
-                        .padding(.leading, 110)
-                        .padding(.top, -60)
+                        .containerRelativeFrame(.horizontal)
+                        .clipped()
                     
                     VStack {
                         Text(brainstorm.palavraEntradaData)
                             .font(.title)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.leading, -180)
-                            .padding(.top, 20)
-                        Text(palavrasDeGeracao)
+                            .fontWeight(.bold)
+                            .padding(.horizontal)
+                        Text(palavraEntrada + palavrasDeGeracao)
                             .font(.title3)
-                            .padding(.leading, -180)
-                            .padding(.bottom, 90)
+                            .padding(.horizontal)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                 }
                 
@@ -86,14 +85,26 @@ struct TelaBrainStorm: View {
                     }
                     
                 }
+                
             }
             .navigationBarTitle("\(brainstorm.tituloData)")
             .navigationBarTitleDisplayMode(.inline)
             
         }
-        func botaoNuvem() {
+        .navigationBarTitle("\(titulo)")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
+        
+    }
+    func botaoNuvem() {
+        
+        Task {
             
-            Task {
+            var indexChaveI: Int = -1
+            var indexChaveJ: Int = -1
+            var parar = false
+            var pontinhos: Bool = true
+            for i in 0..<colecaoDeLinhas.count {
                 
                 var indexChaveI: Int = -1
                 var indexChaveJ: Int = -1
@@ -115,10 +126,8 @@ struct TelaBrainStorm: View {
                             
                         }
                         
-                        if parar == true {
-                            break
-                        }
                     }
+                    
                     if parar == true {
                         break
                     }

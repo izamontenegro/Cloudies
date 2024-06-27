@@ -24,35 +24,34 @@ struct OnBoardingg: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .frame(width: 358, height: 321)
+                        .frame(width: 368, height: 351)
                         .foregroundStyle(.AZUL)
                     
-                    Image("onBoardingImage")
-                    
-                        .padding(.top, -20)
+                    Image("ilustracaoOnboarding")
                 }
-                
-                Text("Boas vindas ao Cloudies!")
-                    .font(.title)
-                    .padding(.trailing, 54)
+                .padding()
                 
                 HStack {
-                    Rectangle()
-                        .frame(width: 62, height: 171)
-                        .foregroundStyle(.gray)
-                    Text("Apresentação do App: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.")
-                        .frame(width: 281, height: 168, alignment: .leading)
+                    Image("tijolo")
+                    VStack { Text("Boas vindas ao Cloudies!")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.trailing, 54)
+                        Text("Aqui você vai encontrar ideias incríveis para os seus projetos a partir das suas próprias ideias! Basta digitar palavras-chave e receber sugestões que vão turbinar sua criatividade.")
+                            .font(.callout)
+                            .frame(width: 257, alignment: .leading)
+                    }
                 }
                 
                 NavigationLink(destination: OnBoardingg2()) {
                     Text("Próximo")
                         .font(.footnote)
                     
-                    .fontWeight(.medium)
+                        .fontWeight(.medium)
                         .foregroundStyle(.black)
                         .frame(width: 171, height: 28)
                         .background(.white)
@@ -86,7 +85,6 @@ struct OnBoardingg2: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
 
     var body: some View {
-        NavigationView {
             VStack {
                 ZStack {
                     Rectangle()
@@ -106,7 +104,6 @@ struct OnBoardingg2: View {
                         .font(.footnote)
                 }
                 .padding(.top, 10)
-                
                 HStack(spacing: 23) {
                     VStack(spacing: 31) {
                         Image("gerarNuvem")
@@ -158,7 +155,7 @@ struct OnBoardingg2: View {
                 .padding(.top, 40)
                 .padding(.bottom, 15)
             }
-        }
+        
         .navigationBarBackButtonHidden(true)
     }
 }

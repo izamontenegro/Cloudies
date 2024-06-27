@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardsHistorico: View {
     @State var cor: String = ""
+    @State var ferramenta: String = ""
     @State var texto: String = ""
     @State var titulo: String = ""
     
@@ -16,8 +17,9 @@ struct CardsHistorico: View {
         VStack {
             Text(titulo)
                 .font(.title2)
+                .frame(maxWidth: 370, alignment: .leading)
                 .padding(.top, 15)
-                .padding(.trailing, 275)
+                .padding(.leading)
             Text(texto)
                 .font(.subheadline)
                 .frame(maxWidth: 370, alignment: .leading)
@@ -27,11 +29,27 @@ struct CardsHistorico: View {
         .frame(width: 358.23, height: 104)
         .background(Color(cor))
         .cornerRadius(20)
+        .shadow(radius: 4)
         
+        .onAppear {
+            decidircor()
+        }
     }
-  
+    
+    private func decidircor() {
+        switch ferramenta {
+        case "Brainstorm":
+            cor = "AZUL"
+        case "Problematicas":
+            cor = "AMARELO"
+        case "Conexoes":
+            cor = "ROSA"
+        default:
+            cor = "AZUL"
+        }
+    }
 }
 
 #Preview {
-    CardsHistorico(cor: "AZUL", texto: "Qualquer bosta", titulo: "Coisa")
+    CardsHistorico(ferramenta: "Conexoes", texto: "Qualquer bosta", titulo: "Coisa")
 }
