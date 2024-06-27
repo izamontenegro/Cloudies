@@ -13,10 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         if isOnboardingComplete {
-            MainView()
+            OnBoardingg0()
             
         } else {
-            OnBoardingg0()
+            MainView()
+            
         }
     }
 }
@@ -41,28 +42,28 @@ struct OnBoardingg0: View {
                     .font(.body)
                     .multilineTextAlignment(.center)
                 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 50)
-                        .foregroundStyle(.cinzaControl)
-                        .frame(width: 68, height: 24)
-                    HStack {
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                            .opacity(0.1)
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                            .opacity(0.1)
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                            .opacity(0.1)
-                    }
-                }
+//                ZStack {
+//                    RoundedRectangle(cornerRadius: 50)
+//                        .foregroundStyle(.cinzaControl)
+//                        .frame(width: 68, height: 24)
+//                    HStack {
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                            .opacity(0.1)
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                            .opacity(0.1)
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                            .opacity(0.1)
+//                    }
+//                }
                 
                 .padding(.top, 35)
                 NavigationLink(destination: OnBoardingg()) {
@@ -105,28 +106,28 @@ struct OnBoardingg: View {
                     .font(.body)
                     .multilineTextAlignment(.center)
                 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 50)
-                        .foregroundStyle(.cinzaControl)
-                        .frame(width: 68, height: 24)
-                    HStack {
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                            .opacity(0.1)
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                            .opacity(0.1)
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundStyle(.black)
-                            .opacity(0.1)
-                    }
-                }
+//                ZStack {
+//                    RoundedRectangle(cornerRadius: 50)
+//                        .foregroundStyle(.cinzaControl)
+//                        .frame(width: 68, height: 24)
+//                    HStack {
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                            .opacity(0.1)
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                            .opacity(0.1)
+//                        Circle()
+//                            .frame(width: 8)
+//                            .foregroundStyle(.black)
+//                            .opacity(0.1)
+//                    }
+//                }
                 
                 .padding(.top, 35)
                 NavigationLink(destination: OnBoardingg2()) {
@@ -168,28 +169,28 @@ struct OnBoardingg2: View {
                 .font(.body)
                 .multilineTextAlignment(.center)
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 50)
-                    .foregroundStyle(.cinzaControl)
-                    .frame(width: 68, height: 24)
-                HStack {
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                        .opacity(0.1)
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                        .opacity(0.1)
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                        .opacity(0.1)
-                }
-            }
+//            ZStack {
+//                RoundedRectangle(cornerRadius: 50)
+//                    .foregroundStyle(.cinzaControl)
+//                    .frame(width: 68, height: 24)
+//                HStack {
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                        .opacity(0.1)
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                        .opacity(0.1)
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                        .opacity(0.1)
+//                }
+//            }
             
             .padding(.top, 35)
             NavigationLink(destination: OnBoardingg3()) {
@@ -216,45 +217,45 @@ struct OnBoardingg3: View {
 
     var body: some View {
             
-        VStack(alignment: .center, spacing: 40) {
+        VStack(alignment: .center, spacing: 80) {
             Text("Crie conexões temáticas")
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
-            Spacer()
+//            Spacer()
             Image("nuvemOnBoardingMultiplas")
                 .resizable()
                 .scaledToFit()
                 .ignoresSafeArea()
                 .padding(EdgeInsets(top: 0, leading: -30, bottom: 0, trailing: -30))
-            Spacer()
+//            Spacer()
             
             Text("Receba associações inesperadas e divertidas como as brisas soprando no verão")
                 .font(.body)
                 .multilineTextAlignment(.center)
         
-            ZStack {
-                RoundedRectangle(cornerRadius: 50)
-                    .foregroundStyle(.cinzaControl)
-                    .frame(width: 68, height: 24)
-                HStack {
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                        .opacity(0.1)
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                        .opacity(0.1)
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                        .opacity(0.1)
-                    Circle()
-                        .frame(width: 8)
-                        .foregroundStyle(.black)
-                }
-            }
+//            ZStack {
+//                RoundedRectangle(cornerRadius: 50)
+//                    .foregroundStyle(.cinzaControl)
+//                    .frame(width: 68, height: 24)
+//                HStack {
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                        .opacity(0.1)
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                        .opacity(0.1)
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                        .opacity(0.1)
+//                    Circle()
+//                        .frame(width: 8)
+//                        .foregroundStyle(.black)
+//                }
+//            }
             
             Button {
                 isOnboardingComplete = true
