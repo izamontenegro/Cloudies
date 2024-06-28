@@ -72,14 +72,14 @@ struct TelaBrainStorm: View {
                             isClicavel = false
                         }
                     }, label: {
-                        Botoes(cor: "BRANCO")
+                        Botoes(texto: "Gerar")
                     }).onChange(of: observador, botaoNuvem)
                         .disabled(isClicavel)
                     
                     Button {
                         isTyping.toggle()
                     } label: {
-                        Botoes(cor: "BRANCO", simbolo: "plus.bubble")
+                        Botoes(simbolo: "plus.bubble", texto: "Adicionar")
                     }
                     .sheet(isPresented: $isTyping) {
                         
