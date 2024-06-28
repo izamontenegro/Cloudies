@@ -23,6 +23,7 @@ struct TelaBrainStorm: View {
     @State var palavrasDeGeracao: String = ""
     @State private var observador: Bool = false
     
+    @State private var isTyping: Bool = false
     @Binding var navigationPath: NavigationPath
     
     var body: some View {
@@ -71,11 +72,15 @@ struct TelaBrainStorm: View {
                     }).onChange(of: observador, botaoNuvem)
                     
                     Button {
-                        //
+                        isTyping.toggle()
                     } label: {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
-                                    }
+                    .sheet(isPresented: $isTyping) {
+                        
+                        SheetAdicionarPalavras(linhaGeracao: $brainstorm.colecaoDeLinhasData)
+                    }
+                }
                 .padding(.top, 20)
             }
             
@@ -84,7 +89,7 @@ struct TelaBrainStorm: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)
-        .toolbar() {
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
                     navigationPath = NavigationPath()

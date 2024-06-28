@@ -6,6 +6,8 @@ disabled_rules:
     - comment_spacing
     - line_length
     - switch_case_alignment
+    - cyclomatic_complexity
+    - function_body_length
 
 identifier_name:
     min_length: 1

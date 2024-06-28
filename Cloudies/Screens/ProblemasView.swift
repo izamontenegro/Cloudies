@@ -21,6 +21,7 @@ struct ProblemasView: View {
     @State private var textoGerado: String = ""
     @State private var auxTextosGerados: [Palavra] = []
     @State private var respostaAI: String = ""
+    @State private var isTyping: Bool = false
     
     @Binding var navigationPath: NavigationPath
     var body: some View {
@@ -93,16 +94,20 @@ struct ProblemasView: View {
                     }
                     
                     Button {
-                        //
+                        isTyping.toggle()
                     } label: {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
+                    }
+                    .sheet(isPresented: $isTyping) {
+                        
+                        SheetAdicionarTextos(linhaGeracao: $modelo.colecaoDeLinhasData)
                     }
                 }
                 .padding(.top, 44)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
                 .toolbar(.hidden, for: .tabBar)
-                .toolbar() {
+                .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
                             navigationPath = NavigationPath()
