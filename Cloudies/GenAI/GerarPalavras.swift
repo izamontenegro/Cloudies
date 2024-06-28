@@ -8,6 +8,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
     var titulosPrompt: String = ""
     var textosPrompt: String = ""
     var prompt = ""
+    var erroPrompt = ""
     for palavra in palavrasUsadas {
         palavrasUsadasPrompt += ", \(palavra.texto)"
     }
@@ -18,6 +19,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
         
         switch tipoGeracao {
         case "BrainStorm":
+            erroPrompt = ", "
             prompt =
                 """
                 - Gere 2 objetos físicos relacionados à palavra "\(palavraChave.texto)".
@@ -28,7 +30,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                 - Gere, no total, APENAS 5 palavras, nada mais, e só use vírgula se for para separar uma palavra de outra
                 - Não inclua, sob quaisquer circunstancias as seguintes palavras, em especiais as últimas: [ \(palavrasUsadasPrompt) ]
                 - Se for impossível gerar ignorandos as acima, fuja do tema
-                - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: impossivel de gerar"
+                - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: Cloudies não consegue gerar mais problemáticas acerca desse tema"
                 """
         case "Problemas":
             for i in 0..<palavrasUsadas.count {
@@ -38,6 +40,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                     textosPrompt += "\(palavrasUsadas[i].texto), \n"
                 }
             }
+            erroPrompt = "|"
             prompt =
             """
             
@@ -49,7 +52,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
             - Não inclua, sob quaisquer circunstancias os seguintes titulos, em especiais os últimos: [ \(titulosPrompt) ]
             - Não inclua, sob quaisquer circunstancias as seguintes soluções, em especiais as últimas: [ \(textosPrompt) ]
             - Se for impossível gerar ignorandos as acima, fuja do tema
-            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: impossivel de gerar"
+            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro\(erroPrompt)Cloudies não consegue gerar mais problemáticas acerca desse tema"
             
             """//Prompt de problematica aqui
             
@@ -61,18 +64,20 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                     textosPrompt += "\(palavrasUsadas[i].texto), \n"
                 }
             }
+            erroPrompt = "|"
             prompt =
             """
             
-            - Gere uma, apenas uma solução para o problema \(palavraChave.texto)
+            - Gere uma, apenas uma proposta de solução já existentes para o problema \(palavraChave.texto)
             - Seguindo esse recorte temático: \(recorteTematico)
             - Gere o titulo, seguido de uma barra |, e então o texto ex: 'Titulo|Texto', e não formate o texto, apenas deixe-o limpo
             - Gere o títulos com, no máximo, 20 caracteres
             - Gere o texto com no máximo 50 caracteres
             - Não inclua, sob quaisquer circunstancias os seguintes titulos, em especiais os últimos: [ \(titulosPrompt) ]
-            - Não inclua, sob quaisquer circunstancias as seguintes soluções, em especiais as últimas: [ \(textosPrompt) ]
+            - Não inclua, sob
+            quaisquer circunstancias as seguintes soluções, em especiais as últimas: [ \(textosPrompt) ]
             - Se for impossível gerar ignorandos as acima, fuja do tema
-            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro: impossivel de gerar"
+            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro\(erroPrompt)Cloudies não consegue gerar mais soluções acerca desse tema"
             
             """//Prompt de problematica aqui
         default:
@@ -88,10 +93,11 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
             _ = text.replacingOccurrences(of: "\n", with: "")
             return text
         } else {
-            return "kkk" //Retornar o erro
+            
+            return "Erro\(erroPrompt)Cloudies não consegue gerar, espere um pouco e tente novametne" //Retornar o erro
         }
     } catch {
         print("Erro ao gerar conteúdo: \(error)")
-        return "kkk" //Inserir mensagem de erro
+        return "Erro: Cloudies não consegue gerar, espere um pouco e tente novametne" //Inserir mensagem de erro
     }
     }

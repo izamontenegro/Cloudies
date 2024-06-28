@@ -68,7 +68,7 @@ struct TelaBrainStorm: View {
                     Button(action: {
                         botaoNuvem()
                         isClicavel = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             isClicavel = false
                         }
                     }, label: {

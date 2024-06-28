@@ -18,3 +18,4 @@ struct CloudiesApp: App {
         .modelContainer(for: GeracaoData.self)
     }
 }
+
