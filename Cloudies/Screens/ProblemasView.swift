@@ -119,8 +119,17 @@ struct ProblemasView: View {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
                     .sheet(isPresented: $isTyping) {
+                        switch modelo.tipo {
+                        case "Problemas":
+                            SheetAdicionarTextos(linhaGeracao: $modelo.colecaoDeLinhasData)
+                        case "Conexoes":
+                            SheetAdicionarTextos(linhaGeracao: $modelo.colecaoDeLinhasData, ferramenta: "Conexao", cor: "ROSA")
+                        default:
+                            Color.VERMELHO
+                                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        }
                         
-                        SheetAdicionarTextos(linhaGeracao: $modelo.colecaoDeLinhasData)
+                        
                     }
                 }
                 .padding(.top, 44)

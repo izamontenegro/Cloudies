@@ -12,29 +12,96 @@ struct SheetAdicionarTextos: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var linhaGeracao: [LinhaDePalavras]
     @State private var palavras: [Palavra] = [Palavra(texto: ""), Palavra(texto: "")]
+    @State var ferramenta: String = "Problemas"
+    @State var cor: String = "AMARELO"
     
     var body: some View {
-        ForEach($palavras.indices, id: \.self) { i in
-            TextField("\(i == 0 ? "Titulo" : "Texto")", text: $palavras[i].texto)
-        }
-        
-        Button("Enviar") {
-            
-            for i in palavras.indices {
-                palavras[i].isFromUser.toggle()
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    
+                    switch ferramenta {
+                    case "Problemas":
+                        Image("TEXTOPROBLEMA")
+                            .padding(.top, 30)
+                    case "Conexao":
+                        Image("TEXTOCONEXAO")
+                            .padding(.top, 30)
+                    default:
+                        Image("")
+                    }
+                    
+                    Spacer()
+                    ForEach($palavras.indices, id: \.self) { i in
+                        VStack {
+                            if i == 0 {
+                                Text("Destaque")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .padding(.leading, -178)
+                                    .padding(.bottom, -5)
+                            } else {
+                                Text("Texto")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .padding(.leading, -178)
+                                    .padding(.bottom, -5)
+                            }
+                            
+                            TextField("\(i == 0 ? "Titulo" : "Texto")", text: $palavras[i].texto)
+                                .padding()
+                                .frame(width: 357, height: 39)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: 357, height: 39)
+                                )
+                        }
+                    }
+                    Button(action: {
+                        for i in palavras.indices {
+                            palavras[i].isFromUser.toggle()
+                        }
+                        
+                        linhaGeracao.append(LinhaDePalavras(palavras: palavras))
+                        
+                        dismiss()
+                        
+                    }, label: {
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 357, height: 63)
+                                .foregroundStyle(Color(cor))
+                                .shadow(radius: 4)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: 357, height: 63)
+                                )
+                            
+                            Text("Adicionar")
+                                .font(.title2)
+                        }
+                    })
+                    .padding(.top, 33)
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }.defaultScrollAnchor(.bottom)
+            .navigationTitle("Adicionar")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Voltar") {
+                        dismiss()
+                    }
+                }
+                }
             }
-            
-            linhaGeracao.append(LinhaDePalavras(palavras: palavras))
-            
-            dismiss()
-        }
-        .font(.title)
-        .padding()
-        .background(.black)
     }
     
 }
 
 //#Preview {
-//    sheetAdicionarTextos()
+//    SheetAdicionarTextos(linhaGeracao: <#Binding<[LinhaDePalavras]>#>)
 //}
