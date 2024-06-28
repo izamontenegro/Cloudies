@@ -36,4 +36,3 @@ struct SheetAdicionarPalavras: View {
         .background(.black)
     }
 }
-

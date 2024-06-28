@@ -41,31 +41,8 @@ struct OnBoardingg0: View {
                 Text("Aqui você vai encontrar inspirações  para seus projetos a partir das suas próprias ideias! Basta digitar palavras-chave e receber sugestões que vão turbinar sua criatividade.")
                     .font(.body)
                     .multilineTextAlignment(.center)
+                    .padding(.top, 35)
                 
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 50)
-//                        .foregroundStyle(.cinzaControl)
-//                        .frame(width: 68, height: 24)
-//                    HStack {
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                            .opacity(0.1)
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                            .opacity(0.1)
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                            .opacity(0.1)
-//                    }
-//                }
-                
-                .padding(.top, 35)
                 NavigationLink(destination: OnBoardingg()) {
                     Text("Próximo")
                         .font(.footnote)
@@ -105,31 +82,8 @@ struct OnBoardingg: View {
                 Text("Desenvolva sugestões para impulsionar o seu projeto inundando-o de criatividade.")
                     .font(.body)
                     .multilineTextAlignment(.center)
+                    .padding(.top, 35)
                 
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 50)
-//                        .foregroundStyle(.cinzaControl)
-//                        .frame(width: 68, height: 24)
-//                    HStack {
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                            .opacity(0.1)
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                            .opacity(0.1)
-//                        Circle()
-//                            .frame(width: 8)
-//                            .foregroundStyle(.black)
-//                            .opacity(0.1)
-//                    }
-//                }
-                
-                .padding(.top, 35)
                 NavigationLink(destination: OnBoardingg2()) {
                     Text("Próximo")
                         .font(.footnote)
@@ -168,31 +122,8 @@ struct OnBoardingg2: View {
             Text("Atinja a centelha que você precisa para melhorar o mundo na velocidade de um relâmpago")
                 .font(.body)
                 .multilineTextAlignment(.center)
+                .padding(.top, 35)
             
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 50)
-//                    .foregroundStyle(.cinzaControl)
-//                    .frame(width: 68, height: 24)
-//                HStack {
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                        .opacity(0.1)
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                        .opacity(0.1)
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                        .opacity(0.1)
-//                }
-//            }
-            
-            .padding(.top, 35)
             NavigationLink(destination: OnBoardingg3()) {
                 Text("Próximo")
                     .font(.footnote)
@@ -222,40 +153,16 @@ struct OnBoardingg3: View {
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
-//            Spacer()
+
             Image("nuvemOnBoardingMultiplas")
                 .resizable()
                 .scaledToFit()
                 .ignoresSafeArea()
                 .padding(EdgeInsets(top: 0, leading: -30, bottom: 0, trailing: -30))
-//            Spacer()
-            
+
             Text("Receba associações inesperadas e divertidas como as brisas soprando no verão")
                 .font(.body)
                 .multilineTextAlignment(.center)
-        
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 50)
-//                    .foregroundStyle(.cinzaControl)
-//                    .frame(width: 68, height: 24)
-//                HStack {
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                        .opacity(0.1)
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                        .opacity(0.1)
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                        .opacity(0.1)
-//                    Circle()
-//                        .frame(width: 8)
-//                        .foregroundStyle(.black)
-//                }
-//            }
             
             Button {
                 isOnboardingComplete = true

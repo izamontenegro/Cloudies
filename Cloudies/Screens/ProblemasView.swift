@@ -102,7 +102,7 @@ struct ProblemasView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
                 .toolbar(.hidden, for: .tabBar)
-                .toolbar() {
+                .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
                             navigationPath = NavigationPath()

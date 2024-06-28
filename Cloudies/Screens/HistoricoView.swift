@@ -64,9 +64,9 @@ struct HistoricoView: View {
                     .padding(.top, 190)
                 }
             }
-            }
-            .navigationTitle("Histórico")
         }
+        .navigationTitle("Histórico")
+    }
         
         var searchResults: [GeracaoData] {
             if searchText.isEmpty {

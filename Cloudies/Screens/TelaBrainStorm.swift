@@ -76,11 +76,11 @@ struct TelaBrainStorm: View {
                     } label: {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
-                    .sheet(isPresented: $isTyping, content: {
+                    .sheet(isPresented: $isTyping) {
                         
                         SheetAdicionarPalavras(linhaGeracao: $brainstorm.colecaoDeLinhasData)
-                    })
-                                    }
+                    }
+                }
                 .padding(.top, 20)
             }
             
@@ -89,7 +89,7 @@ struct TelaBrainStorm: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)
-        .toolbar() {
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
                     navigationPath = NavigationPath()

@@ -73,14 +73,13 @@ struct CriacaoView: View {
                     Color.red
                 }
             }
-                }
+        }
                 
         }
         .navigationTitle("Criação")
         .navigationBarTitleDisplayMode(.large)
-            }
     }
-
+}
 
 //#Preview {
 //    CriacaoView()
