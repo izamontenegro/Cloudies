@@ -18,7 +18,7 @@ struct SheetAdicionarPalavras: View {
                 TextField(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/, text: $palavras[i].texto)
             }
         }
-        Button("Press to send") {
+        Button("Enviar") {
             palavras.removeAll { palavra in
                 palavra.texto == ""
             }
