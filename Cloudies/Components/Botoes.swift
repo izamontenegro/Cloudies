@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct Botoes: View {
-    @State var cor: String = "ROSA"
-    @State var simbolo: String = "arrow.counterclockwise"
+    @State var simbolo: String = "cloud.drizzle"
+    @State var texto: String = "Gerar"
 
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .frame(width: 170.33, height: 76.45)
-            .foregroundStyle(Color(cor))
+            .foregroundStyle(.BRANCO)
             .overlay {
                 RoundedRectangle(cornerRadius: 20)
                 .stroke(.black, lineWidth: 2)
-                Image(systemName: simbolo)
-                    .font(.system(size: 31))
-                    .foregroundStyle(.black)
+                VStack {
+                    Image(systemName: simbolo)
+                        .font(.system(size: 31))
+                        .foregroundStyle(.black)
+                    Text(texto)
+                        .font(.callout)
+                }
             }
     }
 }

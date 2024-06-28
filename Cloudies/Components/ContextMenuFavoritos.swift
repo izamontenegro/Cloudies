@@ -15,14 +15,14 @@ struct ContextMenuFavoritos: View {
             Button {
                 essaPalavra.isFavorite.toggle()
             } label: {
-                Label("Favoritos", systemImage: essaPalavra.isFavorite ? "star.fill" : "star")
+                Label("Favoritos", systemImage: essaPalavra.isFavorite ? "heart.fill" : "heart")
             }
             
             Button {
                 essaPalavra.isGeneration.toggle()
                 observador.toggle()
             } label: {
-                Label("Gerar Novos", systemImage: essaPalavra.isGeneration ? "bolt.fill" : "bolt")
+                Label("Gerar Novos", systemImage: essaPalavra.isGeneration ? "cloud.drizzle.fill" : "cloud.drizzle")
             }
             
         } label: {

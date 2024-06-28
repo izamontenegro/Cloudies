@@ -101,13 +101,13 @@ struct ProblemasView: View {
                             
                         }
                     } label: {
-                        Botoes(cor: "BRANCO")
+                        Botoes(texto: "Gerar")
                     }
                     
                     Button {
                         isTyping.toggle()
                     } label: {
-                        Botoes(cor: "BRANCO", simbolo: "plus.bubble")
+                        Botoes(simbolo: "plus.bubble", texto: "Adicionar")
                     }
                     .sheet(isPresented: $isTyping) {
                         switch modelo.tipo {
