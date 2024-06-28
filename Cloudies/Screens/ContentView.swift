@@ -44,6 +44,29 @@ struct OnBoardingg0: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 35)
                 
+                ZStack {
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundStyle(.cinzaControl)
+                        .frame(width: 68, height: 24)
+                    HStack {
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                    }
+                }}
+                
                 NavigationLink(destination: OnBoardingg()) {
                     Text("Próximo")
                         .font(.footnote)
@@ -62,7 +85,7 @@ struct OnBoardingg0: View {
             .navigationBarBackButtonHidden(true)
         }
     }
-}
+
 
 struct OnBoardingg: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
@@ -85,6 +108,29 @@ struct OnBoardingg: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 35)
                 
+                ZStack {
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundStyle(.cinzaControl)
+                        .frame(width: 68, height: 24)
+                    HStack {
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                        
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundStyle(.black)
+                            .opacity(0.1)
+                    }
+                }
                 NavigationLink(destination: OnBoardingg2()) {
                     Text("Próximo")
                         .font(.footnote)
@@ -124,7 +170,29 @@ struct OnBoardingg2: View {
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .padding(.top, 35)
-            
+            ZStack {
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundStyle(.cinzaControl)
+                    .frame(width: 68, height: 24)
+                HStack {
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                    
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
+                }
+            }
             NavigationLink(destination: OnBoardingg3()) {
                 Text("Próximo")
                     .font(.footnote)
@@ -146,25 +214,47 @@ struct OnBoardingg2: View {
 
 struct OnBoardingg3: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
-
+    
     var body: some View {
-            
+        
         VStack(alignment: .center, spacing: 80) {
             Text("Crie conexões temáticas")
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
-
+            
             Image("nuvemOnBoardingMultiplas")
                 .resizable()
                 .scaledToFit()
                 .ignoresSafeArea()
                 .padding(EdgeInsets(top: 0, leading: -30, bottom: 0, trailing: -30))
-
+            
             Text("Receba associações inesperadas e divertidas como as brisas soprando no verão")
                 .font(.body)
                 .multilineTextAlignment(.center)
-            
+            ZStack {
+                RoundedRectangle(cornerRadius: 50)
+                    .foregroundStyle(.cinzaControl)
+                    .frame(width: 68, height: 24)
+                HStack {
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                        .opacity(0.1)
+                    Circle()
+                        .frame(width: 8)
+                        .foregroundStyle(.black)
+                    
+                }
+            }
             Button {
                 isOnboardingComplete = true
             } label: {
@@ -182,10 +272,10 @@ struct OnBoardingg3: View {
         }
         .padding(30)
         .navigationBarBackButtonHidden(true)
-            
-        }
+        
+    }
     
-            }
+}
 
 #Preview {
     ContentView()

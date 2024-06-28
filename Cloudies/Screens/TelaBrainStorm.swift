@@ -32,26 +32,26 @@ struct TelaBrainStorm: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                ZStack {
+                ZStack(alignment: .top) {
                     Rectangle()
-                        .frame(height: 200)
+                        .containerRelativeFrame(.vertical, count: 4, spacing: 0)
                         .foregroundStyle(.white)
-                        .padding(.top, -250)
+                        .ignoresSafeArea(edges: [.top])
                     Image("nuvemTopo")
-                        .padding(.leading, 110)
-                        .padding(.top, -60)
+                        .containerRelativeFrame(.horizontal)
+                        .clipped()
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text(brainstorm.palavraEntradaData)
                             .font(.title)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.leading, -180)
-                            .padding(.top, 20)
-                        Text(palavrasDeGeracao)
+                            .fontWeight(.bold)
+                            .padding(.horizontal)
+                        Text(brainstorm.palavraGerandoData.texto)
                             .font(.title3)
-                            .padding(.leading, -180)
-                            .padding(.bottom, 90)
+                            .padding(.horizontal)
                     }
+                    .padding(.top)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                 }
                 

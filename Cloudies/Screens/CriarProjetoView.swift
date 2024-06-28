@@ -21,6 +21,7 @@ struct CriarProjetoView: View {
     @State var recorteTematico: String = ""
     @Binding var brainstorm: GeracaoData
     @State var navegar = false
+    @State var limiteCaract: Int = 25
     
     var body: some View {
         ScrollView {
@@ -43,9 +44,8 @@ struct CriarProjetoView: View {
                 case "Conexao":
                     Image("imagemConexao")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 600)
-                        .padding(.vertical, 30)
+                        .aspectRatio(contentMode: .fill)
+                        .padding(.vertical, 60)
                 default:
                     ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
                 }
@@ -65,9 +65,10 @@ struct CriarProjetoView: View {
                                     .frame(width: 357, height: 39)
                             )
                             .onChange(of: nomeDoProjeto) { newValue, _ in
-                                if newValue.count > 25 {
-                                    nomeDoProjeto = String(newValue.prefix(25))
-                                }
+                                    if newValue.count > limiteCaract {
+                                        nomeDoProjeto = String(newValue.prefix(limiteCaract))
+                                    }
+                                
                             }
                         
                         Text("Nome do projeto. Ex.: Projeto de Arquitetura.")
@@ -120,11 +121,6 @@ struct CriarProjetoView: View {
                                     .stroke(Color.black, lineWidth: 1)
                                     .frame(width: 357, height: 39)
                             )
-                            .onChange(of: recorteTematico) { newValue, _ in
-                                if newValue.count > 25 {
-                                    recorteTematico = String(newValue.prefix(25))
-                                }
-                            }
                         
                         Text("Contexto do tema. Ex: Paisagismo, irrigação, praticidade.")
                         
@@ -162,14 +158,13 @@ struct CriarProjetoView: View {
                     }) .disabled(nomeDoProjeto.isEmpty || temaPrincipal.isEmpty)
                 }
             }
-            .defaultScrollAnchor(.bottom)
             
             .onAppear {
                 brainstorm = GeracaoData()
             }
             .buttonStyle(PlainButtonStyle())
         }
-        
+        .defaultScrollAnchor(.bottom)
         .navigationTitle(ferramenta)
         .toolbar(.hidden, for: .tabBar)
     }
