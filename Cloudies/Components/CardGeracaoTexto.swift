@@ -38,14 +38,14 @@ struct CardGeracaoTexto: View {
             
             if isFavorite {
                 Image("favRosa")
-                    .frame(maxWidth: 26, maxHeight: 29)
-                    .offset(x: 10, y: -10)
+                    .frame(maxWidth: 29, maxHeight: 29)
+                    .offset(x: 2, y: -10)
             }
             
             if isFromUser {
                 Image("inputRoxo")
                     .frame(maxWidth: 28, maxHeight: 25)
-                    .offset(x: 10, y: 10)
+                    .offset(x: 2, y: 55)
             }
         }
     }
