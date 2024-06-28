@@ -84,7 +84,7 @@ struct ProblemasView: View {
                     Button {
                         
                         isClicavel = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             isClicavel = false
                         }
                         
