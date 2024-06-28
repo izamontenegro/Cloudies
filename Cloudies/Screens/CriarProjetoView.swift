@@ -23,134 +23,146 @@ struct CriarProjetoView: View {
     @State var navegar = false
     
     var body: some View {
-        VStack {
-            switch imagem {
-            case "BrainStorm":
-                Image("imagemBrainstorm")
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-            case "Problemas":
-                Image("imagemProblematicas")
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-            case "Conexao":
-                Image("imagemConexao")
-                    .padding(.bottom, 10)
-            default:
-                ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
-            }
-            
-            VStack(spacing: 12) {
-                VStack {
-                    Text("Nome do projeto")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .padding(.leading, -178)
-                    TextField("", text: $nomeDoProjeto)
-                        .padding()
-                        .frame(width: 357, height: 39)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.black, lineWidth: 1)
-                                .frame(width: 357, height: 39)
-                        )
-                        .onChange(of: nomeDoProjeto) { newValue, _ in
-                            if newValue.count > 25 {
-                                nomeDoProjeto = String(newValue.prefix(25))
-                            }
-                        }
-                    
-                    Text("Nome do projeto. Ex.: Projeto de Arquitetura.")
-                    
-                        .padding(.leading, -81)
-                        .font(.footnote)
-                        .foregroundStyle(.cinzaCriacao)
+        ScrollView {
+            VStack {
+                switch imagem {
+                case "BrainStorm":
+                    Image("imagemBrainstorm")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 276.48)
+                        .padding(.top, 20)
+                        .padding(.bottom, 10)
+                case "Problemas":
+                    Image("imagemProblematicas")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 290.06)
+                        .padding(.top, 20)
+                        .padding(.bottom, 10)
+                case "Conexao":
+                    Image("imagemConexao")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 600)
+                        .padding(.vertical, 30)
+                default:
+                    ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
                 }
                 
-                VStack {
-                    Text("Tema Principal")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .padding(.leading, -178)
-                    
-                    TextField("", text: $temaPrincipal)
-                    
-                        .padding()
-                        .frame(width: 357, height: 39)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.black, lineWidth: 1)
-                                .frame(width: 357, height: 39)
-                        )
-                        .onChange(of: temaPrincipal) { newValue, _ in
-                            if newValue.count > 35 {
-                                temaPrincipal = String(newValue.prefix(35))
-                            }
-                        }
-                    
-                    Text("Tema em que haverá exploração de conteúdo. Ex: Jardim.")
-                    
-                        .padding(.leading, -8)
-                        .font(.footnote)
-                        .foregroundStyle(.cinzaCriacao)
-                }
-                
-                VStack {
-                    Text("Recorte Temático")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .padding(.leading, -177)
-                    
-                    TextField("", text: $recorteTematico)
-                    
-                        .padding()
-                        .frame(width: 357, height: 39)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.black, lineWidth: 1)
-                                .frame(width: 357, height: 39)
-                        )
-                        .onChange(of: recorteTematico) { newValue, _ in
-                            if newValue.count > 25 {
-                                recorteTematico = String(newValue.prefix(25))
-                            }
-                        }
-                    
-                    Text("Contexto do tema. Ex: Paisagismo, irrigação, praticidade.")
-                    
-                        .padding(.leading, -8)
-                        .font(.footnote)
-                        .foregroundStyle(.cinzaCriacao)
-                }
-                .padding(.bottom, 22)
-                
-                Button(action: {
-                    brainstorm.palavraEntradaData = temaPrincipal
-                    brainstorm.tituloData = nomeDoProjeto
-                    brainstorm.tipo = ferramenta
-                    brainstorm.recorteTematicoData = recorteTematico
-                    modelContext.insert(brainstorm)
-                    navigationPath.append(ferramenta)
-                    navegar = true
-                    
-                }, label: {
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 357, height: 63)
-                            .foregroundStyle(Color(cor))
-                            .shadow(radius: 4)
+                VStack(spacing: 12) {
+                    VStack {
+                        Text("Nome do projeto")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.leading, -178)
+                        TextField("", text: $nomeDoProjeto)
+                            .padding()
+                            .frame(width: 357, height: 39)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.black, lineWidth: 1)
-                                    .frame(width: 357, height: 63)
+                                    .frame(width: 357, height: 39)
                             )
+                            .onChange(of: nomeDoProjeto) { newValue, _ in
+                                if newValue.count > 25 {
+                                    nomeDoProjeto = String(newValue.prefix(25))
+                                }
+                            }
                         
-                        Text("Vamos lá!")
-                            .font(.title2)
+                        Text("Nome do projeto. Ex.: Projeto de Arquitetura.")
+                        
+                            .padding(.leading, -81)
+                            .font(.footnote)
+                            .foregroundStyle(.cinzaCriacao)
                     }
-                }) .disabled(nomeDoProjeto.isEmpty || temaPrincipal.isEmpty)
+                    
+                    VStack {
+                        Text("Tema Principal")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.leading, -178)
+                        
+                        TextField("", text: $temaPrincipal)
+                        
+                            .padding()
+                            .frame(width: 357, height: 39)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.black, lineWidth: 1)
+                                    .frame(width: 357, height: 39)
+                            )
+                            .onChange(of: temaPrincipal) { newValue, _ in
+                                if newValue.count > 35 {
+                                    temaPrincipal = String(newValue.prefix(35))
+                                }
+                            }
+                        
+                        Text("Tema em que haverá exploração de conteúdo. Ex: Jardim.")
+                        
+                            .padding(.leading, -8)
+                            .font(.footnote)
+                            .foregroundStyle(.cinzaCriacao)
+                    }
+                    
+                    VStack {
+                        Text("Recorte Temático")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.leading, -177)
+                        
+                        TextField("", text: $recorteTematico)
+                        
+                            .padding()
+                            .frame(width: 357, height: 39)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.black, lineWidth: 1)
+                                    .frame(width: 357, height: 39)
+                            )
+                            .onChange(of: recorteTematico) { newValue, _ in
+                                if newValue.count > 25 {
+                                    recorteTematico = String(newValue.prefix(25))
+                                }
+                            }
+                        
+                        Text("Contexto do tema. Ex: Paisagismo, irrigação, praticidade.")
+                        
+                            .padding(.leading, -8)
+                            .font(.footnote)
+                            .foregroundStyle(.cinzaCriacao)
+                    }
+                    .padding(.bottom, 22)
+                    
+                    Button(action: {
+                        brainstorm.palavraEntradaData = temaPrincipal
+                        brainstorm.tituloData = nomeDoProjeto
+                        brainstorm.tipo = ferramenta
+                        brainstorm.recorteTematicoData = recorteTematico
+                        modelContext.insert(brainstorm)
+                        navigationPath.append(ferramenta)
+                        navegar = true
+                        
+                    }, label: {
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 357, height: 63)
+                                .foregroundStyle(Color(cor))
+                                .shadow(radius: 4)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: 357, height: 63)
+                                )
+                            
+                            Text("Vamos lá!")
+                                .font(.title2)
+                        }
+                    }) .disabled(nomeDoProjeto.isEmpty || temaPrincipal.isEmpty)
+                }
             }
+            .defaultScrollAnchor(.bottom)
             
             .onAppear {
                 brainstorm = GeracaoData()

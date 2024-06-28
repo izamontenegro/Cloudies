@@ -34,6 +34,7 @@ struct OnBoardingg0: View {
                 
                 Image("primeiroOn")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity)
                     .ignoresSafeArea()
                     .scaledToFill()
