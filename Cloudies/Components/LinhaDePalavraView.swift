@@ -12,6 +12,7 @@ struct Palavra: Identifiable, Codable, Hashable {
     var texto: String
     var isFavorite: Bool = false
     var isGeneration: Bool = false
+    var isFromUser: Bool = false
 
 }
 

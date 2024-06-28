@@ -34,8 +34,9 @@ struct ContextMenuFavoritos: View {
                         .font(.title3)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(essaPalavra.isFromUser ? .green : .white)
                                 .shadow(radius: 4)
+                                
                             //editar aqui
                         }
                         .overlay {

@@ -23,6 +23,7 @@ struct TelaBrainStorm: View {
     @State var palavrasDeGeracao: String = ""
     @State private var observador: Bool = false
     
+    @State private var isTyping: Bool = false
     @Binding var navigationPath: NavigationPath
     
     var body: some View {
@@ -71,10 +72,14 @@ struct TelaBrainStorm: View {
                     }).onChange(of: observador, botaoNuvem)
                     
                     Button {
-                        //
+                        isTyping.toggle()
                     } label: {
                         Botoes(cor: "BRANCO", simbolo: "plus.bubble")
                     }
+                    .sheet(isPresented: $isTyping, content: {
+                        
+                        SheetAdicionarPalavras(linhaGeracao: $brainstorm.colecaoDeLinhasData)
+                    })
                                     }
                 .padding(.top, 20)
             }
