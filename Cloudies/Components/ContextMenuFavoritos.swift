@@ -34,7 +34,7 @@ struct ContextMenuFavoritos: View {
                         .font(.title3)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundStyle(essaPalavra.isFromUser ? .green : .white)
+                                .foregroundStyle(.white)
                                 .shadow(radius: 4)
                                 
                             //editar aqui
@@ -48,6 +48,12 @@ struct ContextMenuFavoritos: View {
                     Image("favRosa")
                         .frame(maxWidth: 26, maxHeight: 29)
                         .offset(x: 10, y: -10)
+                }
+                
+                if essaPalavra.isFromUser {
+                    Image("inputRoxo")
+                        .frame(maxWidth: 28, maxHeight: 25)
+                        .offset(x: 10, y: 10)
                 }
                 
             }
