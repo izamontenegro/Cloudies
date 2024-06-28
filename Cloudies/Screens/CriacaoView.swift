@@ -57,7 +57,12 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .shadow(radius: 7)
+                    
                 }
+                Text("Alimentado pela API do Gemini")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                    .padding(.top, 15)
             }
             .navigationDestination(for: String.self) { name in
                 switch name {
