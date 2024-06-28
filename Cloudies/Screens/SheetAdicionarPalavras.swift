@@ -17,7 +17,11 @@ struct SheetAdicionarPalavras: View {
             ScrollView {
                 VStack {
                     Image("imagemBrainstorm")
-
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 276.48)
+                        .padding(.top, 20)
+                        .padding(.bottom, 10)
                     VStack {
                         ForEach($palavras.indices, id: \.self) { i in
                             Text("Ideia \(i+1)")

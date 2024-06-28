@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "primeiroOn.png",
+      "filename" : "LALALLALALA.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,6 +10,7 @@
       "scale" : "2x"
     },
     {
+      "filename" : "LALALALALALA.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
