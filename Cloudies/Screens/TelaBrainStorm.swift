@@ -22,6 +22,7 @@ struct TelaBrainStorm: View {
     @State var colecaoDePalavras: [Palavra] = []
     @State var palavrasDeGeracao: String = ""
     @State private var observador: Bool = false
+    @State private var isClicavel = false
     
     @State private var isTyping: Bool = false
     @Binding var navigationPath: NavigationPath
@@ -66,10 +67,14 @@ struct TelaBrainStorm: View {
                 HStack(spacing: 13.51) {
                     Button(action: {
                         botaoNuvem()
-                        
+                        isClicavel = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            isClicavel = false
+                        }
                     }, label: {
                         Botoes(cor: "BRANCO")
                     }).onChange(of: observador, botaoNuvem)
+                        .disabled(isClicavel)
                     
                     Button {
                         isTyping.toggle()
