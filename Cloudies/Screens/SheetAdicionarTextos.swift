@@ -23,10 +23,18 @@ struct SheetAdicionarTextos: View {
                     switch ferramenta {
                     case "Problemas":
                         Image("TEXTOPROBLEMA")
-                            .padding(.top, 30)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 526.06)
+                            .padding(.top, 20)
+                            .padding(.bottom, 10)
                     case "Conexao":
                         Image("TEXTOCONEXAO")
-                            .padding(.top, 30)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 556.95)
+                            .padding(.top, 20)
+                            .padding(.bottom, 10)
                     default:
                         Image("")
                     }

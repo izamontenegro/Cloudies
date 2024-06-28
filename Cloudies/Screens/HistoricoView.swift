@@ -57,6 +57,11 @@ struct HistoricoView: View {
                 } else {
                     VStack {
                         Image("nuvemProblema")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 290.06)
+                            .padding(.top, 20)
+                            .padding(.bottom, 10)
                         Text("Ainda sem projetos :/")
                             .foregroundStyle(.cinzaCriacao)
                             .font(.title3)
