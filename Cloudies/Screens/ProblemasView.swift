@@ -22,6 +22,7 @@ struct ProblemasView: View {
     @State private var auxTextosGerados: [Palavra] = []
     @State private var respostaAI: String = ""
     @State private var isTyping: Bool = false
+    @State private var isClicavel: Bool = false
     
     @Binding var navigationPath: NavigationPath
     var body: some View {
@@ -81,6 +82,12 @@ struct ProblemasView: View {
                 
                 HStack(spacing: 13.51) {
                     Button {
+                        
+                        isClicavel = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            isClicavel = false
+                        }
+                        
                         Task {
                             palavraChave.texto = modelo.palavraEntradaData
                             respostaAI = await
@@ -100,9 +107,11 @@ struct ProblemasView: View {
                             print(modelo.colecaoDeLinhasData)
                             
                         }
+                        
                     } label: {
                         Botoes(cor: "BRANCO")
                     }
+                    .disabled(isClicavel)
                     
                     Button {
                         isTyping.toggle()
