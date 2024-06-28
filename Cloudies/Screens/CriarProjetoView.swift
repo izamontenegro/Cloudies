@@ -23,6 +23,7 @@ struct CriarProjetoView: View {
     @State var navegar = false
     @State var limiteCaract: Int = 25
     
+    
     var body: some View {
         ScrollView {
             VStack {
