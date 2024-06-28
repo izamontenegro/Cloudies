@@ -63,8 +63,19 @@ struct ProblemasView: View {
                 }
                 
                 ScrollView {
-                    ForEach(modelo.colecaoDeLinhasData, id: \.self) { problema in
-                        CardGeracaoTexto(titulo: problema.palavras.first!.texto, explicacao: problema.palavras.last!.texto)
+                    ForEach(0..<modelo.colecaoDeLinhasData.count, id: \.self) { i in
+                        Button {
+                            modelo.colecaoDeLinhasData[i].palavras[0].isFavorite.toggle()
+                            print(modelo.colecaoDeLinhasData[i].palavras[0].isFavorite)
+                        } label: {
+                            CardGeracaoTexto(
+                                titulo: modelo.colecaoDeLinhasData[i].palavras.first!.texto,
+                                explicacao: modelo.colecaoDeLinhasData[i].palavras.last!.texto,
+                                isFavorite: $modelo.colecaoDeLinhasData[i].palavras.first!.isFavorite,
+                                isFromUser: $modelo.colecaoDeLinhasData[i].palavras.first!.isFromUser
+                            )
+
+                        }
                     }
                 }
                 
