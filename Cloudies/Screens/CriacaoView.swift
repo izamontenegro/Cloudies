@@ -56,7 +56,6 @@ struct CriacaoView: View {
                         )
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .shadow(radius: 7)
                     
                 }
                 Text("Alimentado pela API do Gemini")

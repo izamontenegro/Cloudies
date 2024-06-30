@@ -16,6 +16,7 @@ struct HistoricoView: View {
     @State private var searchText = ""
     @State private var navegar = false
     @State private var navigationPath: NavigationPath = NavigationPath()
+    
     var body: some View {
         NavigationStack(path: $navigationPath) {
             ScrollView {
@@ -29,7 +30,7 @@ struct HistoricoView: View {
                         } label: {
                             CardsHistorico(
                                 ferramenta: geracao.tipo,
-                                texto: "\(geracao.recorteTematicoData)",
+                                texto: "\(geracao.palavraEntradaData)",
                                 titulo: "\(geracao.tituloData)"
                             )
                             .padding(.bottom, -35)
@@ -37,9 +38,7 @@ struct HistoricoView: View {
                         
                         .buttonStyle(PlainButtonStyle())
                         .navigationTitle("Histórico")
-                        .shadow(radius: 5.6)
                         .padding(.top, 20)
-                        .searchable(text: $searchText, prompt: "Procurar projetos")
                     }
                     .navigationDestination(for: String.self) { name in
                         
@@ -69,6 +68,7 @@ struct HistoricoView: View {
                     .padding(.top, 190)
                 }
             }
+            .searchable(text: $searchText, prompt: "Procurar projetos")
         }
         .navigationTitle("Histórico")
     }

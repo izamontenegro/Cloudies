@@ -51,18 +51,17 @@ struct CriarProjetoView: View {
                 }
                 
                 VStack(spacing: 12) {
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Nome do projeto")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .padding(.leading, -178)
                         TextField("", text: $nomeDoProjeto)
                             .padding()
                             .frame(width: 357, height: 39)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.black, lineWidth: 1)
-                                    .frame(width: 357, height: 39)
+                                    .frame(width: 350, height: 39)
                             )
                             .onChange(of: nomeDoProjeto) { newValue, _ in
                                     if newValue.count > limiteCaract {
@@ -72,17 +71,14 @@ struct CriarProjetoView: View {
                             }
                         
                         Text("Nome do projeto. Ex.: Projeto de Arquitetura.")
-                        
-                            .padding(.leading, -81)
                             .font(.footnote)
                             .foregroundStyle(.cinzaCriacao)
                     }
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Tema Principal")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .padding(.leading, -178)
                         
                         TextField("", text: $temaPrincipal)
                         
@@ -91,7 +87,7 @@ struct CriarProjetoView: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.black, lineWidth: 1)
-                                    .frame(width: 357, height: 39)
+                                    .frame(width: 350, height: 39)
                             )
                             .onChange(of: temaPrincipal) { newValue, _ in
                                 if newValue.count > 35 {
@@ -100,17 +96,14 @@ struct CriarProjetoView: View {
                             }
                         
                         Text("Tema em que haverá exploração de conteúdo. Ex: Jardim.")
-                        
-                            .padding(.leading, -8)
                             .font(.footnote)
                             .foregroundStyle(.cinzaCriacao)
                     }
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Recorte Temático")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .padding(.leading, -177)
                         
                         TextField("", text: $recorteTematico)
                         
@@ -119,12 +112,10 @@ struct CriarProjetoView: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.black, lineWidth: 1)
-                                    .frame(width: 357, height: 39)
+                                    .frame(width: 350, height: 39)
                             )
                         
                         Text("Contexto do tema. Ex: Paisagismo, irrigação, praticidade.")
-                        
-                            .padding(.leading, -8)
                             .font(.footnote)
                             .foregroundStyle(.cinzaCriacao)
                     }

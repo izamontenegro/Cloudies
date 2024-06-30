@@ -60,10 +60,12 @@ struct TelaBrainStorm: View {
                     ForEach($brainstorm.colecaoDeLinhasData) { colecao in
                         LinhaDePalavrasView(palavras: colecao.palavras, linhas: $brainstorm.colecaoDeLinhasData, observador: $observador)
                     }
+                    .padding(.top)
+                    
                 }
                 .defaultScrollAnchor(.bottom)
                 
-                Spacer()
+             
                 HStack(spacing: 13.51) {
                     Button(action: {
                         botaoNuvem()
@@ -183,6 +185,3 @@ struct TelaBrainStorm: View {
     
 }
 
-//#Preview {
-//        TelaBrainStorm($brainstom.tituloData: "Projeto animal", $brainstorm.palavraEntradaData: "Cachorro", brainstorm.recorteTematicoData: "doméstico")
-//}

@@ -28,10 +28,10 @@ struct ProblemasView: View {
     var body: some View {
         ZStack {
             switch modelo.tipo {
-            case "Problemas":
+            case "Problemáticas":
                 Color.AMARELO
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            case "Conexoes":
+            case "Conexões":
                 Color.ROSA
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             default:
@@ -78,6 +78,7 @@ struct ProblemasView: View {
 
                         }
                     }
+                    .padding(.top)
                 }
                 
                 HStack(spacing: 13.51) {

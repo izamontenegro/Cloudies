@@ -28,14 +28,14 @@ struct CardsCriacao: View {
                 .font(.subheadline)
                 .multilineTextAlignment(.leading)
         }
-        
             .padding(.leading, 16)
             .padding(.trailing, 10)
             .frame(width: 358.23)
             .padding(.bottom, espaco)
             .background(Color(cor))
             .cornerRadius(20)
-            
+            .shadow(radius: 2)
+
     }
   
 }
