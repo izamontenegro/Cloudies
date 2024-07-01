@@ -51,8 +51,6 @@ struct CriarProjetoView: View {
                     ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
                 }
                 
-                
-                
                 VStack(spacing: 12) {
                     VStack(alignment: .leading) {
                         Text("Nome do projeto")
@@ -67,9 +65,9 @@ struct CriarProjetoView: View {
                                     .frame(width: 350, height: 39)
                             )
                             .onChange(of: nomeDoProjeto) { newValue, _ in
-                                    if newValue.count > limiteCaract {
-                                        nomeDoProjeto = String(newValue.prefix(limiteCaract))
-                                    }
+                                if newValue.count > limiteCaract {
+                                    nomeDoProjeto = String(newValue.prefix(limiteCaract))
+                                }
                                 
                             }
                         

@@ -51,4 +51,3 @@ struct CardGeracaoTexto: View {
     }
         
 }
-

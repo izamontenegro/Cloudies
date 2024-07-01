@@ -42,7 +42,6 @@ struct OnBoardingg0: View {
                 Image("primeiroOn")
                     .ignoresSafeArea()
                    
-                
                 Text("Aqui você vai encontrar inspirações  para seus projetos a partir das suas próprias ideias! Basta digitar palavras-chave e receber sugestões que vão turbinar sua criatividade.")
                     .font(.body)
                     .padding(30)
@@ -50,13 +49,10 @@ struct OnBoardingg0: View {
                 
             }
             
-            
-            
         }
             .navigationBarBackButtonHidden(true)
         }
     }
-
 
 struct OnBoardingg: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
@@ -78,9 +74,6 @@ struct OnBoardingg: View {
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .padding(.top, 35)
-                
-                
-                
                 
             }
             .padding(30)
@@ -108,7 +101,6 @@ struct OnBoardingg2: View {
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .padding(.top, 35)
-            
             
         }
         .padding(30)
