@@ -22,6 +22,7 @@ struct CriarProjetoView: View {
     @Binding var brainstorm: GeracaoData
     @State var navegar = false
     @State var limiteCaract: Int = 25
+    @State var title: String
     
     var body: some View {
         ScrollView {
@@ -49,6 +50,8 @@ struct CriarProjetoView: View {
                 default:
                     ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
                 }
+                
+                
                 
                 VStack(spacing: 12) {
                     VStack(alignment: .leading) {
@@ -134,13 +137,13 @@ struct CriarProjetoView: View {
                         
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 357, height: 63)
+                                .frame(width: 350, height: 63)
                                 .foregroundStyle(Color(cor))
                                 .shadow(radius: 4)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.black, lineWidth: 1)
-                                        .frame(width: 357, height: 63)
+                                        .frame(width: 350, height: 63)
                                 )
                             
                             Text("Vamos lá!")
@@ -156,9 +159,10 @@ struct CriarProjetoView: View {
             .buttonStyle(PlainButtonStyle())
         }
         .defaultScrollAnchor(.bottom)
-        .navigationTitle(ferramenta)
+        .navigationTitle(title)
         .toolbar(.hidden, for: .tabBar)
     }
+    
 }
 
 //#Preview {

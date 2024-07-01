@@ -28,10 +28,10 @@ struct ProblemasView: View {
     var body: some View {
         ZStack {
             switch modelo.tipo {
-            case "Problemáticas":
+            case "Problemas":
                 Color.AMARELO
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            case "Conexões":
+            case "Conexoes":
                 Color.ROSA
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             default:

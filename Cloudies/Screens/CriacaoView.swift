@@ -33,25 +33,25 @@ struct CriacaoView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(navigationPath: $navigationPath, ferramenta: "Problemas", imagem: "Problemas", cor: "AMARELO", brainstorm: $brainstorm)) {
+                    NavigationLink(destination: CriarProjetoView(navigationPath: $navigationPath, ferramenta: "Problemas", imagem: "Problemas", cor: "AMARELO", brainstorm: $brainstorm, title: "Problemáticas")) {
                         CardsCriacao(
                             cor: "AMARELO",
                             texto: """
                         Aqui você poderá entender melhor as problemáticas acerca do tema abordado. Utilize para compreender tópicos que podem ser resolvidos ou melhorados.
                         """,
-                            titulo: "Problemáticas",
+                            titulo: "Problemas",
                             espaco: 55
                         )
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    NavigationLink(destination: CriarProjetoView(navigationPath: $navigationPath, ferramenta: "Conexoes", imagem: "Conexao", cor: "ROSA", brainstorm: $brainstorm)) {
+                    NavigationLink(destination: CriarProjetoView(navigationPath: $navigationPath, ferramenta: "Conexoes", imagem: "Conexao", cor: "ROSA", brainstorm: $brainstorm, title: "Conexões")) {
                         CardsCriacao(
                             cor: "ROSA",
                             texto: """
                         Permite que você estabeleça conexões a partir de possiveis soluções. Ferramenta importante no pensamento divergente e expansão de possibilidades.
                         """,
-                            titulo: "Conexões",
+                            titulo: "Conexoes",
                             espaco: 10
                         )
                     }
@@ -68,7 +68,7 @@ struct CriacaoView: View {
                 case "BrainStorm":
                     TelaBrainStorm(brainstorm: $brainstorm, navigationPath: $navigationPath)
                 case "TelaCriacao":
-                    CriarProjetoView(navigationPath: $navigationPath, ferramenta: "BrainStorm", imagem: "BrainStorm", cor: "AZUL", brainstorm: $brainstorm)
+                    CriarProjetoView(navigationPath: $navigationPath, ferramenta: "BrainStorm", imagem: "BrainStorm", cor: "AZUL", brainstorm: $brainstorm, title: "Brainstorm")
                 case "Problemas":
                     ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
                 case "Conexoes":
