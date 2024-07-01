@@ -16,6 +16,7 @@ struct CriacaoView: View {
         ScrollView {
             VStack {
                 Image("criacaoiluss")
+                    .accessibilityLabel("Ilustração de um homem de cabelo preto pensando. Atrás dele há 3 nuvens coloridas com rostinhos.")
                     .padding(.bottom, -20)
                 VStack(spacing: -45) {
                     Button {
@@ -51,7 +52,7 @@ struct CriacaoView: View {
                             texto: """
                         Permite que você estabeleça conexões a partir de possiveis soluções. Ferramenta importante no pensamento divergente e expansão de possibilidades.
                         """,
-                            titulo: "Conexoes",
+                            titulo: "Conexões",
                             espaco: 10
                         )
                     }

@@ -28,6 +28,7 @@ struct SheetAdicionarTextos: View {
                             .frame(maxWidth: 526.06)
                             .padding(.top, 20)
                             .padding(.bottom, 10)
+                            .accessibilityLabel("Ilustração de 3 nuvens coloridas juntas, a do meio apresenta um rostinho surpreso e um raio vermelho saindo dela.")
                     case "Conexao":
                         Image("TEXTOCONEXAO")
                             .resizable()
@@ -35,6 +36,7 @@ struct SheetAdicionarTextos: View {
                             .frame(maxWidth: 556.95)
                             .padding(.top, 20)
                             .padding(.bottom, 10)
+                            .accessibilityLabel("Ilustração de 4 nuvens coloridas juntas, a do meio apresenta um rostinho feliz.")
                     default:
                         Image("")
                     }
@@ -56,7 +58,7 @@ struct SheetAdicionarTextos: View {
                                     .padding(.bottom, -5)
                             }
                             
-                            TextField("\(i == 0 ? "Titulo" : "Texto")", text: $palavras[i].texto)
+                            TextField("\(i == 0 ? "Destaque" : "Texto")", text: $palavras[i].texto)
                                 .padding()
                                 .frame(width: 357, height: 39)
                                 .overlay(
