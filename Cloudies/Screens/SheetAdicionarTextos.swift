@@ -104,8 +104,8 @@ struct SheetAdicionarTextos: View {
                         dismiss()
                     }
                 }
-                }
             }
+        }
     }
     
 }
