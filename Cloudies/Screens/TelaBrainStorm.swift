@@ -64,7 +64,6 @@ struct TelaBrainStorm: View {
                     
                 }
                 .defaultScrollAnchor(.bottom)
-                
              
                 HStack(spacing: 13.51) {
                     Button(action: {
@@ -184,4 +183,3 @@ struct TelaBrainStorm: View {
     }
     
 }
-
