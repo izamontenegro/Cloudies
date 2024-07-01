@@ -17,12 +17,14 @@ struct MainView: View {
             .tabItem {
                 Label("Criação", systemImage: "cloud")
             }
+            .accessibilityLabel("Criação")
             NavigationStack {
                 HistoricoView()
             }
             .tabItem {
                 Label("Histórico", systemImage: "book")
             }
+            .accessibilityLabel("Histórico")
             
         }
         .accentColor(.black)

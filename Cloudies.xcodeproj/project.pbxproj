@@ -314,11 +314,11 @@
 			};
 			buildConfigurationList = 3668CF412C18A31300612184 /* Build configuration list for PBXProject "Cloudies" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 3668CF3D2C18A31300612184;
 			packageReferences = (

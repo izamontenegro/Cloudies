@@ -35,6 +35,7 @@ struct CriarProjetoView: View {
                         .frame(maxWidth: 276.48)
                         .padding(.top, 20)
                         .padding(.bottom, 10)
+                        .accessibilityLabel("Ilustração de uma nuvem azul com gotas de chuva e um rostinho.")
                 case "Problemas":
                     Image("imagemProblematicas")
                         .resizable()
@@ -42,11 +43,13 @@ struct CriarProjetoView: View {
                         .frame(maxWidth: 290.06)
                         .padding(.top, 20)
                         .padding(.bottom, 10)
+                        .accessibilityLabel("Ilustração de uma nuvem amarela com expressão de surpresa e um raio vermelho saindo dela.")
                 case "Conexao":
                     Image("imagemConexao")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .padding(.vertical, 60)
+                        .accessibilityLabel("Ilustração de três nuvens coloridas juntas, as duas primeiras possuem um rostinho sorridente.")
                 default:
                     ProblemasView(modelo: $brainstorm, navigationPath: $navigationPath)
                 }
@@ -58,7 +61,7 @@ struct CriarProjetoView: View {
                         Text("Nome do projeto")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                        TextField("", text: $nomeDoProjeto)
+                        TextField("Nome do projeto", text: $nomeDoProjeto)
                             .padding()
                             .frame(width: 357, height: 39)
                             .overlay(
@@ -83,7 +86,7 @@ struct CriarProjetoView: View {
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         
-                        TextField("", text: $temaPrincipal)
+                        TextField("Tema principal", text: $temaPrincipal)
                         
                             .padding()
                             .frame(width: 357, height: 39)
@@ -108,7 +111,7 @@ struct CriarProjetoView: View {
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         
-                        TextField("", text: $recorteTematico)
+                        TextField("Recorte temático", text: $recorteTematico)
                         
                             .padding()
                             .frame(width: 357, height: 39)

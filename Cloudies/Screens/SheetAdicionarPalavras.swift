@@ -22,6 +22,7 @@ struct SheetAdicionarPalavras: View {
                         .frame(maxWidth: 276.48)
                         .padding(.top, 20)
                         .padding(.bottom, 10)
+                        .accessibilityLabel("Ilustração de uma nuvem azul com gotas de chuva e um rostinho.")
                     VStack {
                         ForEach($palavras.indices, id: \.self) { i in
                             Text("Ideia \(i+1)")
