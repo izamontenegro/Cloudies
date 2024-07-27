@@ -34,7 +34,7 @@ struct ContextMenuFavoritos: View {
                         .font(.title3)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color(essaPalavra.texto.starts(with: "Erro:") ? .VERMELHO : .BRANCO))
                                 .shadow(radius: 4)
                                 
                             //editar aqui
