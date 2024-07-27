@@ -12,22 +12,22 @@ struct ContentView: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
     
     var body: some View {
-        if isOnboardingComplete {
-            MainView()
-            
-        } else {
-            TabView {
-                OnBoardingg0()
-                OnBoardingg()
-                OnBoardingg2()
-                OnBoardingg3()
-            }
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-        }
+        SplashScreen()
     }
 }
 
+struct OnBoardinggComeco: View {
+    var body: some View {
+        TabView {
+            OnBoardingg0()
+            OnBoardingg()
+            OnBoardingg2()
+            OnBoardingg3()
+        }
+        .tabViewStyle(.page)
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
+    }
+}
 struct OnBoardingg0: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete: Bool = false
     
