@@ -8,7 +8,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
     var titulosPrompt: String = ""
     var textosPrompt: String = ""
     var prompt = ""
-    var erroPrompt = ""
+    var separadorErro = ""
     for palavra in palavrasUsadas {
         palavrasUsadasPrompt += ", \(palavra.texto)"
     }
@@ -19,7 +19,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
         
         switch tipoGeracao {
         case "BrainStorm":
-            erroPrompt = ", "
+            separadorErro = ", "
             prompt =
                 """
                 - Gere 2 objetos físicos relacionados à palavra "\(palavraChave.texto)".
@@ -40,19 +40,20 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                     textosPrompt += "\(palavrasUsadas[i].texto), \n"
                 }
             }
-            erroPrompt = "|"
+            separadorErro = "|"
             prompt =
             """
             
-            - Gere uma, apenas uma problemática especifica a cerca do problema \(palavraChave.texto)
-            - Seguindo esse recorte temático: \(recorteTematico)
+            - Gere uma, apenas uma problemática especifica a cerca do tema \(palavraChave.texto)
+            - Seguindo esse recorte temático: [\(recorteTematico)]
+            - Caso o recorte temático esteja vazio, considere que ele é o mesmo que o tema
             - Gere o titulo, seguido de uma barra |, e então o texto ex: 'Titulo|Texto', e não formate o texto, apenas deixe-o limpo
-            - Gere o títulos com, no máximo, 20 caracteres
-            - Gere o texto com no máximo 50 caracteres
+            - Gere titulos que definam bem qual será a idéia
+            - Gere o títulos com, no máximo, 15 caracteres
+            - Gere o texto com no máximo 40 caracteres
             - Não inclua, sob quaisquer circunstancias os seguintes titulos, em especiais os últimos: [ \(titulosPrompt) ]
-            - Não inclua, sob quaisquer circunstancias as seguintes soluções, em especiais as últimas: [ \(textosPrompt) ]
             - Se for impossível gerar ignorandos as acima, fuja do tema
-            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro\(erroPrompt)Cloudies não consegue gerar mais problemáticas acerca desse tema"
+            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro\(separadorErro)Cloudies não consegue gerar mais problemáticas acerca desse tema"
             
             """//Prompt de problematica aqui
             
@@ -64,20 +65,21 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
                     textosPrompt += "\(palavrasUsadas[i].texto), \n"
                 }
             }
-            erroPrompt = "|"
+            separadorErro = "|"
             prompt =
             """
             
             - Gere uma, apenas uma proposta de solução já existentes para o problema \(palavraChave.texto)
-            - Seguindo esse recorte temático: \(recorteTematico)
+            - Seguindo esse recorte temático: [\(recorteTematico)]
+            - Caso o recorte temático esteja vazio, considere que ele é o mesmo que o tema
+            
             - Gere o titulo, seguido de uma barra |, e então o texto ex: 'Titulo|Texto', e não formate o texto, apenas deixe-o limpo
-            - Gere o títulos com, no máximo, 20 caracteres
-            - Gere o texto com no máximo 50 caracteres
+            - Gere titulos que definam bem qual será a idéia
+            - Gere o títulos com, no máximo, 15 caracteres
+            - Gere o texto com no máximo 40 caracteres
             - Não inclua, sob quaisquer circunstancias os seguintes titulos, em especiais os últimos: [ \(titulosPrompt) ]
-            - Não inclua, sob
-            quaisquer circunstancias as seguintes soluções, em especiais as últimas: [ \(textosPrompt) ]
             - Se for impossível gerar ignorandos as acima, fuja do tema
-            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro\(erroPrompt)Cloudies não consegue gerar mais soluções acerca desse tema"
+            - Se a palavra \(palavraChave.texto) não for gerável, retorne "Erro\(separadorErro)Cloudies não consegue gerar mais soluções acerca desse tema"
             
             """//Prompt de problematica aqui
         default:
@@ -94,7 +96,7 @@ func gerarRespostaIgnorandoCasos(gerarParaTela tipoGeracao: String, palavraChave
             return text
         } else {
             
-            return "Erro\(erroPrompt)Cloudies não consegue gerar, espere um pouco e tente novametne" //Retornar o erro
+            return "Erro\(separadorErro)Cloudies não consegue gerar, espere um pouco e tente novametne" //Retornar o erro
         }
     } catch {
         print("Erro ao gerar conteúdo: \(error)")

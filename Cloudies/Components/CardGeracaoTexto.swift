@@ -17,7 +17,7 @@ struct CardGeracaoTexto: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 366, height: 74)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color(titulo.starts(with: "Erro") ? .VERMELHO : .BRANCO))
                 VStack {
                     Text(titulo)
                         .font(.system(size: 18))
